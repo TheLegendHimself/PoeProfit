@@ -7,22 +7,15 @@ const removeChilds = (parent) => {
     }
 };
 
-function getPoeNinjaPrices(){
-	var url = "https://poe.ninja/api/data/currencyoverview?league="+currentLeague+"&type=Currency";
-	var url = "https://poe.ninja/api/Data/GetStats"
-	let response = fetch(url, {method:"GET"});
-	console.log(response);
-	if (response.ok){
-		console.log("Yes");
-	}else{
-		console.log("Sadge");
-	}
-	// Ok lets try with JsonP
-	//var url = "https://poe.ninja/api/data/currencyoverview?League=Kalandra&type=Currency";
-	//var scriptElement = document.createElement("script");
-	//scriptElement.setAttribute("src", url);
-	//scriptElement.setAttribute("id", "jsonp");
+
+async function getDataFromWatch(){
+	var url = "https://api.poe.watch/get?league="+currentLeague+"&category=currency";
+	const response = await fetch(url, {method: 'GET'});
+	return response.json();
 };
+
+test = getDataFromWatch();
+console.log(test);
 
 
 function drawTable(name) {
