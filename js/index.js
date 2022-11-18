@@ -1,8 +1,8 @@
 var currentLeague = "Kalandra";
-var bossJson = JSON.parse('{"shaper":[ {"name":"Fragment of Knowledge", "value":50}, {"name":"Fragment of Shape", "value":50}, {"name":"Shapers Touch", "value":50}, {"name": "Dying Sun", "value":13}, {"name":"Solstice Vigil", "value":5}, {"name":"Echoes of Cremation", "value":5}, {"name":"Starforge", "value":2}, {"name":"Orb of Dominance", "value":2}], "elder":[{"name":"Fragment of Emptiness", "value":50}, {"name":"Fragment of Terror", "value":50}, {"name":"Blasphemers Grasp", "value":25}, {"name":"Cyclopeon Coil", "value":25}, {"name":"Nebuloch", "value":10}, {"name":"Hopeshredder", "value":10}, {"name":"Shimmeron", "value":10}, {"name":"Any Impresence", "value":20}, {"name":"Orb of Dominance", "value":5}, {"name":"Watchers Eye", "value":25}], "sirus":[{"name":"Crown of the Inward Eye", "value":38}, {"name":"Hands of the High Templar", "value":25}, {"name":"Thread of Hope", "value":20}, {"name":"The Burden of Truth", "value":15}, {"name":"Orb of Dominance", "value":3},{"name":"Awakeners Orb", "value":20}, {"name":"A Fate Worse Then Death", "value":4}] }');
+var bossJson;
 var noAtlasBossJson = JSON.parse('{"shaper":[]}')
 var uberBossJson = JSON.parse('{"ubershaper":[{}]}')
-
+var bosses = ["shaper", "elder", "sirus"];
 
 const removeChilds = (parent) => {
     while (parent.lastChild) {
@@ -40,6 +40,13 @@ function getDivinePriceFromWatch(){
 
 function drawBossTable(name) {
 	var table = document.getElementById("newRows");	
+	// Remove active Nav-item
+	for(i in bosses){
+		//console.log(i);
+		document.getElementById(bosses[i].concat('Button')).classList.remove('active');
+	};
+	// Set active Nav-item
+	document.getElementById(name.concat("Button")).classList.add('active');
 	//delete old table
 	removeChilds(table);
 	//create new Table from json
@@ -47,10 +54,32 @@ function drawBossTable(name) {
 		var newRow = '<tr><td>' + bossJson[name][i].name + '</td><td>' + bossJson[name][i].value + '</td></tr>';
 		table.insertRow().innerHTML= newRow;
 	};	
-	
 };
 
 
 
 
 getDivinePriceFromWatch();
+createBossJson();
+function getFragmentValuesFromApi(){
+
+};
+
+function createBossJson(){
+	bossJson = JSON.parse('{"shaper":[ {"name":"Fragment of Knowledge", "value":50}, {"name":"Fragment of Shape", "value":50}, {"name":"Shapers Touch", "value":50}, {"name": "Dying Sun", "value":13}, {"name":"Solstice Vigil", "value":5}, {"name":"Echoes of Cremation", "value":5}, {"name":"Starforge", "value":2}, {"name":"Orb of Dominance", "value":2}], "elder":[{"name":"Fragment of Emptiness", "value":50}, {"name":"Fragment of Terror", "value":50}, {"name":"Blasphemers Grasp", "value":25}, {"name":"Cyclopeon Coil", "value":25}, {"name":"Nebuloch", "value":10}, {"name":"Hopeshredder", "value":10}, {"name":"Shimmeron", "value":10}, {"name":"Any Impresence", "value":20}, {"name":"Orb of Dominance", "value":5}, {"name":"Watchers Eye", "value":25}], "sirus":[{"name":"Crown of the Inward Eye", "value":38}, {"name":"Hands of the High Templar", "value":25}, {"name":"Thread of Hope", "value":20}, {"name":"The Burden of Truth", "value":15}, {"name":"Orb of Dominance", "value":3},{"name":"Awakeners Orb", "value":20}, {"name":"A Fate Worse Then Death", "value":4}] }');
+};
+
+
+
+
+// TODO
+// Fragment of Knowledge
+// Fragment of Shape
+// Shapers Touch
+// Dying Sun
+// Solstice Vigil
+// Echoes of Cremation
+// Starforge
+// Orb of Dominance
+
+
