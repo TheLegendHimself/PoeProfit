@@ -34,13 +34,6 @@ function getDivinePriceFromWatch(){
 	);
 };
 
-getDivinePriceFromWatch();
-
-//console.log(test);
-//alert(test);
-//console.log(typeof(test));
-//console.log(JSON.stringify(test));
-
 
 function drawTable(name) {
 	var table = document.getElementById("newRows");	
@@ -48,10 +41,10 @@ function drawTable(name) {
 	removeChilds(table);
 	//create new Table from json
 	for(var i = 0; i< bossJson[name].length;i++){
-		var newRow = '<tr><td>' + shaperJson[name][i].name + '</td><td>' + shaperJson[name][i].value + '</td></tr>';
+		var newRow = '<tr><td>' + bossJson[name][i].name + '</td><td>' + bossJson[name][i].value + '</td></tr>';
 		table.insertRow().innerHTML= newRow;
 	}		
 	
 };
 
-
+getDivinePriceFromWatch();
