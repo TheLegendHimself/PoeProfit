@@ -26,7 +26,7 @@ function getDivinePriceFromWatch(){
 			var divToChaosEle = document.getElementById("divToChaos");
 			for(var i = 0; i<result.length;i++){
 				if(result[i].id == 56){
-					divToChaosEle.innerHTML = "Current Divine Value:  "+ result[i].mean;
+					divToChaosEle.innerHTML = "Current Divine Value:  "+ result[i].min;
 				}
 				//console.log(result[i]);
 			}
