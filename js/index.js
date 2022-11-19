@@ -1,6 +1,6 @@
 var currentLeague = "Kalandra";
 var bossJson;
-var invitationJson;
+var invitationJson = {"The Formed":[],"The Twisted":[], "The Feared":[], "The Forgotten":[]};
 var bossCostJson = {"shaper":0, "elder":0, "sirus":0, "maven":0};
 var noAtlasBossJson = JSON.parse('{"shaper":[]}')
 var uberBossJson = JSON.parse('{"ubershaper":[{}]}')
@@ -49,40 +49,32 @@ function getCurrencyPriceFromWatch(){
 
 function getFragmentPriceFromWatch(){
 	var url = "https://api.poe.watch/get?league="+currentLeague+"&category=fragment";
+	console.log(invitationJson);
 	fetch(url).then(response => response.json()).then(result => {			
 			for(var i = 0; i<result.length;i++){		
 				//Fragment of the Minotaur id = 47
 				if(result[i].id == 47){
-					for(var ii =0; ii<invitations.length; ii++)
-						if(invitationJson["The Formed"[ii]].name == "Fragment of the Minotaur"){
-						invitationJson["The Formed"[ii]].chaosValue = result[i].mean;
-						}
+					invitationJson["The Formed"][0] = {"name:":"Fragment of the Minotaur", "chaosValue":result[i].mean};
 				}
 				//Fragment of the Phoenix id = 366
 				if(result[i].id == 366){
-					for(var ii =0; ii<invitations.length; ii++)
-						if(invitationJson["The Formed"[ii]].name == "Fragment of the Phoenix"){
-						invitationJson["The Formed"[ii]].chaosValue = result[i].mean;
-						}
+					invitationJson["The Formed"][1] = ["Fragment of the Phoenix", result[i].mean];
 				}
 				//Fragment of the Hydra id = 367
 				if(result[i].id == 367){
-					for(var ii =0; ii<invitations.length; ii++)
-						if(invitationJson["The Formed"[ii]].name == "Fragment of the Hydra"){
-						invitationJson["The Formed"[ii]].chaosValue = result[i].mean;
-						}
+					invitationJson["The Formed"][2] = ["Fragment of the Hydra", result[i].mean];	
 				}
 				//Fragment of the Chimera id = 368
 				if(result[i].id == 368){
-					for(var ii =0; ii<invitations.length; ii++)
-						if(invitationJson["The Formed"[ii]].name == "Fragment of the Chimera"){
-						invitationJson["The Formed"[ii]].chaosValue = result[i].mean;
-						}
+					invitationJson["The Formed"][3] = ["Fragment of the Chimera", result[i].mean];
 				}
 			}
 		}
 	);
 };
+getFragmentPriceFromWatch();
+
+
 
 function expandBosses(){
 	var orig = document.getElementById('bossPlace');
