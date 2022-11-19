@@ -90,6 +90,8 @@ function getJson(){
 
 	//assemble the strings
 	var shaperList = [["Fragment of Knowledge",50], ["Fragment of Shape",50]];
+	var elderList = [["Fragment of Emptiness",50], ["Fragment of Terror",50], ["Blasphemers Grasp", 25], ["Cyclopeon Coil",25], ["Nebuloch",10], ["Hopeshredder",10], ["Shimmeron",10], ["Any Impresence",20], ["Orb of Dominance",45], ["Watchers Eye",25]];
+	var siruslist = [["Crown of the Inward Eye",38], ["Hands of the High Templar",25], ["Thread of Hope",20], ["The Burden of Truth",15, ]["Orb of Dominance",3], ["Awakeners Orb",20], ["A Fate Worse Then Death",4]];
 	var elderList;
 	var sirusList;
 	var mavenList;
