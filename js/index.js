@@ -1,9 +1,11 @@
 var currentLeague = "Kalandra";
 var bossJson;
 var bossCostJson;
+var invitationJson;
 var noAtlasBossJson = JSON.parse('{"shaper":[]}')
 var uberBossJson = JSON.parse('{"ubershaper":[{}]}')
 var bosses = ["shaper", "elder", "sirus", "maven"];
+var invitations = ["The Formed", "The Hidden", "The Twisted", "The Feared"];
 var divineChaosValue;
 var bossRunValue;
 
@@ -39,6 +41,43 @@ function getCurrencyPriceFromWatch(){
 							bossJson["sirus"][ii].chaosValue = result[i].mean;
 						}
 					}
+				}
+			}
+		}
+	);
+};
+
+function getFragmentPriceFromWatch(){
+	var url = "https://api.poe.watch/get?league="+currentLeague+"&category=fragment";
+	fetch(url).then(response => response.json()).then(result => {			
+			for(var i = 0; i<result.length;i++){		
+				//Fragment of the Minotaur id = 47
+				if(result[i].id == 47){
+					for(var ii =0; ii<invitations.length; ii++)
+						if(invitationJson["The Formed"[ii]].name == "Fragment of the Minotaur"){
+						invitationJson["The Formed"[ii]].chaosValue = result[i].mean;
+						}
+				}
+				//Fragment of the Phoenix id = 366
+				if(result[i].id == 366){
+					for(var ii =0; ii<invitations.length; ii++)
+						if(invitationJson["The Formed"[ii]].name == "Fragment of the Phoenix"){
+						invitationJson["The Formed"[ii]].chaosValue = result[i].mean;
+						}
+				}
+				//Fragment of the Hydra id = 367
+				if(result[i].id == 367){
+					for(var ii =0; ii<invitations.length; ii++)
+						if(invitationJson["The Formed"[ii]].name == "Fragment of the Hydra"){
+						invitationJson["The Formed"[ii]].chaosValue = result[i].mean;
+						}
+				}
+				//Fragment of the Chimera id = 368
+				if(result[i].id == 368){
+					for(var ii =0; ii<invitations.length; ii++)
+						if(invitationJson["The Formed"[ii]].name == "Fragment of the Chimera"){
+						invitationJson["The Formed"[ii]].chaosValue = result[i].mean;
+						}
 				}
 			}
 		}
