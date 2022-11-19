@@ -1,11 +1,11 @@
 var currentLeague = "Kalandra";
 var bossJson;
-var invitationJson = {"The Formed":[],"The Twisted":[], "The Feared":[], "The Forgotten":[]};
+var invitationJson = {"The Formed":[],"The Hidden":[] ,"The Twisted":[], "The Feared":[], "The Forgotten":[]};
 var bossCostJson = {"shaper":0, "elder":0, "sirus":0, "maven":0};
 var noAtlasBossJson = JSON.parse('{"shaper":[]}')
 var uberBossJson = JSON.parse('{"ubershaper":[{}]}')
 var bosses = ["shaper", "elder", "sirus", "maven"];
-var invitations = ["The Formed", "The Hidden", "The Twisted", "The Feared"];
+var invitations = ["The Formed", "The Hidden", "The Twisted", "The Feared", "The Forgotten", "The Elderslyer"];
 var divineChaosValue;
 var bossRunValue;
 
@@ -139,10 +139,42 @@ function getBossJson(){
 	bossJson = realBossJson;
 };
 
+function getinvitationJson(){
+	// Hardcoded Items with Dropchances
+var theformedList = [["The Maven's Writ", 70],["Orb of Conflict", 1], ["Fragment of the Hydra", 1], ["Fragment of the Minotaur", 1], ["Fragment of the Phoenix", 1], ["Fragment of the Chimera", 1]];
+var thehiddenList = [["The Maven's Writ", 70],["Orb of Conflict", 1], ["Tul's Flawless Breachstone", 1], ["Uul-Netol's Flawless Breachstone", 1], ["Xoph's Flawless Breachstone", 1], ["Esh's Flawless Breachstone", 1]];
+var thefearedList = [/*TODO*/];
+var thetwistedList = [["The Maven's Writ", 70],["Orb of Conflict", 1], ["Fragment of Enslavement", 1], ["Fragment of Constriction", 1], ["Fragment of Eradication", 1], ["Fragment of Purification", 1], ];
+var theforgottenList = [["The Maven's Writ", 70],["Orb of Conflict", 1], ["Circle of Anguish", 1], ["Circle of Fear", 1], ["Circle of Guilt", 1], ["Circle of Nostalgia", 1], ["Circle of Regret", 1], ["Mask of the Tribunal", 1], ["Storm's Gift", 1] ["Perepiteia", 1]];
+var theelderslayerList =[["The Maven's Writ", 70],["Orb of Conflict", 1], ["Al-Hezmin's Crest", 1], ["Baran's Crest", 1], ["Drox's Crest", 1], ["Veritania's Crest", 1], ["Hunter's Exalted Orb", 1], ["Crusader's Exalted Orb", 1], ["Redeemer's Exalted Orb", 1], ["Warlord's Exalted Orb", 1],];
 
+// creating a json with all Invitations from hardcoded lists
+var realInvitationJson = {"The Formed":[], "The Hidden":[], "The Twisted":[], "The Feared":[], "The Forgotten":[], "The Elderslyer":[]};
+	for(var i=0;i<theformedList.length;i++){
+		realInvitationJson["The Formed"][i] = {"name":theformedList[i][0], "value":theformedList[i][1]};	
+	}
+	for(var i=0;i<thehiddenList.length;i++){
+		realInvitationJson["The Hidden"][i] = {"name":thehiddenList[i][0], "value":thehiddenList[i][1]};	
+	}
+	for(var i=0;i<thefearedList.length;i++){
+		realInvitationJson["The Feared"][i] = {"name":thefearedList[i][0], "value":thefearedList[i][1]};	
+	}
+	for(var i=0;i<thetwistedList.length;i++){
+		realInvitationJson["The Twisted"][i] = {"name":thetwistedList[i][0], "value":thetwistedList[i][1]};	
+	}
+	for(var i=0;i<theforgottenList.length;i++){
+		realInvitationJson["The Forgotten"][i] = {"name":theforgottenList[i][0], "value":theforgottenList[i][1]};	
+	}
+	for(var i=0;i<theelderslayerList.length;i++){
+		realInvitationJson["The Elderslayer"][i] = {"name":theelderslayerList[i][0], "value":theelderslayerList[i][1]};	
+	}
+	// setting the json as global variable
+	invitationJson = realInvitationJson;
+};
 
 getBossJson();
 getCurrencyPriceFromWatch();
+getinvitationJson();
 
 
 // TODO
