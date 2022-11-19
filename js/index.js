@@ -17,24 +17,28 @@ function getCurrencyPriceFromWatch(){
 	fetch(url).then(response => response.json()).then(result => {
 			var divToChaosEle = document.getElementById("divToChaos");
 			for(var i = 0; i<result.length;i++){
-				if(result[i].id == 56){
-					// Divine id = 56
+				// Divine id = 56
+				if(result[i].id == 56){					
 					divineChaosValue = result[i].min;
 					divToChaosEle.innerHTML = "Current Divine Value:  "+ divineChaosValue;
 				}
+				//Orb of Dominance id = 45848
 				if(result[i].id == 45848){
-					// Orb of Dominance id = 45848
 					for(var ii =0; ii<bosses.length; ii++)
 						for(var iii =0; iii<bossJson[bosses[ii]].length; iii++){
 							if(bossJson[bosses[ii]][iii].name == "Orb of Dominance"){
 								bossJson[bosses[ii]][iii].chaosValue = result[i].min;
-								//console.log(result[i]);
 							}
 						}
-						//bossJson[bosses[ii]]["Orb of Dominance"].chaosValue = result[i].min;
-						//console.log(bossJson[bosses[ii]]["Orb of Dominance"])
 				}
-				//console.log(result[i]);
+				// Awakener's Orb id = 49
+				if(result[i].id == 49){
+					for(var ii =0; ii<bossJson["sirus"].length; ii++){
+						if(bossJson["sirus"][ii].name == "Awakeners Orb"){
+							bossJson["sirus"][ii].chaosValue = result[i].min;
+						}
+					}
+				}
 			}
 		}
 	);
