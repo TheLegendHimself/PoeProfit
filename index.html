@@ -20,11 +20,43 @@
     <body style="background-color: lightgrey;">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-5">
-                    <p class="border" onclick="expandBosses()" id="bossButton" style="font-size: large; text-align: center;">Bosses</p>
-                    <div class="row" id="bossPlace"></div>
+                <div class="col-4">
+                    <div class="border" id="bossButton" style="font-size: large; text-align: center;">Bosses</div>
+                    <div class="container-fluid">
+                        <div class="row justify-content-center" id="bossPlace1">
+                            <div class="border col-3" onclick="drawBossTable(['elder', 0, 0])" style="text-align: center;">elder</div>
+                            <div class="border col-2" onclick="drawBossTable(['shaper', 0, 0])" style="text-align: center;">shaper</div>
+                            <div class="border col-1" onclick="drawBossTable(['sirus', 0, 0])" style="text-align: center;">sirus</div>
+                            <div class="border col-3" onclick="drawBossTable(['maven', 0, 0])" style="text-align: center;">maven</div>
+                            <div class="border col-3" onclick="drawBossTable(['uber elder', 0, 0])" style="text-align: center;">uber elder</div>
+                        </div>
+                        <div class="row justify-content-center" id="bossPlace2">
+                            <div class="border col-3" onclick="drawBossTable(['elder', 1, 0])" style="text-align: center">talented elder</div>
+                            <div class="border col-2" ></div>
+                            <div class="border col-1" ></div>
+                            <div class="border col-3" onclick="drawBossTable(['maven', 1, 0])" style="text-align: center">talented maven</div>
+                            <div class="border col-3" onclick="drawBossTable(['uber elder', 1, 0])" style="text-align: center">talented uber elder</div>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-5">
+                <div class="col-3">
+                    <div class="border" id="bossButton" style="font-size: large; text-align: center;">Uber Bosses</div>
+                    <div class="container-fluid">
+                        <div class="row justify-content-center" id="bossPlace3">
+                            <div class="border col-2" onclick="drawBossTable(['shaper', 0, 1])" style="text-align: center">shaper</div>
+                            <div class="border col-2" onclick="drawBossTable(['sirus', 0, 1])" style="text-align: center">sirus</div>
+                            <div class="border col-4" onclick="drawBossTable(['maven', 0, 1])" style="text-align: center">maven</div>
+                            <div class="border col-4" onclick="drawBossTable(['uber elder', 0, 1])" style="text-align: center">uber elder</div>
+                        </div>
+                        <div class="row justify-content-center" id="bossPlace4">
+                            <div class="border col-2"></div>
+                            <div class="border col-2"></div>
+                            <div class="border col-4" onclick="drawBossTable(['maven', 1, 1])" style="text-align: center">talented maven</div>
+                            <div class="border col-4" onclick="drawBossTable(['uber elder', 1, 1])" style="text-align: center">talented uber elder</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-3">
                     <p style="font-size: large; text-align: center;"> Invitations </p>
                 </div>
                 <div class="col-2">

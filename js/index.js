@@ -49,7 +49,6 @@ function getCurrencyPriceFromWatch(){
 
 function getFragmentPriceFromWatch(){
 	var url = "https://api.poe.watch/get?league="+currentLeague+"&category=fragment";
-	console.log(invitationJson);
 	fetch(url).then(response => response.json()).then(result => {			
 			for(var i = 0; i<result.length;i++){		
 				//Fragment of the Minotaur id = 47
@@ -75,45 +74,95 @@ function getFragmentPriceFromWatch(){
 getFragmentPriceFromWatch();
 
 
-
+/*
 function expandBosses(){
-	var orig = document.getElementById('bossPlace');
+	var orig = document.getElementById('bossPlace1');
 	removeChilds(orig);
 	for(var i=0; i< bosses.length;i++){
 		var newButton = document.createElement('div');
 		newButton.innerHTML = bosses[i];
 		newButton.setAttribute('onclick',"drawBossTable('"+bosses[i]+"')");
-		newButton.className = "col-3 border";
+		newButton.className = "col-2 border";
 		newButton.style = "text-align:center"
 		orig.appendChild(newButton);
 	}
+	var orig2 = document.getElementById('bossPlace2');
+	removeChilds(orig2);
+	for(var i=0; i< bosses.length;i++){
+		var newButton = document.createElement('div');
+		newButton.innerHTML = "talented "+bosses[i];
+		newButton.setAttribute('onclick',"drawBossTable('"+bosses[i]+"')");
+		newButton.className = "col-2 border";
+		newButton.style = "text-align:center"
+		orig2.appendChild(newButton);
+	}
 };
-
+function expandBosses2(){
+	var orig = document.getElementById('bossPlace3');
+	removeChilds(orig);
+	for(var i=0; i< bosses.length;i++){
+		var newButton = document.createElement('div');
+		newButton.innerHTML = bosses[i];
+		newButton.setAttribute('onclick',"drawBossTable('"+bosses[i]+"')");
+		newButton.className = "col-2 border";
+		newButton.style = "text-align:center"
+		orig.appendChild(newButton);
+	}
+	var orig2 = document.getElementById('bossPlace4');
+	removeChilds(orig2);
+	for(var i=0; i< bosses.length;i++){
+		var newButton = document.createElement('div');
+		newButton.innerHTML = "talented "+bosses[i];
+		newButton.setAttribute('onclick',"drawBossTable('"+bosses[i]+"')");
+		newButton.className = "col-2 border";
+		newButton.style = "text-align:center"
+		orig2.appendChild(newButton);
+	}
+};
+*/
 function changeValue(){
 	var changer = document.getElementById("divperH");
 	changer.innerHTML = ((bossRunValue-document.getElementById('bossCost').value)*10/divineChaosValue).toFixed(3);
 };
 
 
-function drawBossTable(name) {
-	var table = document.getElementById("newRows");	
-	var table2 = document.getElementById("newRows2");
-	removeChilds(table);
-	//create new Table from json
-	for(var i = 0; i < bossJson[name].length;i++){
-		var newRow = '<tr><td class="col-6"> ' + bossJson[name][i].name + '</td><td class="col-2">' + bossJson[name][i].value + '</td><td class="col-2">'+ bossJson[name][i].chaosValue  + '</td><td class="col-2">' + (bossJson[name][i].chaosValue*(bossJson[name][i].value/100)).toFixed(2) + '</td></tr>' ;
-		table.insertRow().innerHTML = newRow;
-	};	
+function drawBossTable(newName) {
+	name = newName[0];
+	if(newName[1]==0){
+		//untalented
+		if(newName[2]==0){
+			//untalented & non uber
+			var table = document.getElementById("newRows");	
+			var table2 = document.getElementById("newRows2");
+			removeChilds(table);
+			//create new Table from json
+			for(var i = 0; i < bossJson[name].length;i++){
+				var newRow = '<tr><td class="col-6"> ' + bossJson[name][i].name + '</td><td class="col-2">' + bossJson[name][i].value + '</td><td class="col-2">'+ bossJson[name][i].chaosValue  + '</td><td class="col-2">' + (bossJson[name][i].chaosValue*(bossJson[name][i].value/100)).toFixed(2) + '</td></tr>' ;
+				table.insertRow().innerHTML = newRow;
+			};	
 
-	//calculate currency per run
-	var currRun = 0;
-	for(var i=0; i< bossJson[name].length;i++){
-		currRun+= bossJson[name][i].chaosValue*(bossJson[name][i].value/100);
+			//calculate currency per run
+			var currRun = 0;
+			for(var i=0; i< bossJson[name].length;i++){
+				currRun+= bossJson[name][i].chaosValue*(bossJson[name][i].value/100);
+			}
+			bossRunValue = currRun;
+			removeChilds(table2);
+			newRow = '<tr><td class="col-2"><input type="number" id="bossCost" onchange="changeValue()" value="' + bossCostJson[name] +'"></td><td class="col-3">'+ currRun +'</td><td class="col-3">'+ '6 min' +'</td><td class="col-3" id="divperH">'+ ((currRun-bossCostJson[name])*10/divineChaosValue).toFixed(3)+'</td></tr>';
+			table2.insertRow().innerHTML = newRow;
+		}else{
+			//untalented & uber version
+
+		}
+	}else{
+		// talented
+		if(newName[2]==0){
+			// talented & non uber
+		}else{
+			//talented & uber
+		}
 	}
-	bossRunValue = currRun;
-	removeChilds(table2);
-	newRow = '<tr><td class="col-2"><input type="number" id="bossCost" onchange="changeValue()" value="' + bossCostJson[name] +'"></td><td class="col-3">'+ currRun +'</td><td class="col-3">'+ '6 min' +'</td><td class="col-3" id="divperH">'+ ((currRun-bossCostJson[name])*10/divineChaosValue).toFixed(3)+'</td></tr>';
-	table2.insertRow().innerHTML = newRow;
+	
 };
 function getBossJson(){
 	// Hardcoded Items with Dropchances
@@ -121,6 +170,10 @@ function getBossJson(){
 	var elderList = [["Fragment of Emptiness",50], ["Fragment of Terror",50], ["Blasphemers Grasp", 25], ["Cyclopeon Coil",25], ["Nebuloch",10], ["Hopeshredder",10], ["Shimmeron",10], ["Any Impresence",20], ["Orb of Dominance",45], ["Watchers Eye",25]];
 	var sirusList = [["Crown of the Inward Eye",38], ["Hands of the High Templar",25], ["Thread of Hope",20], ["The Burden of Truth",15], ["Orb of Dominance",3], ["Awakeners Orb",20], ["A Fate Worse Then Death",4]];
 	var mavenList = [["Legacy of Fury", 32], ["Viridis Veil", 20], ["Arns Anguish", 12], ["Gravens Secret", 12], ["Olesyas Delight", 12], ["Impossible Escape", 10], ["Doppelgänger Guise", 2], ["Orb of Conflict", 25], ["Elevated Sextant", 30],["Awakened Support Gems", 55]];
+<<<<<<< Updated upstream
+=======
+	var uberElderList = [["Mark of the Shaper", 30], ["Mark of the Elder", 30], ["Indigon", 12], ["Call of the Void", 12], ["Voidfletcher",6], ["Disintegrator", 6],["Voidforge",2],["The Eternity Shroud",2], ["Watchers Eye", 25], ["Orb of Dominance", 5]];
+>>>>>>> Stashed changes
 	// creating a json with all 4 bosses from hardcoded lists
 	var realBossJson = {"shaper":[], "elder":[], "sirus":[], "maven":[]};
 	for(var i=0;i<shaperList.length;i++){
@@ -144,15 +197,6 @@ function getBossJson(){
 getBossJson();
 getCurrencyPriceFromWatch();
 
-
-// TODO
-// Fragment of Knowledge
-// Fragment of Shape
-// Shapers Touch
-// Dying Sun
-// Solstice Vigil
-// Echoes of Cremation
-// Starforge
 
 
 
