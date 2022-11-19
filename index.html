@@ -13,46 +13,56 @@
     </head>
  
     <header>    
-        <div>
-            <h1 align="center"> PoE Profit Calculator </h1>
-        </div>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="container-fluid">            
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                  <li class="nav-item">
-                    <a class="nav-link" onclick="drawBossTable('shaper')" id="shaperButton">Shaper</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" onclick="drawBossTable('elder')" id="elderButton">Elder</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" onclick="drawBossTable('sirus')" id="sirusButton">Sirus</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">Invitations</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link disabled" align="right" id="divToChaos"></a>
-                  </li>
-                </ul>             
+
+            <div>
+                <h1 class="display-1" align="center"> PoE Profit Calculator </h1>
             </div>
-      </nav>
+            <div class="row">
+                <div class="col-5 border" >
+                    <p class="border border-primary" onclick="expandBosses()" id="bossButton" style="font-size: large; text-align: center;">Bosses</p>
+                    <div class="row" id="bossPlace">
+                    </div>
+                </div>
+                <div class="col-5">
+                    <p style="font-size: large; text-align: center;"> Invitations </p>
+                </div>
+                <div class="col-2">
+                    <p id="divToChaos" style="font-weight: 300; text-align: right;"></p>
+                </div>
+            </div>
 
     </header>
-    <body>
-        
-        <div>
-            <table class="table table-striped" id="mainTable">
-                <tr>
-                    <th>Itemname</th>
-                    <th>Dropchance</th>
-                    <th>Chaosvalue</th>
-                    <th>Per run Value</th>
-                </tr>
-                <tbody id="newRows">
-                </tbody>
-            </table>
-        </div>
+    <body  style="background-color: lightgrey;">
+            <div>
+                <table class="table table-striped" id="mainTable">
+                    <tr>
+                        <th>Itemname</th>
+                        <th>Dropchance</th>
+                        <th>Chaosvalue</th>
+                        <th>Per run Value</th>
+                    </tr>
+                    <tbody id="newRows">
+                    </tbody>
+                </table>
+            </div>
+
+            <br><br>
+
+            <div>
+                <table class="table table-striped" id="summary">
+                    <tr>
+                        <th>Cost per run</th>
+                        <th>Profit per run</th>
+                        <th>Time per run</th>
+                        <th>Divines per hour</th>
+                    </tr>
+                    <tbody id="newRows2">
+                    </tbody>
+                </table>
+
+
+            </div>
+
 
         <!-- Own Javascript-->
         <script type="text/javascript" src="js/index.js"></script>
