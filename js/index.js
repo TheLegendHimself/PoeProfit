@@ -5,6 +5,7 @@ var noAtlasBossJson = JSON.parse('{"shaper":[]}')
 var uberBossJson = JSON.parse('{"ubershaper":[{}]}')
 var bosses = ["shaper", "elder", "sirus", "maven"];
 var divineChaosValue;
+var bossRunValue;
 
 const removeChilds = (parent) => {
     while (parent.lastChild) {
@@ -57,8 +58,9 @@ function expandBosses(){
 	}
 };
 
-function changeValue( which){
-	console.log("succ");
+function changeValue(){
+	var changer = document.getElementById("divperH");
+	changer.innerHTML = ((bossRunValue-document.getElementById('bossCost').value)*10/divineChaosValue).toFixed(3);
 };
 
 
@@ -77,8 +79,9 @@ function drawBossTable(name) {
 	for(var i=0; i< bossJson[name].length;i++){
 		currRun+= bossJson[name][i].chaosValue*(bossJson[name][i].value/100);
 	}
+	bossRunValue = currRun;
 	removeChilds(table2);
-	newRow = '<tr><td class="col-2"><input type="number" id="bossCost" onchange="changeValue('+"'bossCost'"+')" value="' + bossCostJson[name] +'"></td><td class="col-3">'+ currRun +'</td><td class="col-3">'+ '6 min' +'</td><td class="col-3">'+ ((currRun-bossCostJson[name])*10/divineChaosValue).toFixed(3)+'</td></tr>';
+	newRow = '<tr><td class="col-2"><input type="number" id="bossCost" onchange="changeValue()" value="' + bossCostJson[name] +'"></td><td class="col-3">'+ currRun +'</td><td class="col-3">'+ '6 min' +'</td><td class="col-3" id="divperH">'+ ((currRun-bossCostJson[name])*10/divineChaosValue).toFixed(3)+'</td></tr>';
 	table2.insertRow().innerHTML = newRow;
 };
 function getJson(){
@@ -86,6 +89,10 @@ function getJson(){
 
 
 	//assemble the strings
+	var shaperList = [["Fragment of Knowledge",50], ["Fragment of Shape",50]];
+	var elderList;
+	var sirusList;
+	var mavenList;
 	shaperString = '{"shaper":[ {"name":"Fragment of Knowledge", "value":50, "chaosValue":45}, {"name":"Fragment of Shape", "value":50, "chaosValue":45}, {"name":"Shapers Touch", "value":50, "chaosValue":45}, {"name": "Dying Sun", "value":13, "chaosValue":45}, {"name":"Solstice Vigil", "value":5, "chaosValue":45}, {"name":"Echoes of Cremation", "value":5, "chaosValue":45}, {"name":"Starforge", "value":2, "chaosValue":45}, {"name":"Orb of Dominance", "value":2}], ';
 	elderString	 = '"elder":[{"name":"Fragment of Emptiness", "value":50}, {"name":"Fragment of Terror", "value":50}, {"name":"Blasphemers Grasp", "value":25}, {"name":"Cyclopeon Coil", "value":25}, {"name":"Nebuloch", "value":10}, {"name":"Hopeshredder", "value":10}, {"name":"Shimmeron", "value":10}, {"name":"Any Impresence", "value":20}, {"name":"Orb of Dominance", "value":5}, {"name":"Watchers Eye", "value":25}],';
 	sirusString  = '"sirus":[{"name":"Crown of the Inward Eye", "value":38}, {"name":"Hands of the High Templar", "value":25}, {"name":"Thread of Hope", "value":20}, {"name":"The Burden of Truth", "value":15}, {"name":"Orb of Dominance", "value":3},{"name":"Awakeners Orb", "value":20}, {"name":"A Fate Worse Then Death", "value":4}], ';
