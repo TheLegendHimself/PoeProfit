@@ -46,7 +46,7 @@ function drawBossTable(name) {
 	removeChilds(table);
 	//create new Table from json
 	for(var i = 0; i < bossJson[name].length;i++){
-		var newRow = '<tr><td>' + bossJson[name][i].name + '</td><td>' + bossJson[name][i].value + '</td><td>'+ bossJson[name][i].chaosValue  + '</td><td>' + bossJson[name][i].chaosValue*(bossJson[name][i].value/100) + '</td></tr>' ;
+		var newRow = '<tr><td class="col-6">' + bossJson[name][i].name + '</td><td class="col-2">' + bossJson[name][i].value + '</td><td class="col-2">'+ bossJson[name][i].chaosValue  + '</td><td class="col-2">' + (bossJson[name][i].chaosValue*(bossJson[name][i].value/100)).toFixed(2) + '</td></tr>' ;
 		table.insertRow().innerHTML = newRow;
 	};	
 
@@ -56,7 +56,7 @@ function drawBossTable(name) {
 		currRun+= bossJson[name][i].chaosValue*(bossJson[name][i].value/100);
 	}
 	removeChilds(table2);
-	newRow = '<tr><td>' + bossCostJson[name] +'</td><td>'+ currRun +'</td><td>'+ '6 min' +'</td><td>'+ (currRun-bossCostJson[name])*10/divineChaosValue+'<td></tr>';
+	newRow = '<tr><td class="col-2">' + bossCostJson[name] +'</td><td class="col-3">'+ currRun +'</td><td class="col-3">'+ '6 min' +'</td><td class="col-3">'+ ((currRun-bossCostJson[name])*10/divineChaosValue).toFixed(3)+'</td></tr>';
 	table2.insertRow().innerHTML = newRow;
 };
 function getJson(){

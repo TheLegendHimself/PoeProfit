@@ -33,37 +33,35 @@
 
     </header>
     <body  style="background-color: lightgrey;">
-            <div>
+        <div class="row">
+            <div class="col-8">
                 <table class="table table-striped" id="mainTable">
                     <tr>
-                        <th>Itemname</th>
-                        <th>Dropchance</th>
-                        <th>Chaosvalue</th>
-                        <th>Per run Value</th>
+                        <th class="col-6">Itemname</th>
+                        <th class="col-2">Dropchance</th>
+                        <th class="col-2">Chaosvalue</th>
+                        <th class="col-2">Per run Value</th>
                     </tr>
                     <tbody id="newRows">
                     </tbody>
                 </table>
             </div>
 
-            <br><br>
 
-            <div>
+
+            <div class="col-4">
                 <table class="table table-striped" id="summary">
                     <tr>
-                        <th>Cost per run</th>
-                        <th>Profit per run</th>
-                        <th>Time per run</th>
-                        <th>Divines per hour</th>
+                        <th class="col-2">Cost per run</th>
+                        <th class="col-3">Profit per run</th>
+                        <th class="col-3">Time per run</th>
+                        <th class="col-3">Divines per hour</th>
                     </tr>
                     <tbody id="newRows2">
                     </tbody>
                 </table>
-
-
             </div>
-
-
+        </div>
         <!-- Own Javascript-->
         <script type="text/javascript" src="js/index.js"></script>
         <!-- Bootstrap imports -->
