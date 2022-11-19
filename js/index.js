@@ -1,6 +1,6 @@
 var currentLeague = "Kalandra";
 var bossJson;
-var bossCostJson = {"shaper", "elder", "sirus", "maven"};
+var bossCostJson = {"shaper":0, "elder":0, "sirus":0, "maven":0};
 var noAtlasBossJson = JSON.parse('{"shaper":[]}')
 var uberBossJson = JSON.parse('{"ubershaper":[{}]}')
 var bosses = ["shaper", "elder", "sirus", "maven"];
