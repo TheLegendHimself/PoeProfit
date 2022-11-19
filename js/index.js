@@ -1,7 +1,7 @@
 var currentLeague = "Kalandra";
 var bossJson;
 var invitationJson = {"The Formed":[],"The Hidden":[] ,"The Twisted":[], "The Feared":[], "The Forgotten":[], "The Elderslayer":[]};
-var bossCostJson = {"shaper":0, "elder":0, "sirus":0, "maven":0};
+var bossCostJson = {"shaper":0, "elder":0, "sirus":0, "maven":0, "uber elder":0};
 var invitations = ["The Formed", "The Hidden", "The Twisted", "The Feared", "The Forgotten", "The Elderslayer"];
 var noAtlasBossJson = JSON.parse('{"shaper":[]}')
 var uberBossJson = JSON.parse('{"ubershaper":[{}]}')
@@ -50,25 +50,116 @@ function getCurrencyPriceFromWatch(){
 
 function getFragmentPriceFromWatch(){
 	var url = "https://api.poe.watch/get?league="+currentLeague+"&category=fragment";
-	fetch(url).then(response => response.json()).then(result => {			
+	fetch(url).then(response => response.json()).then(result => {	
+			var shaperCost = 0;
+			var sirusCost = 0;
+			var elderCost = 0;
+			var mavenCost = 0;	
+			var uberElderCost = 0;	
 			for(var i = 0; i<result.length;i++){		
 				//Fragment of the Minotaur id = 47
 				if(result[i].id == 47){
 					invitationJson["The Formed"][0] = {"name:":"Fragment of the Minotaur", "chaosValue":result[i].mean};
+					shaperCost += result[i].mean;
 				}
 				//Fragment of the Phoenix id = 366
 				if(result[i].id == 366){
 					invitationJson["The Formed"][1] = ["Fragment of the Phoenix", result[i].mean];
+					shaperCost += result[i].mean;
 				}
 				//Fragment of the Hydra id = 367
 				if(result[i].id == 367){
 					invitationJson["The Formed"][2] = ["Fragment of the Hydra", result[i].mean];	
+					shaperCost += result[i].mean;
 				}
 				//Fragment of the Chimera id = 368
 				if(result[i].id == 368){
 					invitationJson["The Formed"][3] = ["Fragment of the Chimera", result[i].mean];
+					shaperCost += result[i].mean;
+				}
+				//Fragment of Enslavement id = 2871
+				if(result[i].id == 2871){
+					elderCost += result[i].mean;
+				}
+				//Fragment of Purification id = 369
+				if(result[i].id == 369){
+					elderCost += result[i].mean;
+				}
+				//Fragment of Eradication id = 3474
+				if(result[i].id == 3474){
+					elderCost += result[i].mean;
+				}
+				//Fragment of Constriction id = 426
+				if(result[i].id == 426){
+					elderCost += result[i].mean;
+				}
+				//Crest Al-Hezim 45881
+				if(result[i].id == 45881){
+					sirusCost += result[i].mean;
+				}
+				//Crest Veritania 45882
+				if(result[i].id == 45882){
+					sirusCost += result[i].mean;
+				}
+				//Crest Drox 45883
+				if(result[i].id == 45883){
+					sirusCost += result[i].mean;
+				}
+				//Crest Baran 45917
+				if(result[i].id == 45917){
+					sirusCost += result[i].mean;
+				}
+				//Maven's writ 35735
+				if(result[i].id == 35735){
+					mavenCost+= result[i].mean;
+				}
+				//Fragment of Knowledge 1292 
+				if(result[i].id == 1292){
+					uberElderCost+=result[i].mean;
+					for(var ii=0;ii<bossJson['shaper'].length;ii++){
+						if(bossJson['shaper'][ii].name == "Fragment of Knowledge"){
+							bossJson['shaper'][ii].chaosValue = result[i].mean;
+
+						}	
+					}
+					
+				}
+				//Fragment of Shape 1293
+				if(result[i].id == 1293){
+					uberElderCost+=result[i].mean;
+					for(var ii=0;ii<bossJson['shaper'].length;ii++){
+						if(bossJson['shaper'][ii].name == "Fragment of Shape"){
+							bossJson['shaper'][ii].chaosValue = result[i].mean;
+						}	
+					}
+				}
+				//Fragment of Emptiness 1995
+				if(result[i].id == 1995){
+					uberElderCost+=result[i].mean;
+					for(var ii=0;ii<bossJson['elder'].length;ii++){
+						if(bossJson['elder'][ii].name == "Fragment of Emptiness"){
+							bossJson['elder'][ii].chaosValue = result[i].mean;
+
+						}	
+					}
+				}
+				//Fragment of Terror 2566
+				if(result[i].id == 2566){
+					uberElderCost+=result[i].mean;
+					for(var ii=0;ii<bossJson['elder'].length;ii++){
+						if(bossJson['elder'][ii].name == "Fragment of Terror"){
+							bossJson['elder'][ii].chaosValue = result[i].mean;
+
+						}	
+					}
 				}
 			}
+			// setting the bosscosts
+			bossCostJson['shaper'] = shaperCost;
+			bossCostJson['sirus'] = sirusCost;
+			bossCostJson['elder'] = elderCost;
+			bossCostJson['maven'] = mavenCost;
+			bossCostJson['uber elder'] = uberElderCost;
 		}
 	);
 };
@@ -113,7 +204,7 @@ function drawBossTable(newName) {
 			}
 			bossRunValue = currRun;
 			removeChilds(table2);
-			newRow = '<tr><td class="col-2"><input type="number" id="BossCost" onchange="changeDivPerH()" value="' + bossCostJson[name] +'"></td><td class="col-3" id="BossDrop">'+ currRun +'</td><td class="col-3"><input type="number" id="BossTime" onchange="changeDivPerH()" value="1"></td><td class="col-3" id="divperH">'+ ((currRun-bossCostJson[name])*10/divineChaosValue).toFixed(3)+'</td></tr>';
+			newRow = '<tr><td class="col-2"><input type="number" id="BossCost" onchange="changeDivPerH()" value="' + bossCostJson[name].toFixed(0) +'"></td><td class="col-3" id="BossDrop">'+ currRun +'</td><td class="col-3"><input type="number" id="BossTime" onchange="changeDivPerH()" value="6"></td><td class="col-3" id="divperH">'+ ((currRun-bossCostJson[name])*10/divineChaosValue).toFixed(3)+'</td></tr>';
 			table2.insertRow().innerHTML = newRow;
 		}else{
 			//untalented & uber version
@@ -160,7 +251,7 @@ function getinvitationJson(){
 	// Hardcoded Items with Dropchances
 var theformedList = [["The Maven's Writ", 70],["Orb of Conflict", 1], ["Fragment of the Hydra", 1], ["Fragment of the Minotaur", 1], ["Fragment of the Phoenix", 1], ["Fragment of the Chimera", 1]];
 var thehiddenList = [["The Maven's Writ", 70],["Orb of Conflict", 1], ["Tul's Flawless Breachstone", 1], ["Uul-Netol's Flawless Breachstone", 1], ["Xoph's Flawless Breachstone", 1], ["Esh's Flawless Breachstone", 1]];
-var thefearedList = [/*TODO*/];
+var thefearedList = [["Test", 1],["ToDo", 2]];
 var thetwistedList = [["The Maven's Writ", 70],["Orb of Conflict", 1], ["Fragment of Enslavement", 1], ["Fragment of Constriction", 1], ["Fragment of Eradication", 1], ["Fragment of Purification", 1], ];
 var theforgottenList = [["The Maven's Writ", 70],["Orb of Conflict", 1], ["Circle of Anguish", 1], ["Circle of Fear", 1], ["Circle of Guilt", 1], ["Circle of Nostalgia", 1], ["Circle of Regret", 1], ["Mask of the Tribunal", 1], ["Storm's Gift", 1] ["Perepiteia", 1]];
 var theelderslayerList =[["The Maven's Writ", 70],["Orb of Conflict", 1], ["Al-Hezmin's Crest", 1], ["Baran's Crest", 1], ["Drox's Crest", 1], ["Veritania's Crest", 1], ["Hunter's Exalted Orb", 1], ["Crusader's Exalted Orb", 1], ["Redeemer's Exalted Orb", 1], ["Warlord's Exalted Orb", 1],];
@@ -191,13 +282,11 @@ var realInvitationJson = {"The Formed":[], "The Hidden":[], "The Twisted":[], "T
 
 
 
-// creating bossJson
-
+// creating bossJson & invitationJson
 getBossJson();
+getinvitationJson();
 // getting Divine, Dominance & awakeners orb from API
 getCurrencyPriceFromWatch();
-
-getinvitationJson();
 // getting fragment prices from API
 getFragmentPriceFromWatch();
 
