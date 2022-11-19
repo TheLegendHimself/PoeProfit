@@ -84,7 +84,7 @@ function recalculateBossRunValue(){
 	var newBossRunValue =0;
 	for(var i=0;i<origin.children.length;i++){
 		newBossRunValue += document.getElementById('BossChaos'+i).value*document.getElementById('BossDropChance'+i).innerHTML/100;
-		document.getElementById('BossPerRunValue'+i).innerHTML = document.getElementById('BossChaos'+i).value*document.getElementById('BossDropChance'+i).innerHTML/100;
+		document.getElementById('BossPerRunValue'+i).innerHTML = (document.getElementById('BossChaos'+i).value*document.getElementById('BossDropChance'+i).innerHTML/100).toFixed(2);
 	}
 	bossRunValue = newBossRunValue;
 	document.getElementById("BossDrop").innerHTML = bossRunValue;
