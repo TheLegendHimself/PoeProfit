@@ -1,9 +1,11 @@
 var currentLeague = "Kalandra";
 var bossJson;
+var invitationJson;
 var bossCostJson = {"shaper":0, "elder":0, "sirus":0, "maven":0};
 var noAtlasBossJson = JSON.parse('{"shaper":[]}')
 var uberBossJson = JSON.parse('{"ubershaper":[{}]}')
 var bosses = ["shaper", "elder", "sirus", "maven"];
+var invitations = ["The Formed", "The Hidden", "The Twisted", "The Feared"];
 var divineChaosValue;
 var bossRunValue;
 
@@ -39,6 +41,43 @@ function getCurrencyPriceFromWatch(){
 							bossJson["sirus"][ii].chaosValue = result[i].mean;
 						}
 					}
+				}
+			}
+		}
+	);
+};
+
+function getFragmentPriceFromWatch(){
+	var url = "https://api.poe.watch/get?league="+currentLeague+"&category=fragment";
+	fetch(url).then(response => response.json()).then(result => {			
+			for(var i = 0; i<result.length;i++){		
+				//Fragment of the Minotaur id = 47
+				if(result[i].id == 47){
+					for(var ii =0; ii<invitations.length; ii++)
+						if(invitationJson["The Formed"[ii]].name == "Fragment of the Minotaur"){
+						invitationJson["The Formed"[ii]].chaosValue = result[i].mean;
+						}
+				}
+				//Fragment of the Phoenix id = 366
+				if(result[i].id == 366){
+					for(var ii =0; ii<invitations.length; ii++)
+						if(invitationJson["The Formed"[ii]].name == "Fragment of the Phoenix"){
+						invitationJson["The Formed"[ii]].chaosValue = result[i].mean;
+						}
+				}
+				//Fragment of the Hydra id = 367
+				if(result[i].id == 367){
+					for(var ii =0; ii<invitations.length; ii++)
+						if(invitationJson["The Formed"[ii]].name == "Fragment of the Hydra"){
+						invitationJson["The Formed"[ii]].chaosValue = result[i].mean;
+						}
+				}
+				//Fragment of the Chimera id = 368
+				if(result[i].id == 368){
+					for(var ii =0; ii<invitations.length; ii++)
+						if(invitationJson["The Formed"[ii]].name == "Fragment of the Chimera"){
+						invitationJson["The Formed"[ii]].chaosValue = result[i].mean;
+						}
 				}
 			}
 		}
@@ -84,7 +123,7 @@ function drawBossTable(name) {
 	newRow = '<tr><td class="col-2"><input type="number" id="bossCost" onchange="changeValue()" value="' + bossCostJson[name] +'"></td><td class="col-3">'+ currRun +'</td><td class="col-3">'+ '6 min' +'</td><td class="col-3" id="divperH">'+ ((currRun-bossCostJson[name])*10/divineChaosValue).toFixed(3)+'</td></tr>';
 	table2.insertRow().innerHTML = newRow;
 };
-function getJson(){
+function getBossJson(){
 	// Hardcoded Items with Dropchances
 	var shaperList = [["Fragment of Knowledge",50], ["Fragment of Shape",50], ["Shapers Touch", 50], ["Dying Sun", 13], ["Solstice Vigil", 5],["Echoes of Cremation", 5], ["Starforge", 2], ["Orb of Dominance", 2]];
 	var elderList = [["Fragment of Emptiness",50], ["Fragment of Terror",50], ["Blasphemers Grasp", 25], ["Cyclopeon Coil",25], ["Nebuloch",10], ["Hopeshredder",10], ["Shimmeron",10], ["Any Impresence",20], ["Orb of Dominance",45], ["Watchers Eye",25]];
@@ -110,7 +149,7 @@ function getJson(){
 
 
 
-getJson();
+getBossJson();
 getCurrencyPriceFromWatch();
 
 
