@@ -84,6 +84,7 @@ function recalculateBossRunValue(){
 	var newBossRunValue =0;
 	for(var i=0;i<origin.children.length;i++){
 		newBossRunValue += document.getElementById('BossChaos'+i).value*document.getElementById('BossDropChance'+i).innerHTML/100;
+		document.getElementById('BossPerRunValue'+i).innerHTML = document.getElementById('BossChaos'+i).value*document.getElementById('BossDropChance'+i).innerHTML/100;
 	}
 	bossRunValue = newBossRunValue;
 	document.getElementById("BossDrop").innerHTML = bossRunValue;
@@ -101,7 +102,7 @@ function drawBossTable(newName) {
 			removeChilds(table);
 			//create new Table from json
 			for(var i = 0; i < bossJson[name].length;i++){
-				var newRow = '<tr><td class="col-6"> ' + bossJson[name][i].name + '</td><td class="col-2" id="BossDropChance'+i+'">' + bossJson[name][i].value + '</td><td class="col-2"><input type="number" id="BossChaos'+i+'" onchange="recalculateBossRunValue()" value="'+ bossJson[name][i].chaosValue  + '"></td><td class="col-2">' + (bossJson[name][i].chaosValue*(bossJson[name][i].value/100)).toFixed(2) + '</td></tr>' ;
+				var newRow = '<tr><td class="col-6"> ' + bossJson[name][i].name + '</td><td class="col-2" id="BossDropChance'+i+'">' + bossJson[name][i].value + '</td><td class="col-2"><input type="number" id="BossChaos'+i+'" onchange="recalculateBossRunValue()" value="'+ bossJson[name][i].chaosValue  + '"></td><td class="col-2" id="BossPerRunValue'+i+'">' + (bossJson[name][i].chaosValue*(bossJson[name][i].value/100)).toFixed(2) + '</td></tr>' ;
 				table.insertRow().innerHTML = newRow;
 			};	
 
