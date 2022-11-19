@@ -72,12 +72,22 @@ function getFragmentPriceFromWatch(){
 	);
 };
 
-
-function changeValue(){
+function changeDivPerH(){
 	var changer = document.getElementById("divperH");
-	changer.innerHTML = ((bossRunValue-document.getElementById('bossCost').value)*10/divineChaosValue).toFixed(3);
+	changer.innerHTML = ((bossRunValue-document.getElementById('BossCost').value)*(60/document.getElementById('BossTime').value)/divineChaosValue).toFixed(3);
 };
 
+
+function recalculateBossRunValue(){
+	var origin = document.getElementById('newRows');
+	var newBossRunValue =0;
+	for(var i=0;i<origin.children.length;i++){
+		newBossRunValue += document.getElementById('BossChaos'+i).value*document.getElementById('BossDropChance'+i).innerHTML/100;
+	}
+	bossRunValue = newBossRunValue;
+	document.getElementById("BossDrop").innerHTML = bossRunValue;
+	changeDivPerH();
+};
 
 function drawBossTable(newName) {
 	name = newName[0];
@@ -90,7 +100,7 @@ function drawBossTable(newName) {
 			removeChilds(table);
 			//create new Table from json
 			for(var i = 0; i < bossJson[name].length;i++){
-				var newRow = '<tr><td class="col-6"> ' + bossJson[name][i].name + '</td><td class="col-2">' + bossJson[name][i].value + '</td><td class="col-2">'+ bossJson[name][i].chaosValue  + '</td><td class="col-2">' + (bossJson[name][i].chaosValue*(bossJson[name][i].value/100)).toFixed(2) + '</td></tr>' ;
+				var newRow = '<tr><td class="col-6"> ' + bossJson[name][i].name + '</td><td class="col-2" id="BossDropChance'+i+'">' + bossJson[name][i].value + '</td><td class="col-2"><input type="number" id="BossChaos'+i+'" onchange="recalculateBossRunValue()" value="'+ bossJson[name][i].chaosValue  + '"></td><td class="col-2">' + (bossJson[name][i].chaosValue*(bossJson[name][i].value/100)).toFixed(2) + '</td></tr>' ;
 				table.insertRow().innerHTML = newRow;
 			};	
 
@@ -101,7 +111,7 @@ function drawBossTable(newName) {
 			}
 			bossRunValue = currRun;
 			removeChilds(table2);
-			newRow = '<tr><td class="col-2"><input type="number" id="bossCost" onchange="changeValue()" value="' + bossCostJson[name] +'"></td><td class="col-3">'+ currRun +'</td><td class="col-3">'+ '6 min' +'</td><td class="col-3" id="divperH">'+ ((currRun-bossCostJson[name])*10/divineChaosValue).toFixed(3)+'</td></tr>';
+			newRow = '<tr><td class="col-2"><input type="number" id="BossCost" onchange="changeDivPerH()" value="' + bossCostJson[name] +'"></td><td class="col-3" id="BossDrop">'+ currRun +'</td><td class="col-3"><input type="number" id="BossTime" onchange="changeDivPerH()" value="1"></td><td class="col-3" id="divperH">'+ ((currRun-bossCostJson[name])*10/divineChaosValue).toFixed(3)+'</td></tr>';
 			table2.insertRow().innerHTML = newRow;
 		}else{
 			//untalented & uber version
@@ -115,12 +125,13 @@ function drawBossTable(newName) {
 			//talented & uber
 		}
 	}
+	recalculateBossRunValue();
 	
 };
 function getBossJson(){
 	// Hardcoded Items with Dropchances
 	var shaperList = [["Fragment of Knowledge",50], ["Fragment of Shape",50], ["Shapers Touch", 50], ["Dying Sun", 13], ["Solstice Vigil", 5],["Echoes of Cremation", 5], ["Starforge", 2], ["Orb of Dominance", 2]];
-	var elderList = [["Fragment of Emptiness",50], ["Fragment of Terror",50], ["Blasphemers Grasp", 25], ["Cyclopeon Coil",25], ["Nebuloch",10], ["Hopeshredder",10], ["Shimmeron",10], ["Any Impresence",20], ["Orb of Dominance",45], ["Watchers Eye",25]];
+	var elderList = [["Fragment of Emptiness",50], ["Fragment of Terror",50], ["Blasphemers Grasp", 25], ["Cyclopeon Coil",25], ["Nebuloch",10], ["Hopeshredder",10], ["Shimmeron",10], ["Any Impresence",20], ["Orb of Dominance",5], ["Watchers Eye",25]];
 	var sirusList = [["Crown of the Inward Eye",38], ["Hands of the High Templar",25], ["Thread of Hope",20], ["The Burden of Truth",15], ["Orb of Dominance",3], ["Awakeners Orb",20], ["A Fate Worse Then Death",4]];
 	var mavenList = [["Legacy of Fury", 32], ["Viridis Veil", 20], ["Arns Anguish", 12], ["Gravens Secret", 12], ["Olesyas Delight", 12], ["Impossible Escape", 10], ["Doppelgänger Guise", 2], ["Orb of Conflict", 25], ["Elevated Sextant", 30],["Awakened Support Gems", 55]];
 	var uberElderList = [["Mark of the Shaper", 30], ["Mark of the Elder", 30], ["Indigon", 12], ["Call of the Void", 12], ["Voidfletcher",6], ["Disintegrator", 6],["Voidforge",2],["The Eternity Shroud",2], ["Watchers Eye", 25], ["Orb of Dominance", 5]];
