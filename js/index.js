@@ -3,7 +3,7 @@ var bossJson;
 var bossCostJson;
 var noAtlasBossJson = JSON.parse('{"shaper":[]}')
 var uberBossJson = JSON.parse('{"ubershaper":[{}]}')
-var bosses = ["shaper", "elder", "sirus"];
+var bosses = ["shaper", "elder", "sirus", "maven"];
 var divineChaosValue;
 
 const removeChilds = (parent) => {
@@ -19,7 +19,7 @@ function getCurrencyPriceFromWatch(){
 			for(var i = 0; i<result.length;i++){
 				// Divine id = 56
 				if(result[i].id == 56){					
-					divineChaosValue = result[i].min;
+					divineChaosValue = result[i].mean;
 					divToChaosEle.innerHTML = "Current Divine Value:  "+ divineChaosValue;
 				}
 				//Orb of Dominance id = 45848
@@ -27,7 +27,7 @@ function getCurrencyPriceFromWatch(){
 					for(var ii =0; ii<bosses.length; ii++)
 						for(var iii =0; iii<bossJson[bosses[ii]].length; iii++){
 							if(bossJson[bosses[ii]][iii].name == "Orb of Dominance"){
-								bossJson[bosses[ii]][iii].chaosValue = result[i].min;
+								bossJson[bosses[ii]][iii].chaosValue = result[i].mean;
 							}
 						}
 				}
@@ -35,7 +35,7 @@ function getCurrencyPriceFromWatch(){
 				if(result[i].id == 49){
 					for(var ii =0; ii<bossJson["sirus"].length; ii++){
 						if(bossJson["sirus"][ii].name == "Awakeners Orb"){
-							bossJson["sirus"][ii].chaosValue = result[i].min;
+							bossJson["sirus"][ii].chaosValue = result[i].mean;
 						}
 					}
 				}
@@ -51,11 +51,16 @@ function expandBosses(){
 		var newButton = document.createElement('div');
 		newButton.innerHTML = bosses[i];
 		newButton.setAttribute('onclick',"drawBossTable('"+bosses[i]+"')");
-		newButton.className = "col-4 border";
+		newButton.className = "col-3 border";
 		newButton.style = "text-align:center"
 		orig.appendChild(newButton);
 	}
 };
+
+function changeValue( which){
+	console.log("succ");
+};
+
 
 function drawBossTable(name) {
 	var table = document.getElementById("newRows");	
@@ -63,7 +68,7 @@ function drawBossTable(name) {
 	removeChilds(table);
 	//create new Table from json
 	for(var i = 0; i < bossJson[name].length;i++){
-		var newRow = '<tr><td class="col-6">' + bossJson[name][i].name + '</td><td class="col-2">' + bossJson[name][i].value + '</td><td class="col-2">'+ bossJson[name][i].chaosValue  + '</td><td class="col-2">' + (bossJson[name][i].chaosValue*(bossJson[name][i].value/100)).toFixed(2) + '</td></tr>' ;
+		var newRow = '<tr><td class="col-6"> ' + bossJson[name][i].name + '</td><td class="col-2">' + bossJson[name][i].value + '</td><td class="col-2">'+ bossJson[name][i].chaosValue  + '</td><td class="col-2">' + (bossJson[name][i].chaosValue*(bossJson[name][i].value/100)).toFixed(2) + '</td></tr>' ;
 		table.insertRow().innerHTML = newRow;
 	};	
 
@@ -73,7 +78,7 @@ function drawBossTable(name) {
 		currRun+= bossJson[name][i].chaosValue*(bossJson[name][i].value/100);
 	}
 	removeChilds(table2);
-	newRow = '<tr><td class="col-2">' + bossCostJson[name] +'</td><td class="col-3">'+ currRun +'</td><td class="col-3">'+ '6 min' +'</td><td class="col-3">'+ ((currRun-bossCostJson[name])*10/divineChaosValue).toFixed(3)+'</td></tr>';
+	newRow = '<tr><td class="col-2"><input type="number" id="bossCost" onchange="changeValue('+"'bossCost'"+')" value="' + bossCostJson[name] +'"></td><td class="col-3">'+ currRun +'</td><td class="col-3">'+ '6 min' +'</td><td class="col-3">'+ ((currRun-bossCostJson[name])*10/divineChaosValue).toFixed(3)+'</td></tr>';
 	table2.insertRow().innerHTML = newRow;
 };
 function getJson(){
@@ -83,10 +88,10 @@ function getJson(){
 	//assemble the strings
 	shaperString = '{"shaper":[ {"name":"Fragment of Knowledge", "value":50, "chaosValue":45}, {"name":"Fragment of Shape", "value":50, "chaosValue":45}, {"name":"Shapers Touch", "value":50, "chaosValue":45}, {"name": "Dying Sun", "value":13, "chaosValue":45}, {"name":"Solstice Vigil", "value":5, "chaosValue":45}, {"name":"Echoes of Cremation", "value":5, "chaosValue":45}, {"name":"Starforge", "value":2, "chaosValue":45}, {"name":"Orb of Dominance", "value":2}], ';
 	elderString	 = '"elder":[{"name":"Fragment of Emptiness", "value":50}, {"name":"Fragment of Terror", "value":50}, {"name":"Blasphemers Grasp", "value":25}, {"name":"Cyclopeon Coil", "value":25}, {"name":"Nebuloch", "value":10}, {"name":"Hopeshredder", "value":10}, {"name":"Shimmeron", "value":10}, {"name":"Any Impresence", "value":20}, {"name":"Orb of Dominance", "value":5}, {"name":"Watchers Eye", "value":25}],';
-	sirusString  = '"sirus":[{"name":"Crown of the Inward Eye", "value":38}, {"name":"Hands of the High Templar", "value":25}, {"name":"Thread of Hope", "value":20}, {"name":"The Burden of Truth", "value":15}, {"name":"Orb of Dominance", "value":3},{"name":"Awakeners Orb", "value":20}, {"name":"A Fate Worse Then Death", "value":4}] }';
-
+	sirusString  = '"sirus":[{"name":"Crown of the Inward Eye", "value":38}, {"name":"Hands of the High Templar", "value":25}, {"name":"Thread of Hope", "value":20}, {"name":"The Burden of Truth", "value":15}, {"name":"Orb of Dominance", "value":3},{"name":"Awakeners Orb", "value":20}, {"name":"A Fate Worse Then Death", "value":4}], ';
+	mavenString  = '"maven":[]}'
 	// convert the strings into 1 Json object
-	bossJson = shaperString + elderString + sirusString;		
+	bossJson = shaperString + elderString + sirusString+ mavenString;		
 	bossJson = JSON.parse(bossJson);
 
 	//create bossCostJson
