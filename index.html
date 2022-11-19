@@ -3,67 +3,103 @@
     <meta charset="UTF-8">
     <head>
         <!-- Required meta tags -->
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta charset ="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
 
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
 
-         <link rel="icon" type="image/x-icon" href="img/poeProfitFavicon.ico">
+        <link rel="icon" type="image/x-icon" href="img/poeProfitFavicon.ico">
         <title>PoE Profit</title>
     </head>
 
     <header>    
-            <div>
-                <h1 class="display-1" align="center"> PoE Profit Calculator </h1>
-            </div>
-            <div class="row">
-                <div class="col-5 border" >
-                    <p class="border border-primary" onclick="expandBosses()" id="bossButton" style="font-size: large; text-align: center;">Bosses</p>
-                    <div class="row" id="bossPlace">
-                    </div>
-                </div>
-                <div class="col-5">
-                    <p style="font-size: large; text-align: center;"> Invitations </p>
-                </div>
-                <div class="col-2">
-                    <p id="divToChaos" style="font-weight: 300; text-align: right;"></p>
-                </div>
-            </div>
-
+        <h1 class="display-1" style="text-align: center"> PoE Profit Calculator </h1>
     </header>
 
-    <body  style="background-color: lightgrey;">
-        <div class="row">
-            <div class="col-8">
-                <table class="table table-striped" id="mainTable">
-                    <tr>
-                        <th class="col-6">Itemname</th>
-                        <th class="col-2">Dropchance</th>
-                        <th class="col-2">Chaosvalue</th>
-                        <th class="col-2">Per run Value</th>
-                    </tr>
-                    <tbody id="newRows">
-                    </tbody>
-                </table>
-            </div>
-
-
-
-            <div class="col-4">
-                <table class="table table-striped" id="summary">
-                    <tr>
-                        <th class="col-2">Cost per run</th>
-                        <th class="col-3">Profit per run</th>
-                        <th class="col-3">Time per run</th>
-                        <th class="col-3">Divines per hour</th>
-                    </tr>
-                    <tbody id="newRows2">
-                    </tbody>
-                </table>
+    <body style="background-color: lightgrey;">
+        <div class="container-fluid border">
+            <div class="row">
+                <div class="col-4">
+                    <div class="border" id="bossButton" style="font-size: large; text-align: center;">Bosses</div>
+                    <div class="container-fluid">
+                        <div class="row justify-content-center" id="bossPlace1">
+                            <div class="border col-3" onclick="drawBossTable(['elder', 0, 0])" style="text-align: center;">elder</div>
+                            <div class="border col-3" onclick="drawBossTable(['shaper', 0, 0])" style="text-align: center;">shaper</div>
+                            <div class="border col-3" onclick="drawBossTable(['maven', 0, 0])" style="text-align: center;">maven</div>
+                            <div class="border col-3" onclick="drawBossTable(['uber elder', 0, 0])" style="text-align: center;">uber elder</div>
+                        </div>
+                        <div class="row justify-content-center" id="bossPlace2">
+                            <div class="border col-3" onclick="drawBossTable(['elder', 1, 0])" style="text-align: center">talented elder</div>
+                            <div class="border col-3" onclick="drawBossTable(['sirus', 0, 0])" style="text-align: center;">sirus</div>
+                            <div class="border col-3" onclick="drawBossTable(['maven', 1, 0])" style="text-align: center">talented maven</div>
+                            <div class="border col-3" onclick="drawBossTable(['uber elder', 1, 0])" style="text-align: center">talented uber elder</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="border" id="bossButton" style="font-size: large; text-align: center;">Uber Bosses</div>
+                    <div class="container-fluid">
+                        <div class="row justify-content-center" id="bossPlace3">
+                            <div class="border col-4" onclick="drawBossTable(['sirus', 0, 1])" style="text-align: center">sirus</div>
+                            <div class="border col-4" onclick="drawBossTable(['maven', 0, 1])" style="text-align: center">maven</div>
+                            <div class="border col-4" onclick="drawBossTable(['uber elder', 0, 1])" style="text-align: center">uber elder</div>
+                        </div>
+                        <div class="row justify-content-center" id="bossPlace4">
+                            <div class="border col-4" onclick="drawBossTable(['shaper', 0, 1])" style="text-align: center">shaper</div>
+                            <div class="border col-4" onclick="drawBossTable(['maven', 1, 1])" style="text-align: center">talented maven</div>
+                            <div class="border col-4" onclick="drawBossTable(['uber elder', 1, 1])" style="text-align: center">talented uber elder</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="border" style="font-size: large; text-align: center;"> Invitations </div>
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="border col-2" onclick="" style="text-align: center;">The Twisted</div>
+                            <div class="border col-2" onclick="" style="text-align: center;">The Formed</div>
+                            <div class="border col-3" onclick="" style="text-align: center;">The Forgotten</div>
+                            <div class="border col-3" onclick="" style="text-align: center;">The Elderslayers</div>
+                            <div class="border col-2" onclick="" style="text-align: center;">The Feared</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div id="divToChaos" style="font-weight: 300; text-align: right;"></div>
+                </div>
             </div>
         </div>
+        <br>
+        <div class="container-fluid">
+            <div class="row">
+
+                <div class="col-8">
+                    <table class="table table-striped" id="mainTable">
+                        <tr>
+                            <th>Itemname</th>
+                            <th>Dropchance</th>
+                            <th>Chaosvalue</th>
+                            <th>Per run Value</th>
+                        </tr>
+                        <tbody id="newRows"></tbody>
+                    </table>
+                </div>
+
+                <div class="col-4">
+                    <table class="table table-striped" id="summary">
+                        <tr>
+                            <th>Cost per run (Chaos)</th>
+                            <th>Drop per run (Chaos)</th>
+                            <th>Time per run (minutes)</th>
+                            <th>Divines per hour</th>
+                        </tr>
+                        <tbody id="newRows2"></tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+
         <!-- Own Javascript-->
         <script type="text/javascript" src="js/index.js"></script>
         <!-- Bootstrap imports -->
