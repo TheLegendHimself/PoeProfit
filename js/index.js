@@ -12,14 +12,27 @@ const removeChilds = (parent) => {
     }
 };
 
-function getDivinePriceFromWatch(){
+function getCurrencyPriceFromWatch(){
 	var url = "https://api.poe.watch/get?league="+currentLeague+"&category=currency";
 	fetch(url).then(response => response.json()).then(result => {
 			var divToChaosEle = document.getElementById("divToChaos");
 			for(var i = 0; i<result.length;i++){
 				if(result[i].id == 56){
-					divToChaosEle.innerHTML = "Current Divine Value:  "+ result[i].min;
+					// Divine id = 56
 					divineChaosValue = result[i].min;
+					divToChaosEle.innerHTML = "Current Divine Value:  "+ divineChaosValue;
+				}
+				if(result[i].id == 45848){
+					// Orb of Dominance id = 45848
+					for(var ii =0; ii<bosses.length; ii++)
+						for(var iii =0; iii<bossJson[bosses[ii]].length; iii++){
+							if(bossJson[bosses[ii]][iii].name == "Orb of Dominance"){
+								bossJson[bosses[ii]][iii].chaosValue = result[i].min;
+								//console.log(result[i]);
+							}
+						}
+						//bossJson[bosses[ii]]["Orb of Dominance"].chaosValue = result[i].min;
+						//console.log(bossJson[bosses[ii]]["Orb of Dominance"])
 				}
 				//console.log(result[i]);
 			}
@@ -64,7 +77,7 @@ function getJson(){
 
 
 	//assemble the strings
-	shaperString = '{"shaper":[ {"name":"Fragment of Knowledge", "value":50, "chaosValue":45}, {"name":"Fragment of Shape", "value":50, "chaosValue":45}, {"name":"Shapers Touch", "value":50, "chaosValue":45}, {"name": "Dying Sun", "value":13, "chaosValue":45}, {"name":"Solstice Vigil", "value":5, "chaosValue":45}, {"name":"Echoes of Cremation", "value":5, "chaosValue":45}, {"name":"Starforge", "value":2, "chaosValue":45}, {"name":"Orb of Dominance", "value":2, "chaosValue":45}], ';
+	shaperString = '{"shaper":[ {"name":"Fragment of Knowledge", "value":50, "chaosValue":45}, {"name":"Fragment of Shape", "value":50, "chaosValue":45}, {"name":"Shapers Touch", "value":50, "chaosValue":45}, {"name": "Dying Sun", "value":13, "chaosValue":45}, {"name":"Solstice Vigil", "value":5, "chaosValue":45}, {"name":"Echoes of Cremation", "value":5, "chaosValue":45}, {"name":"Starforge", "value":2, "chaosValue":45}, {"name":"Orb of Dominance", "value":2}], ';
 	elderString	 = '"elder":[{"name":"Fragment of Emptiness", "value":50}, {"name":"Fragment of Terror", "value":50}, {"name":"Blasphemers Grasp", "value":25}, {"name":"Cyclopeon Coil", "value":25}, {"name":"Nebuloch", "value":10}, {"name":"Hopeshredder", "value":10}, {"name":"Shimmeron", "value":10}, {"name":"Any Impresence", "value":20}, {"name":"Orb of Dominance", "value":5}, {"name":"Watchers Eye", "value":25}],';
 	sirusString  = '"sirus":[{"name":"Crown of the Inward Eye", "value":38}, {"name":"Hands of the High Templar", "value":25}, {"name":"Thread of Hope", "value":20}, {"name":"The Burden of Truth", "value":15}, {"name":"Orb of Dominance", "value":3},{"name":"Awakeners Orb", "value":20}, {"name":"A Fate Worse Then Death", "value":4}] }';
 
@@ -75,9 +88,9 @@ function getJson(){
 	//create bossCostJson
 	bossCostJson = {"shaper":50, "elder":50, "sirus":50};
 };
-
-getDivinePriceFromWatch();
 getJson();
+getCurrencyPriceFromWatch();
+
 
 
 // TODO
