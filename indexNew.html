@@ -40,15 +40,15 @@
     				</div>
     				<br>
     				<div class="container">
-	    				<div class="border" onclick="" style="text-align: center;">elder</div>
-	    				<div class="border" onclick="" style="text-align: center;">uber elder</div>
-	    				<div class="border" onclick="" style="text-align: center;">shaper</div>
-	    				<div class="border" onclick="" style="text-align: center;">sirus</div>
+	    				<div class="border" onclick="drawTable('elder')" style="text-align: center;">elder</div>
+	    				<div class="border" onclick="drawTable('uber elder')" style="text-align: center;">uber elder</div>
+	    				<div class="border" onclick="drawTable('shaper')" style="text-align: center;">shaper</div>
+	    				<div class="border" onclick="drawTable('sirus')" style="text-align: center;">sirus</div>
 	    				<div class="border" onclick="" style="text-align: center;">eater</div>
 	    				<div class="border" onclick="" style="text-align: center;">exarch</div>
 	    				<div class="border" onclick="" style="text-align: center;">atziri</div>
 	    				<div class="border" onclick="" style="text-align: center;">uber atziri</div>
-	    				<div class="border" onclick="" style="text-align: center;">maven</div>
+	    				<div class="border" onclick="drawTable('maven')" style="text-align: center;">maven</div>
 	    			</div>
     				<br>
 
@@ -84,7 +84,7 @@
 				                            <th class="col-2">Chaosvalue</th>
 				                            <th class="col-2">Per run Value</th>
 		                        		</tr>
-		                       		 	<tbody id="BossItems"></tbody>
+		                       		 	<tbody id="DropTable"></tbody>
 		                   			</table>
 	                   			</div>
 	    					</div>
@@ -99,9 +99,9 @@
 			                        	</tr>
 		                        		<tbody>
 		                        			<tr>
-		                        				<td><input type="number" id="BossCost" onchange="changeDivPerH()" value="69"></td>
-		                        				<td id="BossDrop">69</td>
-		                        				<td><input type="number" id="BossTime" onchange="changeDivPerH()" value="69"></td>
+		                        				<td><input type="number" id="Cost" onchange="recalculateDivPerH()" value="50"></td>
+		                        				<td id="EndDrop">69</td>
+		                        				<td><input type="number" id="Time" onchange="recalculateDivPerH()" value="6"></td>
 		                        				<td id="DivPerH">420</td>
 		                        			</tr>
 		                        		</tbody>
