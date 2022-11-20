@@ -12,96 +12,109 @@
         <link rel="icon" type="image/x-icon" href="img/poeProfitFavicon.ico">
         <title>PoE Profit</title>
     </head>
-
     <header>    
         <h1 class="display-1" style="text-align: center"> PoE Profit Calculator </h1>
+        <br>
+        <div class="" style="float:right;margin-right: 100px;">Divinevalue <div class="border" id="DivToChaos"></div></div>
+        <br> <br> <br> 
     </header>
 
     <body style="background-color: lightgrey;">
-        <div class="container-fluid border">
-            <div class="row">
-                <div class="col-4">
-                    <div class="border" id="bossButton" style="font-size: large; text-align: center;">Bosses</div>
-                    <div class="container-fluid">
-                        <div class="row justify-content-center" id="bossPlace1">
-                            <div class="border col-3" onclick="drawBossTable(['elder', 0, 0])" style="text-align: center;">elder</div>
-                            <div class="border col-3" onclick="drawBossTable(['shaper', 0, 0])" style="text-align: center;">shaper</div>
-                            <div class="border col-3" onclick="drawBossTable(['maven', 0, 0])" style="text-align: center;">maven</div>
-                            <div class="border col-3" onclick="drawBossTable(['uber elder', 0, 0])" style="text-align: center;">uber elder</div>
-                        </div>
-                        <div class="row justify-content-center" id="bossPlace2">
-                            <div class="border col-3" onclick="drawBossTable(['elder', 1, 0])" style="text-align: center">talented elder</div>
-                            <div class="border col-3" onclick="drawBossTable(['sirus', 0, 0])" style="text-align: center;">sirus</div>
-                            <div class="border col-3" onclick="drawBossTable(['maven', 1, 0])" style="text-align: center">talented maven</div>
-                            <div class="border col-3" onclick="drawBossTable(['uber elder', 1, 0])" style="text-align: center">talented uber elder</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-3">
-                    <div class="border" id="bossButton" style="font-size: large; text-align: center;">Uber Bosses</div>
-                    <div class="container-fluid">
-                        <div class="row justify-content-center" id="bossPlace3">
-                            <div class="border col-4" onclick="drawBossTable(['sirus', 0, 1])" style="text-align: center">sirus</div>
-                            <div class="border col-4" onclick="drawBossTable(['maven', 0, 1])" style="text-align: center">maven</div>
-                            <div class="border col-4" onclick="drawBossTable(['uber elder', 0, 1])" style="text-align: center">uber elder</div>
-                        </div>
-                        <div class="row justify-content-center" id="bossPlace4">
-                            <div class="border col-4" onclick="drawBossTable(['shaper', 0, 1])" style="text-align: center">shaper</div>
-                            <div class="border col-4" onclick="drawBossTable(['maven', 1, 1])" style="text-align: center">talented maven</div>
-                            <div class="border col-4" onclick="drawBossTable(['uber elder', 1, 1])" style="text-align: center">talented uber elder</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-3">
-                    <div class="border" style="font-size: large; text-align: center;"> Invitations </div>
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="border col-2" onclick="" style="text-align: center;">The Twisted</div>
-                            <div class="border col-2" onclick="" style="text-align: center;">The Formed</div>
-                            <div class="border col-2" onclick="" style="text-align: center;">The Forgotten</div>
-                            <div class="border col-2" onclick="" style="text-align: center;">The Elderslayer</div>
-                            <div class="border col-2" onclick="" style="text-align: center;">The Feared</div>
-                            <div class="border col-2" onclick="" style="text-align: center;">The Hidden</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-2">
-                    <div id="divToChaos" style="font-weight: 300; text-align: right;"></div>
-                </div>
-            </div>
-        </div>
-        <br>
-        <div class="container-fluid">
-            <div class="row">
+    	<div class="container-fluid">
+    		<div class="row">
+    			<div class="col-2">
+    				<div class="container">
+    					<div class="row">
+	    					<div class="col-4 border border-primary text-center" style="font-size: large;">Bosses</div>
+	    					<div class="btn-group-toggle btn-sm" data-toggle="buttons">
+								<label class="btn btn-outline-info active" onclick="changeBtnState('Atlas')">
+								  	<input type="checkbox" checked autocomplete="off"> Atlas Passives
+								</label>
+							</div>
+							<div class="btn-group-toggle btn-sm" data-toggle="buttons">
+								<label class="btn btn-outline-info active" onclick="changeBtnState('Uber')">
+								  	<input type="checkbox" checked autocomplete="off"> 85 Area
+								</label>
+							</div>
+						</div>
+    				</div>
+    				<br>
+    				<div class="container">
+	    				<div class="border" onclick="drawTable('elder')" style="text-align: center;">elder</div>
+	    				<div class="border" onclick="drawTable('uber elder')" style="text-align: center;">uber elder</div>
+	    				<div class="border" onclick="drawTable('shaper')" style="text-align: center;">shaper</div>
+	    				<div class="border" onclick="drawTable('sirus')" style="text-align: center;">sirus</div>
+	    				<div class="border" onclick="" style="text-align: center;">eater</div>
+	    				<div class="border" onclick="" style="text-align: center;">exarch</div>
+	    				<div class="border" onclick="" style="text-align: center;">atziri</div>
+	    				<div class="border" onclick="" style="text-align: center;">uber atziri</div>
+	    				<div class="border" onclick="drawTable('maven')" style="text-align: center;">maven</div>
+	    			</div>
+    				<br>
 
-                <div class="col-8">
-                    <table class="table table-striped" id="mainTable">
-                        <tr>
-                            <th>Itemname</th>
-                            <th>Dropchance</th>
-                            <th>Chaosvalue</th>
-                            <th>Per run Value</th>
-                        </tr>
-                        <tbody id="newRows"></tbody>
-                    </table>
-                </div>
+    				<div class="container-fluid">
+    					<div class="row">
+    						<div class="col-4 border border-primary text-center" style="font-size: large;">Invitations</div>
+    						<div class="btn-group-toggle btn-sm" data-toggle="buttons">
+								<label class="btn btn-outline-info active" onclick="changeBtnState('AtlasInv')">
+								  	<input type="checkbox" checked autocomplete="off"> Atlas Passives
+								</label>
+							</div>
+						</div>
+					</div>
+					<br>
+					<div class="container">
+						<div class="border" onclick="drawTable('The Formed')" style="text-align: center;">The Formed</div>
+	    				<div class="border" onclick="drawTable('The Twisted')" style="text-align: center;">The Twisted</div>
+	    				<div class="border" onclick="drawTable('The Forgotten')" style="text-align: center;">The Forgotten</div>
+	    				<div class="border" onclick="drawTable('The Hidden')" style="text-align: center;">The Hidden</div>
+	    				<div class="border" onclick="drawTable('The Elderslayer')" style="text-align: center;">The Elderslayer</div>
+	    				<div class="border" onclick="drawTable('The Feared')" style="text-align: center;">The Feared</div>
+    				</div>
+    			</div>
+    			<div class="col-10">
+    				<div class="container-fluid">
+    					<div class="row">
+	    					<div class="col-7">
+	    						<div class="container-fluid">
+		                    		<table class="table table-striped">
+		                       			 <tr>
+				                           	<th class="col-6">Itemname</th>
+				                            <th class="col-2">Dropchance</th>
+				                            <th class="col-2">Chaosvalue</th>
+				                            <th class="col-2">Per run Value</th>
+		                        		</tr>
+		                       		 	<tbody id="DropTable"></tbody>
+		                   			</table>
+	                   			</div>
+	    					</div>
+	    					<div class="col-5">
+	    						<div class="container-fluid">
+		    						<table class="table table-striped">
+			                        	<tr>
+			                            	<th class="col-3">Cost per run (Chaos)</th>
+			                           	 	<th class="col-3">Drop per run (Chaos)</th>
+			                            	<th class="col-3">Time per run (minutes)</th>
+			                            	<th class="col-3">Divines per hour</th>
+			                        	</tr>
+		                        		<tbody>
+		                        			<tr>
+		                        				<td><input type="number" id="Cost" onchange="recalculateDivPerH()" value="50"></td>
+		                        				<td id="EndDrop">69</td>
+		                        				<td><input type="number" id="Time" onchange="recalculateDivPerH()" value="6"></td>
+		                        				<td id="DivPerH">420</td>
+		                        			</tr>
+		                        		</tbody>
+		                   			 </table>
+		                   		</div>
+	    					</div>
+	    				</div>
+    				</div>
+    			</div>
+    		</div>
+    	</div>
 
-                <div class="col-4">
-                    <table class="table table-striped" id="summary">
-                        <tr>
-                            <th>Cost per run (Chaos)</th>
-                            <th>Drop per run (Chaos)</th>
-                            <th>Time per run (minutes)</th>
-                            <th>Divines per hour</th>
-                        </tr>
-                        <tbody id="newRows2"></tbody>
-                    </table>
-                </div>
-
-            </div>
-        </div>
-
-        <!-- Own Javascript-->
+    	<!-- Own Javascript-->
         <script type="text/javascript" src="js/index.js"></script>
         <!-- Bootstrap imports -->
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
