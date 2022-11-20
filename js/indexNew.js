@@ -1,5 +1,6 @@
 // atlasState 1 = True ; 0 = False
 var atlasState = 1;
+var atlasStateInv = 1;
 var uberState = 1;
 
 function changeBtnState(whatButton){
@@ -17,7 +18,13 @@ function changeBtnState(whatButton){
 			uberState = 0;
 		}
 	}
-	
+	if(whatButton=="AtlasInv"){
+		if(atlasStateInv == 0){
+			atlasStateInv = 1;
+		}else{
+			atlasStateInv = 0;
+		}
+	}
 };
 
 
