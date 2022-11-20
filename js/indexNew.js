@@ -42,6 +42,7 @@ function recalculateDrops(){
 		document.getElementById('PerRunValue'+i).innerHTML = (document.getElementById('Chaos'+i).value*document.getElementById('DropChance'+i).innerHTML/100).toFixed(2);
 	}
 	document.getElementById('EndDrop').innerHTML = newDropValue.toFixed(2);
+	recalculateDivPerH();
 };
 
 function recalculateDivPerH(){
@@ -86,14 +87,15 @@ function getFragmentValues(){
 
 
 		for(var i = 0; i<result.length;i++){
+			console.log("hey");
 		}
-	}
-	bigJson['shaper'].setCost;
+	})
+	bigJson['shaper'].setCost = 50;
 };
 
 
 function getBigJson(){
-	// -------------------------------- Bosses
+	// -------------------------------- Bosses 
 	// List[0] = name, [1] = DropChance, [2] = ChaosValue, [3] = talentedDrop, [4] = uberDrop
 	var shaperList = [["Fragment of Knowledge",50, 69, 0, 0], ["Fragment of Shape",50, 69, 0, 0], ["Shapers Touch", 50, 69, 0, 0], ["Dying Sun", 13, 69, 0, 0], ["Solstice Vigil", 5, 69, 0, 0],["Echoes of Cremation", 5, 69, 0, 0], ["Starforge", 2, 69, 0, 0], ["Orb of Dominance", 2, 69, 0, 0]];
 	var elderList = [["Fragment of Emptiness",50, 69, 0, 0], ["Fragment of Terror",50, 69, 0, 0], ["Blasphemers Grasp", 25, 69, 0, 0], ["Cyclopeon Coil",25, 69, 0, 0], ["Nebuloch",10, 69, 0, 0], ["Hopeshredder",10, 69, 0, 0], ["Shimmeron",10, 69, 0, 0], ["Any Impresence",20, 69, 0, 0], ["Orb of Dominance",5, 69, 0, 0], ["Watchers Eye",25, 69, 0, 0]];
