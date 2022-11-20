@@ -77,6 +77,25 @@ function drawTable(whatFight){
 		}
 	}
 	//else invitation
+
+	if(['The Formed', 'The Twisted', 'The Feared', 'The Hidden', 'The Forgotten', 'The Elderslayer'].includes(whatFight)){
+		for(var i=0; i<Object.keys(bigJson[whatFight]).length;i++){
+			currItem = Object.keys(bigJson[whatFight])[i];
+			if(currItem != "setCost"){
+				currDropChance = bigJson[whatFight][currItem].dropChance;
+				currChaosValue = bigJson[whatFight][currItem].chaosValue;
+				if(atlasStateInv == 1 && bigJson[whatFight][currItem].talentedDrop != 0){
+					currDropChance += bigJson[whatFight][currItem].talentedDrop;
+				}
+				var newRow = '<tr><td class="col-6"> ' + currItem + '</td><td class="col-2" id="DropChance'+i+'">' + currDropChance + '</td><td class="col-2"><input type="number" id="Chaos'+i+'" onchange="recalculateDrops()" value="'+ currChaosValue  + '"></td><td class="col-2" id="PerRunValue'+i+'">' + (currChaosValue*currDropChance/100).toFixed(2) + '</td></tr>' ;
+				tableOrigin.insertRow().innerHTML = newRow;
+			}
+		}
+	}
+
+
+
+
 	recalculateDrops();
 	recalculateDivPerH();
 
@@ -95,7 +114,7 @@ function getBigJson(){
 	var exarchList = [[]];
 	var atziriList = [[]];
 	var uberAtziriList = [[]];
-	var newBigJson = {"shaper":{"setCost" : 0}, "elder":{"setCost" : 0}, "sirus":{"setCost" : 0}, "maven":{"setCost" : 0}, "uber elder":{"setCost" : 0}};
+	var newBigJson = {"shaper":{"setCost" : 0}, "elder":{"setCost" : 0}, "sirus":{"setCost" : 0}, "maven":{"setCost" : 0}, "uber elder":{"setCost" : 0}, "The Formed":{"setCost":0}, "The Feared":{"setCost":0}, "The Forgotten":{"setCost":0}, "The Hidden":{"setCost":0}, "The Elderslayer":{"setCost":0}, "The Twisted":{"setCost":0}};
 	for(var i = 0; i<shaperList.length;i++){
 		newBigJson['shaper'][shaperList[i][0]] = {"dropChance" : shaperList[i][1], "chaosValue": shaperList[i][2], "talentedDrop": shaperList[i][3], "uberDrop": shaperList[i][4]};
 	}
@@ -112,6 +131,35 @@ function getBigJson(){
 		newBigJson['uber elder'][uberElderList[i][0]] = {"dropChance" : uberElderList[i][1], "chaosValue": uberElderList[i][2], "talentedDrop": uberElderList[i][3], "uberDrop": uberElderList[i][4]};
 	}
 	// --------------------------------- Invitations
+	var theFormedList = [["The Maven's Writ", 70, 0, 0, 0],["Orb of Conflict", 1, 0, 0, 0], ["Fragment of the Hydra", 1, 0, 0, 0], ["Fragment of the Minotaur", 1, 0, 0, 0], ["Fragment of the Phoenix", 1, 0, 0, 0], ["Fragment of the Chimera", 1, 0, 0, 0]];
+	var theHiddenList = [["The Maven's Writ", 70, 0, 0, 0],["Orb of Conflict", 1, 0, 0, 0], ["Tul's Flawless Breachstone", 1, 0, 0, 0], ["Uul-Netol's Flawless Breachstone", 1, 0, 0, 0], ["Xoph's Flawless Breachstone", 1, 0, 0, 0], ["Esh's Flawless Breachstone", 1, 0, 0, 0]];
+	var theFearedList = [["Test", 1, 0, 0, 0],["ToDo", 2, 0, 0, 0]];
+	var theTwistedList = [["The Maven's Writ", 70, 0, 0, 0],["Orb of Conflict", 1, 0, 0, 0], ["Fragment of Enslavement", 1, 0, 0, 0], ["Fragment of Constriction", 1, 0, 0, 0], ["Fragment of Eradication", 1, 0, 0, 0], ["Fragment of Purification", 1, 0, 0, 0], ];
+	var theForgottenList = [["The Maven's Writ", 70, 0, 0, 0],["Orb of Conflict", 1, 0, 0, 0], ["Circle of Anguish", 1, 0, 0, 0], ["Circle of Fear", 1, 0, 0, 0], ["Circle of Guilt", 1, 0, 0, 0], ["Circle of Nostalgia", 1, 0, 0, 0], ["Circle of Regret", 1, 0, 0, 0], ["Mask of the Tribunal", 1, 0, 0, 0], ["Storm's Gift", 1, 0, 0, 0] ["Perepiteia", 1, 0, 0, 0]];
+	var theElderslayerList =[["The Maven's Writ", 70, 0, 0, 0],["Orb of Conflict", 1, 0, 0, 0], ["Al-Hezmin's Crest", 1, 0, 0, 0], ["Baran's Crest", 1, 0, 0, 0], ["Drox's Crest", 1, 0, 0, 0], ["Veritania's Crest", 1, 0, 0, 0], ["Hunter's Exalted Orb", 1, 0, 0, 0], ["Crusader's Exalted Orb", 1, 0, 0, 0], ["Redeemer's Exalted Orb", 1, 0, 0, 0], ["Warlord's Exalted Orb", 1, 0, 0, 0],];
+	// List[0] = name, [1] = DropChance, [2] = ChaosValue, [3] = talentedDrop (= +base drop), [4] = not assigned yet
+	for(var i = 0; i<theFormedList.length;i++){
+		newBigJson['The Formed'][theFormedList[i][0]] = {"dropChance" : theFormedList[i][1], "chaosValue": theFormedList[i][2], "talentedDrop": theFormedList[i][3], "notassigned": theFormedList[i][4]};
+	}
+	for(var i = 0; i<theHiddenList.length;i++){
+		newBigJson['The Hidden'][theHiddenList[i][0]] = {"dropChance" : theHiddenList[i][1], "chaosValue": theHiddenList[i][2], "talentedDrop": theHiddenList[i][3], "notassigned": theHiddenList[i][4]};
+	}
+	for(var i = 0; i<theTwistedList.length;i++){
+		newBigJson['The Twisted'][theTwistedList[i][0]] = {"dropChance" : theTwistedList[i][1], "chaosValue": theTwistedList[i][2], "talentedDrop": theTwistedList[i][3], "notassigned": theTwistedList[i][4]};
+	}
+	for(var i = 0; i<theFearedList.length;i++){
+		newBigJson['The Feared'][theFearedList[i][0]] = {"dropChance" : theFearedList[i][1], "chaosValue": theFearedList[i][2], "talentedDrop": theFearedList[i][3], "notassigned": theFearedList[i][4]};
+	}
+	for(var i = 0; i<theForgottenList.length;i++){
+		newBigJson['The Forgotten'][theForgottenList[i][0]] = {"dropChance" : theForgottenList[i][1], "chaosValue": theForgottenList[i][2], "talentedDrop": theForgottenList[i][3], "notassigned": theForgottenList[i][4]};
+	}
+	for(var i = 0; i<theElderslayerList.length;i++){
+		newBigJson['The Elderslayer'][theElderslayerList[i][0]] = {"dropChance" : theElderslayerList[i][1], "chaosValue": theElderslayerList[i][2], "talentedDrop": theElderslayerList[i][3], "notassigned": theElderslayerList[i][4]};
+	}
+
+
+
+
 	bigJson = newBigJson;
 };
 
