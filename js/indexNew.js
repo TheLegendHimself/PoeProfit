@@ -5,6 +5,10 @@ var uberState = 1;
 // divine chaos value
 var divineChaosValue = 150;
 var bigJson;
+var currentLeague = "Kalandra";
+
+
+
 const removeChilds = (parent) => {
     while (parent.lastChild) {
         parent.removeChild(parent.lastChild);
@@ -37,7 +41,7 @@ function changeBtnState(whatButton){
 // ---------------------------
 function recalculateDrops(){
 	var newDropValue = 0;
-	for(var i=0;i<document.getElementById("DropTable").children.length;i++){
+	for(var i=1;i<=document.getElementById("DropTable").children.length;i++){
 		newDropValue += document.getElementById('Chaos'+i).value*document.getElementById('DropChance'+i).innerHTML/100;
 		document.getElementById('PerRunValue'+i).innerHTML = (document.getElementById('Chaos'+i).value*document.getElementById('DropChance'+i).innerHTML/100).toFixed(2);
 	}
@@ -51,52 +55,37 @@ function recalculateDivPerH(){
 
 function drawTable(whatFight){
 	tableOrigin = document.getElementById('DropTable');
+	document.getElementById('Cost').value = bigJson[whatFight].setCost.toFixed(0);
 	removeChilds(tableOrigin);
 	if(['shaper', 'elder', 'sirus', 'maven', 'uber elder', 'eater', 'exarch', 'atziri', 'uber atziri', 'maven'].includes(whatFight))
 	{
 		
 		for(var i=0; i<Object.keys(bigJson[whatFight]).length;i++){
 			currItem = Object.keys(bigJson[whatFight])[i];
-			currDropChance = bigJson[whatFight][currItem].dropChance;
-			currChaosValue = bigJson[whatFight][currItem].chaosValue;
-			if(atlasState == 1 && bigJson[whatFight][currItem].talentedDrop != 0){
-				currDropChance += bigJson[whatFight][currItem].talentedDrop;
+			if(currItem != "setCost"){
+				currDropChance = bigJson[whatFight][currItem].dropChance;
+				currChaosValue = bigJson[whatFight][currItem].chaosValue;
+				if(atlasState == 1 && bigJson[whatFight][currItem].talentedDrop != 0){
+					currDropChance += bigJson[whatFight][currItem].talentedDrop;
+				}
+				if(uberState == 1 && bigJson[whatFight][currItem].talentedDrop != 0){
+					currDropChance += bigJson[whatFight][currItem].talentedDrop;
+				}
+				var newRow = '<tr><td class="col-6"> ' + currItem + '</td><td class="col-2" id="DropChance'+i+'">' + currDropChance + '</td><td class="col-2"><input type="number" id="Chaos'+i+'" onchange="recalculateDrops()" value="'+ currChaosValue  + '"></td><td class="col-2" id="PerRunValue'+i+'">' + (currChaosValue*currDropChance/100).toFixed(2) + '</td></tr>' ;
+				tableOrigin.insertRow().innerHTML = newRow;
 			}
-			if(uberState == 1 && bigJson[whatFight][currItem].talentedDrop != 0){
-				currDropChance += bigJson[whatFight][currItem].talentedDrop;
-			}
-			var newRow = '<tr><td class="col-6"> ' + currItem + '</td><td class="col-2" id="DropChance'+i+'">' + currDropChance + '</td><td class="col-2"><input type="number" id="Chaos'+i+'" onchange="recalculateDrops()" value="'+ currChaosValue  + '"></td><td class="col-2" id="PerRunValue'+i+'">' + (currChaosValue*currDropChance/100).toFixed(2) + '</td></tr>' ;
-			tableOrigin.insertRow().innerHTML = newRow;
 		}
 	}
 	//else invitation
 	recalculateDrops();
 	recalculateDivPerH();
 
+
 };
-
-function getFragmentValues(){
-	var url = "https://api.poe.watch/get?league="+currentLeague+"&category=fragment";
-	fetch(url).then(response => response.json()).then(result => {	
-		//Fragment of the Minotaur id = 47
-		//Fragment of the Phoenix id = 366
-		//Fragment of the Hydra id = 367
-		//Fragment of the Chimera id = 368
-
-
-
-
-		for(var i = 0; i<result.length;i++){
-			console.log("hey");
-		}
-	})
-	bigJson['shaper'].setCost = 50;
-};
-
 
 function getBigJson(){
 	// -------------------------------- Bosses 
-	// List[0] = name, [1] = DropChance, [2] = ChaosValue, [3] = talentedDrop, [4] = uberDrop
+	// List[0] = name, [1] = DropChance, [2] = ChaosValue, [3] = talentedDrop (= +base drop), [4] = uberDrop (= +base drop)
 	var shaperList = [["Fragment of Knowledge",50, 69, 0, 0], ["Fragment of Shape",50, 69, 0, 0], ["Shapers Touch", 50, 69, 0, 0], ["Dying Sun", 13, 69, 0, 0], ["Solstice Vigil", 5, 69, 0, 0],["Echoes of Cremation", 5, 69, 0, 0], ["Starforge", 2, 69, 0, 0], ["Orb of Dominance", 2, 69, 0, 0]];
 	var elderList = [["Fragment of Emptiness",50, 69, 0, 0], ["Fragment of Terror",50, 69, 0, 0], ["Blasphemers Grasp", 25, 69, 0, 0], ["Cyclopeon Coil",25, 69, 0, 0], ["Nebuloch",10, 69, 0, 0], ["Hopeshredder",10, 69, 0, 0], ["Shimmeron",10, 69, 0, 0], ["Any Impresence",20, 69, 0, 0], ["Orb of Dominance",5, 69, 0, 0], ["Watchers Eye",25, 69, 0, 0]];
 	var sirusList = [["Crown of the Inward Eye",38, 69, 0, 0], ["Hands of the High Templar",25, 69, 0, 0], ["Thread of Hope",20, 69, 0, 0], ["The Burden of Truth",15, 69, 0, 0], ["Orb of Dominance",3, 69, 0, 0], ["Awakeners Orb",20, 69, 0, 0], ["A Fate Worse Then Death",4, 69, 0, 0]];
@@ -106,7 +95,7 @@ function getBigJson(){
 	var exarchList = [[]];
 	var atziriList = [[]];
 	var uberAtziriList = [[]];
-	var newBigJson = {"shaper":{}, "elder":{}, "sirus":{}, "maven":{}, "uber elder":{}};
+	var newBigJson = {"shaper":{"setCost" : 0}, "elder":{"setCost" : 0}, "sirus":{"setCost" : 0}, "maven":{"setCost" : 0}, "uber elder":{"setCost" : 0}};
 	for(var i = 0; i<shaperList.length;i++){
 		newBigJson['shaper'][shaperList[i][0]] = {"dropChance" : shaperList[i][1], "chaosValue": shaperList[i][2], "talentedDrop": shaperList[i][3], "uberDrop": shaperList[i][4]};
 	}
@@ -126,9 +115,92 @@ function getBigJson(){
 	bigJson = newBigJson;
 };
 
+function getFragmentValues(){
+	var url = "https://api.poe.watch/get?league="+currentLeague+"&category=fragment";
+	fetch(url).then(response => response.json()).then(result => {	
+		for(var i = 0; i<result.length;i++){
+			//Fragment of the Minotaur id = 47
+			//Fragment of the Phoenix id = 366
+			//Fragment of the Hydra id = 367
+			//Fragment of the Chimera id = 368
+			if(result[i].id == 47 || result[i].id == 366 || result[i].id == 367 || result[i].id == 368){
+						//invitationJson["The Formed"][0] = {"name:":"Fragment of the Minotaur", "chaosValue":result[i].mean};;
+				bigJson['shaper'].setCost += result[i].mean;
+			}
+			//Fragment of Enslavement id = 2871
+			//Fragment of Purification id = 369
+			//Fragment of Eradication id = 3474
+			//Fragment of Constriction id = 426
+			if(result[i].id == 2871 || result[i].id == 369 || result[i].id == 3474 || result[i].id == 426){
+				bigJson['elder'].setCost += result[i].mean;
+			}
+			//Crest Al-Hezim 45881
+			//Crest Veritania 45882
+			//Crest Drox 45883
+			//Crest Baran 45917
+			if(result[i].id == 45881 || result[i].id == 45882 || result[i].id == 45883 || result[i].id == 45917){
+				bigJson['sirus'].setCost += result[i].mean;
+			}
+			//Maven's writ 35735
+			if(result[i].id == 35735){
+				bigJson['maven'].setCost = result[i].mean;
+			}
+			//Fragment of Knowledge 1292
+			if(result[i].id == 1292){
+				bigJson['shaper']['Fragment of Knowledge'].chaosValue = result[i].mean;
+				bigJson['uber elder'].setCost += result[i].mean;
+			}
+			//Fragment of Shape 1293
+			if(result[i].id == 1293){
+				bigJson['shaper']['Fragment of Shape'].chaosValue = result[i].mean;
+				bigJson['uber elder'].setCost += result[i].mean;
+			}
+			//Fragment of Emptiness 1995
+			if(result[i].id == 1995){
+				bigJson['elder']['Fragment of Emptiness'].chaosValue = result[i].mean;
+				bigJson['uber elder'].setCost += result[i].mean;
+			}
+			//Fragment of Terror 2566
+			if(result[i].id == 2566){
+				bigJson['elder']['Fragment of Terror'].chaosValue = result[i].mean;
+				bigJson['uber elder'].setCost += result[i].mean;
+			}
+		}
+
+
+	})
+};
+function getCurrencyValues(){
+	var url = "https://api.poe.watch/get?league="+currentLeague+"&category=currency";
+	fetch(url).then(response => response.json()).then(result => {
+			for(var i = 0; i<result.length;i++){
+				// Divine id = 56
+				if(result[i].id == 56){					
+					divineChaosValue = result[i].mean;
+					document.getElementById('DivToChaos').innerHTML = divineChaosValue;
+				}
+				//Orb of Dominance id = 45848
+				if(result[i].id == 45848){
+					bigJson['shaper']["Orb of Dominance"].chaosValue = result[i].mean;
+					bigJson['elder']["Orb of Dominance"].chaosValue = result[i].mean;
+					bigJson['sirus']["Orb of Dominance"].chaosValue = result[i].mean;
+					bigJson['uber elder']["Orb of Dominance"].chaosValue = result[i].mean;
+				}
+				// Awakener's Orb id = 49
+				if(result[i].id == 49){
+					bigJson['sirus']["Awakeners Orb"].chaosValue = result[i].mean;
+				}
+
+				// Orb of Conflict
+
+				// Elevated sextant
+			}
+		}
+	);
+};
+
+
 getBigJson();
-
-
-
-
+getFragmentValues();
+getCurrencyValues();
 
