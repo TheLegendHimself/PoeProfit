@@ -226,12 +226,35 @@ function getFragmentValues(){
 				bigJson['uber elder'].setCost += result[i].mean;
 			}
 			//ToDo Atziri
-
+			// 420 Sacrifice of Dusk
+			//698 Sac of Dawn
+			// 841 Sac of Midnight
+			//843 Sac of Noon
+			if(result[i].id == 420 || result[i].id == 698 || result[i].id == 841 || result[i].id == 843){
+				bigJson['atziri'].setCost += result[i].mean;
+			}
+			// 180 Mortal Rage
+			if(result[i].id == 180){
+				bigJson['atziri']['Mortal Rage'].chaosValue = result[i].mean;
+				bigJson['uber atziri'].setCost += result[i].mean;
+			}
+			//422 Mortal Hope
+			if(result[i].id == 422){
+				bigJson['atziri']['Mortal Hope'].chaosValue = result[i].mean;
+				bigJson['uber atziri'].setCost += result[i].mean;
+			}
+			// 424 Mortal Ignorance
+			if(result[i].id == 424){
+				bigJson['atziri']['Mortal Ignorance'].chaosValue = result[i].mean;
+				bigJson['uber atziri'].setCost += result[i].mean;
+			}
+			// 692 Mortal Grief
+			if(result[i].id == 692){
+				bigJson['atziri']['Mortal Grief'].chaosValue = result[i].mean;
+				bigJson['uber atziri'].setCost += result[i].mean;
+			}
 			//ToDo UberAtziri
 
-			//ToDo Exarch -> Maps
-
-			//ToDo Eater -> Maps
 		}
 
 
