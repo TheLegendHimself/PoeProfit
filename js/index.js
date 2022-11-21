@@ -282,8 +282,28 @@ function getMapValues(){
 		});
 };
 
+function getJewelValues(){
+	var url = "https://api.poe.watch/get?league="+currentLeague+"&category=jewel";
+	fetch(url).then(response => response.json()).then(result => {
+			for(var i = 0; i<result.length;i++){
+				//unid watcher 85 47390
+				if(result[i].id == 47390){
+					bigJson['elder']['Watchers Eye'].chaosValue = result[i].mean;
+				}
+				//unid watcher 86 47391
+				if(result[i].id == 47391){
+					bigJson['uber elder']['Watchers Eye'].chaosValue = result[i].mean;
+				}
+			}
+		});
+
+
+};
+
+
+
 getBigJson();
 getFragmentValues();
 getCurrencyValues();
 getMapValues();
-
+getJewelValues();
