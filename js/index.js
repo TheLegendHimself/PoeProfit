@@ -184,7 +184,7 @@ function getFragmentValues(){
 			//Fragment of the Hydra id = 367
 			//Fragment of the Chimera id = 368
 			if(result[i].id == 47 || result[i].id == 366 || result[i].id == 367 || result[i].id == 368){
-						//invitationJson["The Formed"][0] = {"name:":"Fragment of the Minotaur", "chaosValue":result[i].mean};;
+				//invitationJson["The Formed"][0] = {"name:":"Fragment of the Minotaur", "chaosValue":result[i].mean};;
 				bigJson['shaper'].setCost += result[i].mean;
 			}
 			//Fragment of Enslavement id = 2871
@@ -281,9 +281,14 @@ function getCurrencyValues(){
 					bigJson['sirus']["Awakeners Orb"].chaosValue = result[i].mean;
 				}
 
-				// Orb of Conflict
-
-				// Elevated sextant
+				// 45849 Orb of Conflict
+				if(result[i].id == 45849){
+					bigJson['maven']["Orb of Conflict"].chaosValue = result[i].mean;
+				}
+				// 35647 Elevated sextant
+				if(result[i].id == 35647){
+					bigJson['maven']["Elevated Sextant"].chaosValue = result[i].mean;
+				}
 			}
 		}
 	);
