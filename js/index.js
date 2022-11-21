@@ -110,11 +110,11 @@ function getBigJson(){
 	var sirusList = [["Crown of the Inward Eye",38, 69, 0, 0], ["Hands of the High Templar",25, 69, 0, 0], ["Thread of Hope",20, 69, 0, 0], ["The Burden of Truth",15, 69, 0, 0], ["Orb of Dominance",3, 69, 0, 0], ["Awakeners Orb",20, 69, 0, 0], ["A Fate Worse Then Death",4, 69, 0, 0]];
 	var mavenList = [["Legacy of Fury", 32, 69, 0, 0], ["Viridis Veil", 20, 69, 0, 0], ["Arns Anguish", 12, 69, 0, 0], ["Gravens Secret", 12, 69, 0, 0], ["Olesyas Delight", 12, 69, 0, 0], ["Impossible Escape", 10, 69, 0, 0], ["Doppelgänger Guise", 2, 69, 0, 0], ["Orb of Conflict", 25, 69, 0, 0], ["Elevated Sextant", 30, 69, 0, 0],["Awakened Support Gems", 55, 69, 0, 0]];
 	var uberElderList = [["Mark of the Shaper", 30, 69, 0, 0], ["Mark of the Elder", 30, 69, 0, 0], ["Indigon", 12, 69, 0, 0], ["Call of the Void", 12, 69, 0, 0], ["Voidfletcher",6, 69, 0, 0], ["Disintegrator", 6, 69, 0, 0],["Voidforge",2, 69, 0, 0],["The Eternity Shroud",2, 69, 0, 0], ["Watchers Eye", 25, 69, 0, 0], ["Orb of Dominance", 5, 69, 0, 0]];
-	var eaterList = [[]];
-	var exarchList = [[]];
-	var atziriList = [[]];
-	var uberAtziriList = [[]];
-	var newBigJson = {"shaper":{"setCost" : 0}, "elder":{"setCost" : 0}, "sirus":{"setCost" : 0}, "maven":{"setCost" : 0}, "uber elder":{"setCost" : 0}, "The Formed":{"setCost":0}, "The Feared":{"setCost":0}, "The Forgotten":{"setCost":0}, "The Hidden":{"setCost":0}, "The Elderslayer":{"setCost":0}, "The Twisted":{"setCost":0}};
+	var eaterList = [["The Gluttonous Tide", 46, 69, 0, 0], ["Inextricable Fate", 46, 69, 0, 0],["Melding of the Flesh", 6, 69, 0, 0], ["Ashes of the Stars", 2, 69, 0, 0], ["Exceptional Eldritch Ichor", 69, 69, 0, 0]];
+	var exarchList = [["The Annihilating Light", 46, 69, 0, 0], ["Dawnbreaker", 46, 69, 0, 0],["Dissolution of the Flesh", 6, 69, 0, 0], ["Crystallised Omniscience", 2, 69, 0, 0], ["Exceptional Eldritch Ember", 69, 69, 0, 0] ];
+	var atziriList = [["Atziris Promise", 0, 0, 0, 0], ["Atziris Step", 0, 0, 0, 0], ["Droyanis Catalyst", 0, 0, 0, 0], ["Atziris Disfavour", 0, 0, 0, 0], ["Triumvirate Authority", 0, 0, 0, 0], ["Doryanis Invitation", 0, 0, 0, 0], ["Mortal Grief", 0, 0, 0, 0], ["Mortal Hope", 0, 0, 0, 0], ["Mortal Rage", 0, 0, 0, 0], ["Mortal Ignorance", 0, 0, 0, 0], ["Sacrificial Grab", 0, 0, 0, 0]];
+	var uberAtziriList = [["Atziris Promise", 0, 0, 0, 0], ["Atziris Step", 0, 0, 0, 0], ["Droyanis Catalyst", 0, 0, 0, 0], ["Atziris Disfavour", 0, 0, 0, 0], ["Triumvirate Authority", 0, 0, 0, 0], ["Doryanis Invitation", 0, 0, 0, 0], ["Mortal Grief", 0, 0, 0, 0], ["Mortal Hope", 0, 0, 0, 0], ["Mortal Rage", 0, 0, 0, 0], ["Mortal Ignorance", 0, 0, 0, 0], ["Sacrificial Grab", 0, 0, 0, 0], ["Atziris Acruity", 0, 0, 0, 0], ["Atziris Reflection", 0, 0, 0, 0], ["Atziris Rule", 0, 0, 0, 0], ["The Vertex", 0, 0, 0, 0], ["Triumvirate Authority", 0, 0, 0, 0], ["Atziris Splendour", 0, 0, 0, 0], ["Plede of Hands", 0, 0, 0, 0]];
+	var newBigJson = {"shaper":{"setCost" : 0}, "elder":{"setCost" : 0}, "sirus":{"setCost" : 0}, "maven":{"setCost" : 0}, "uber elder":{"setCost" : 0}, "atziri":{"setCost" : 0}, "uber atziri":{"setCost" : 0}, "exarch":{"setCost" : 0}, "eater":{"setCost" : 0}, "The Formed":{"setCost":0}, "The Feared":{"setCost":0}, "The Forgotten":{"setCost":0}, "The Hidden":{"setCost":0}, "The Elderslayer":{"setCost":0}, "The Twisted":{"setCost":0}};
 	for(var i = 0; i<shaperList.length;i++){
 		newBigJson['shaper'][shaperList[i][0]] = {"dropChance" : shaperList[i][1], "chaosValue": shaperList[i][2], "talentedDrop": shaperList[i][3], "uberDrop": shaperList[i][4]};
 	}
@@ -129,6 +129,18 @@ function getBigJson(){
 	}
 	for(var i = 0; i<uberElderList.length;i++){
 		newBigJson['uber elder'][uberElderList[i][0]] = {"dropChance" : uberElderList[i][1], "chaosValue": uberElderList[i][2], "talentedDrop": uberElderList[i][3], "uberDrop": uberElderList[i][4]};
+	}
+	for(var i = 0; i<eaterList.length;i++){
+		newBigJson['eater'][eaterList[i][0]] = {"dropChance" : eaterList[i][1], "chaosValue": eaterList[i][2], "talentedDrop": eaterList[i][3], "uberDrop": eaterList[i][4]};
+	}
+	for(var i = 0; i<exarchList.length;i++){
+		newBigJson['exarch'][exarchList[i][0]] = {"dropChance" : exarchList[i][1], "chaosValue": exarchList[i][2], "talentedDrop": exarchList[i][3], "uberDrop": exarchList[i][4]};
+	}
+	for(var i = 0; i<atziriList.length;i++){
+		newBigJson['atziri'][atziriList[i][0]] = {"dropChance" : atziriList[i][1], "chaosValue": atziriList[i][2], "talentedDrop": atziriList[i][3], "uberDrop": atziriList[i][4]};
+	}
+	for(var i = 0; i<uberAtziriList.length;i++){
+		newBigJson['uber atziri'][uberAtziriList[i][0]] = {"dropChance" : uberAtziriList[i][1], "chaosValue": uberAtziriList[i][2], "talentedDrop": uberAtziriList[i][3], "uberDrop": uberAtziriList[i][4]};
 	}
 	// --------------------------------- Invitations
 	var theFormedList = [["The Maven's Writ", 70, 0, 0, 0],["Orb of Conflict", 1, 0, 0, 0], ["Fragment of the Hydra", 1, 0, 0, 0], ["Fragment of the Minotaur", 1, 0, 0, 0], ["Fragment of the Phoenix", 1, 0, 0, 0], ["Fragment of the Chimera", 1, 0, 0, 0]];
@@ -213,6 +225,13 @@ function getFragmentValues(){
 				bigJson['elder']['Fragment of Terror'].chaosValue = result[i].mean;
 				bigJson['uber elder'].setCost += result[i].mean;
 			}
+			//ToDo Atziri
+
+			//ToDo UberAtziri
+
+			//ToDo Exarch -> Maps
+
+			//ToDo Eater -> Maps
 		}
 
 
@@ -247,8 +266,24 @@ function getCurrencyValues(){
 	);
 };
 
+function getMapValues(){
+	var url = "https://api.poe.watch/get?league="+currentLeague+"&category=map";
+	fetch(url).then(response => response.json()).then(result => {
+			for(var i = 0; i<result.length;i++){
+				//incandestant invitation  45934 = exarch
+				if(result[i].id == 45934){
+					bigJson['exarch'].setCost = result[i].mean;
+				}
+				//Screaming Invitation 45954 = eater
+				if(result[i].id == 45954){
+					bigJson['eater'].setCost = result[i].mean;
+				}
+			}
+		});
+};
 
 getBigJson();
 getFragmentValues();
 getCurrencyValues();
+getMapValues();
 
