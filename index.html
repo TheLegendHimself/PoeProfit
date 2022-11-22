@@ -15,31 +15,35 @@
     <header>    
         <h1 class="display-1" style="text-align: center"> PoE Profit Calculator </h1>
         <br>
-        <div class="" style="float:right;margin-right: 100px;">Divinevalue <div class="border" id="DivToChaos"></div></div>
+        <!--<div class="" style="">Current Boss: <div class="border" id="CurrBoss"></div></div>-->
+        <div class="border border-primary" style="float:right; margin-right: 100px;">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="border border-primary" style="margin-right: 5px; padding: 5px; text-align: center;">Current Boss <div class="" id="CurrBoss"></div></div>
+                    <div class="border border-primary" style="margin-left: 5px; padding: 5px; text-align: center;">Divinevalue <div class="" id="DivToChaos"></div></div>
+                </div>
+            </div>
+        </div>
         <br> <br> <br> 
     </header>
 
     <body style="background-color: lightgrey;">
     	<div class="container-fluid">
     		<div class="row">
-    			<div class="col-2">
-    				<div class="container">
-    					<div class="row">
-	    					<div class="col-4 border border-primary text-center" style="font-size: large;">Bosses</div>
-	    					<div class="btn-group-toggle btn-sm" data-toggle="buttons">
-								<label class="btn btn-outline-info active" onclick="changeBtnState('Atlas')">
-								  	<input type="checkbox" checked autocomplete="off"> Atlas Passives
-								</label>
-							</div>
-							<div class="btn-group-toggle btn-sm" data-toggle="buttons">
-								<label class="btn btn-outline-info active" onclick="changeBtnState('Uber')">
-								  	<input type="checkbox" checked autocomplete="off"> 85 Area
-								</label>
-							</div>
-						</div>
+                <!-- Begin Bosslist -->
+    			<div class="col-2 border border-secondary">
+					<div class="border border-primary text-center" style="font-size: large;display: flex; align-items: center; justify-content: center;">Bosses </div>
+                    <br>
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">
+                            <input type="checkbox" aria-label="Checkbox for following text input" onclick="changeBtnState('Atlas')" checked>
+                            &nbsp;&nbsp;Atlas Passives &nbsp;&nbsp;&nbsp;
+                            <input type="checkbox" aria-label="Checkbox for following text input" onclick="changeBtnState('Uber')">
+                            &nbsp;&nbsp;85 Area
+                        </div>                                                          
     				</div>
     				<br>
-    				<div class="container">
+    				<div class="container-fluid">
 	    				<div class="border" onclick="drawTable('elder')" style="text-align: center;">elder</div>
 	    				<div class="border" onclick="drawTable('uber elder')" style="text-align: center;">uber elder</div>
 	    				<div class="border" onclick="drawTable('shaper')" style="text-align: center;">shaper</div>
@@ -50,6 +54,8 @@
 	    				<div class="border" onclick="drawTable('uber atziri')" style="text-align: center;">uber atziri</div>
 	    				<div class="border" onclick="drawTable('maven')" style="text-align: center;">maven</div>
 	    			</div>
+                </div>
+                <!-- End Boss List -->
                     <!-- invitations on Standby
     				<br>
     				<div class="container-fluid">
@@ -74,46 +80,54 @@
 	    				<div class="border" onclick="drawTable('The Feared')" style="text-align: center;">The Feared</div>
     				</div>
                     -->
-    			</div>
-    			<div class="col-10">
+                <!-- begin Tables -->
+    			<div class="col-10 border border-primary">
     				<div class="container-fluid">
+
     					<div class="row">
+
 	    					<div class="col-7">
 	    						<div class="container-fluid">
 		                    		<table class="table table-striped">
-		                       			 <tr>
-				                           	<th class="col-6">Itemname</th>
-				                            <th class="col-2">Dropchance</th>
-				                            <th class="col-2">Chaosvalue</th>
-				                            <th class="col-2">Per run Value</th>
-		                        		</tr>
+                                        <thead>
+    		                       			<tr>
+    				                           	<th class="col-6">Itemname</th>
+    				                            <th class="col-2">Dropchance</th>
+    				                            <th class="col-2">Chaosvalue</th>
+    				                            <th class="col-2">Per run Value</th>
+    		                        		</tr>
+                                        </thead>
 		                       		 	<tbody id="DropTable"></tbody>
 		                   			</table>
 	                   			</div>
 	    					</div>
+
 	    					<div class="col-5">
-	    						<div class="container-fluid">
 		    						<table class="table table-striped">
-			                        	<tr>
-			                            	<th class="col-3">Cost per run (Chaos)</th>
-			                           	 	<th class="col-3">Drop per run (Chaos)</th>
-			                            	<th class="col-3">Time per run (minutes)</th>
-			                            	<th class="col-3">Divines per hour</th>
-			                        	</tr>
+                                        <thead>
+    			                        	<tr>
+    			                            	<th class="">Cost per run (Chaos)</th>
+    			                           	 	<th class="">Drop per run (Chaos)</th>
+    			                            	<th class="">Time per run (minutes)</th>
+    			                            	<th class="">Divines per hour</th>
+			                        	    </tr>
+                                        </thead>   
 		                        		<tbody>
 		                        			<tr>
 		                        				<td><input type="number" id="Cost" onchange="recalculateDivPerH()" value="50"></td>
-		                        				<td id="EndDrop">69</td>
+		                        				<td id="EndDrop">0</td>
 		                        				<td><input type="number" id="Time" onchange="recalculateDivPerH()" value="6"></td>
 		                        				<td id="DivPerH">420</td>
 		                        			</tr>
 		                        		</tbody>
-		                   			 </table>
-		                   		</div>
+		                   			</table>
 	    					</div>
-	    				</div>
+	    				
+                        </div>  
+
     				</div>
     			</div>
+                <!-- Endtables-->
     		</div>
     	</div>
 

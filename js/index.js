@@ -68,8 +68,8 @@ function drawTable(whatFight){
 				if(atlasState == 1 && bigJson[whatFight][currItem].talentedDrop != 0){
 					currDropChance += bigJson[whatFight][currItem].talentedDrop;
 				}
-				if(uberState == 1 && bigJson[whatFight][currItem].talentedDrop != 0){
-					currDropChance += bigJson[whatFight][currItem].talentedDrop;
+				if(uberState == 1 && bigJson[whatFight][currItem].uberDrop != 0){
+					currDropChance += bigJson[whatFight][currItem].uberDrop;
 				}
 				var newRow = '<tr><td class="col-6"> ' + currItem + '</td><td class="col-2" id="DropChance'+i+'">' + currDropChance + '</td><td class="col-2"><input type="number" id="Chaos'+i+'" onchange="recalculateDrops()" value="'+ currChaosValue  + '"></td><td class="col-2" id="PerRunValue'+i+'">' + (currChaosValue*currDropChance/100).toFixed(2) + '</td></tr>' ;
 				tableOrigin.insertRow().innerHTML = newRow;
@@ -93,8 +93,8 @@ function drawTable(whatFight){
 		}
 	}
 
-
-
+	// setting current Boss
+	document.getElementById('CurrBoss').innerHTML = whatFight;
 
 	recalculateDrops();
 	recalculateDivPerH();
@@ -106,7 +106,7 @@ function getBigJson(){
 	// -------------------------------- Bosses 
 	// List[0] = name, [1] = DropChance, [2] = ChaosValue, [3] = talentedDrop (= +base drop), [4] = uberDrop (= +base drop)
 	var shaperList = [["Fragment of Knowledge",50, 0, 0, 0], ["Fragment of Shape",50, 0, 0, 0], ["Shapers Touch", 50, 0, 0, 0], ["Dying Sun", 13, 0, 0, 0], ["Solstice Vigil", 5, 0, 0, 0],["Echoes of Cremation", 5, 0, 0, 0], ["Starforge", 2, 0, 0, 0], ["Orb of Dominance", 2, 0, 0, 0]];
-	var elderList = [["Fragment of Emptiness",50, 0, 0, 0], ["Fragment of Terror",50, 0, 0, 0], ["Blasphemers Grasp", 25, 0, 0, 0], ["Cyclopeon Coil",25, 0, 0, 0], ["Nebuloch",10, 0, 0, 0], ["Hopeshredder",10, 0, 0, 0], ["Shimmeron",10, 0, 0, 0], ["Any Impresence",20, 0, 0, 0], ["Orb of Dominance",5, 0, 0, 0], ["Watchers Eye",25, 0, 0, 0]];
+	var elderList = [["Fragment of Emptiness",50, 0, 0, 0], ["Fragment of Terror",50, 0, 0, 0], ["Blasphemers Grasp", 25, 0, 0, 0], ["Cyclopeon Coil",25, 0, 0, 0], ["Nebuloch",10, 0, 0, 0], ["Hopeshredder",10, 0, 0, 0], ["Shimmeron",10, 0, 0, 0], ["Any Impresence",20, 0, 0, 0], ["Orb of Dominance",5, 0, 0, 0], ["Watchers Eye",25, 0, 10, 0]];
 	var sirusList = [["Crown of the Inward Eye",38, 0, 0, 0], ["Hands of the High Templar",25, 0, 0, 0], ["Thread of Hope",20, 0, 0, 0], ["The Burden of Truth",15, 0, 0, 0], ["Orb of Dominance",3, 0, 0, 0], ["Awakeners Orb",20, 0, 0, 0], ["A Fate Worse Then Death",4, 0, 0, 0]];
 	var mavenList = [["Legacy of Fury", 32, 0, 0, 0], ["Viridis Veil", 20, 0, 0, 0], ["Arns Anguish", 12, 0, 0, 0], ["Gravens Secret", 12, 0, 0, 0], ["Olesyas Delight", 12, 0, 0, 0], ["Impossible Escape", 10, 0, 0, 0], ["Doppelgänger Guise", 2, 0, 0, 0], ["Orb of Conflict", 25, 0, 0, 0], ["Elevated Sextant", 30, 0, 0, 0],["Awakened Support Gems", 55, 0, 0, 0]];
 	var uberElderList = [["Mark of the Shaper", 30, 0, 0, 0], ["Mark of the Elder", 30, 0, 0, 0], ["Indigon", 12, 0, 0, 0], ["Call of the Void", 12, 0, 0, 0], ["Voidfletcher",6, 0, 0, 0], ["Disintegrator", 6, 0, 0, 0],["Voidforge",2, 0, 0, 0],["The Eternity Shroud",2, 0, 0, 0], ["Watchers Eye", 25, 0, 0, 0], ["Orb of Dominance", 5, 0, 0, 0]];
