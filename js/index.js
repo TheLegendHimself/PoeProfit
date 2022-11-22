@@ -112,8 +112,8 @@ function getBigJson(){
 	var uberElderList = [["Mark of the Shaper", 30, 0, 0, 0], ["Mark of the Elder", 30, 0, 0, 0], ["Indigon", 12, 0, 0, 0], ["Call of the Void", 12, 0, 0, 0], ["Voidfletcher",6, 0, 0, 0], ["Disintegrator", 6, 0, 0, 0],["Voidforge",2, 0, 0, 0],["The Eternity Shroud",2, 0, 0, 0], ["Watchers Eye", 25, 0, 0, 0], ["Orb of Dominance", 5, 0, 0, 0]];
 	var eaterList = [["The Gluttonous Tide", 46, 0, 0, 0], ["Inextricable Fate", 46, 0, 0, 0],["Melding of the Flesh", 6, 0, 0, 0], ["Ashes of the Stars", 2, 0, 0, 0], ["Exceptional Eldritch Ichor", 0, 0, 0, 0]];
 	var exarchList = [["The Annihilating Light", 46, 0, 0, 0], ["Dawnbreaker", 46, 0, 0, 0],["Dissolution of the Flesh", 6, 0, 0, 0], ["Crystallised Omniscience", 2, 0, 0, 0], ["Exceptional Eldritch Ember", 0, 0, 0, 0] ];
-	var atziriList = [["Atziris Promise", 0, 0, 0, 0], ["Atziris Step", 0, 0, 0, 0], ["Droyanis Catalyst", 0, 0, 0, 0], ["Atziris Disfavour", 0, 0, 0, 0], ["Triumvirate Authority", 0, 0, 0, 0], ["Doryanis Invitation", 0, 0, 0, 0], ["Mortal Grief", 0, 0, 0, 0], ["Mortal Hope", 0, 0, 0, 0], ["Mortal Rage", 0, 0, 0, 0], ["Mortal Ignorance", 0, 0, 0, 0], ["Sacrificial Grab", 0, 0, 0, 0]];
-	var uberAtziriList = [["Atziris Promise", 0, 0, 0, 0], ["Atziris Step", 0, 0, 0, 0], ["Droyanis Catalyst", 0, 0, 0, 0], ["Atziris Disfavour", 0, 0, 0, 0], ["Triumvirate Authority", 0, 0, 0, 0], ["Doryanis Invitation", 0, 0, 0, 0], ["Sacrificial Grab", 0, 0, 0, 0], ["Atziris Acruity", 0, 0, 0, 0], ["Atziris Reflection", 0, 0, 0, 0], ["Atziris Rule", 0, 0, 0, 0], ["The Vertex", 0, 0, 0, 0], ["Triumvirate Authority", 0, 0, 0, 0], ["Atziris Splendour", 0, 0, 0, 0], ["Plede of Hands", 0, 0, 0, 0]];
+	var atziriList = [["Atziris Promise", 0, 0, 0, 0], ["Atziris Step", 0, 0, 0, 0], ["Doryanis Catalyst", 0, 0, 0, 0], ["Atziris Disfavour", 0, 0, 0, 0], ["Triumvirate Authority", 0, 0, 0, 0], ["Doryanis Invitation", 0, 0, 0, 0], ["Mortal Grief", 0, 0, 0, 0], ["Mortal Hope", 0, 0, 0, 0], ["Mortal Rage", 0, 0, 0, 0], ["Mortal Ignorance", 0, 0, 0, 0], ["Sacrificial Grab", 0, 0, 0, 0]];
+	var uberAtziriList = [["Atziris Promise", 0, 0, 0, 0], ["Atziris Step", 0, 0, 0, 0], ["Doryanis Catalyst", 0, 0, 0, 0], ["Atziris Disfavour", 0, 0, 0, 0], ["Triumvirate Authority", 0, 0, 0, 0], ["Doryanis Invitation", 0, 0, 0, 0], ["Sacrificial Grab", 0, 0, 0, 0], ["Atziris Acruity", 0, 0, 0, 0], ["Atziris Reflection", 0, 0, 0, 0], ["Atziris Rule", 0, 0, 0, 0], ["The Vertex", 0, 0, 0, 0], ["Triumvirate Authority", 0, 0, 0, 0], ["Atziris Splendour", 0, 0, 0, 0], ["Pledge of Hands", 0, 0, 0, 0]];
 	var newBigJson = {"shaper":{"setCost" : 0}, "elder":{"setCost" : 0}, "sirus":{"setCost" : 0}, "maven":{"setCost" : 0}, "uber elder":{"setCost" : 0}, "atziri":{"setCost" : 0}, "uber atziri":{"setCost" : 0}, "exarch":{"setCost" : 0}, "eater":{"setCost" : 0}, "The Formed":{"setCost":0}, "The Feared":{"setCost":0}, "The Forgotten":{"setCost":0}, "The Hidden":{"setCost":0}, "The Elderslayer":{"setCost":0}, "The Twisted":{"setCost":0}};
 	for(var i = 0; i<shaperList.length;i++){
 		newBigJson['shaper'][shaperList[i][0]] = {"dropChance" : shaperList[i][1], "chaosValue": shaperList[i][2], "talentedDrop": shaperList[i][3], "uberDrop": shaperList[i][4]};
@@ -422,6 +422,23 @@ function getUniqueArmorValues(){
 				if(result[i].id == 35977){
 					bigJson['maven']['Doppelgänger Guise'].chaosValue = result[i].mean;
 				}
+				// id: 817, name: "Atziri's Step
+				if(result[i].id == 817){
+					bigJson['atziri']['Atziris Step'].chaosValue = result[i].mean;
+					bigJson['uber atziri']['Atziris Step'].chaosValue = result[i].mean;
+				}
+				// id: 3010, name: "Atziri's Reflection",
+				if(result[i].id == 3010){
+					bigJson['uber atziri']['Atziris Reflection'].chaosValue = result[i].mean;
+				}
+				// id: 68, name: "The Vertex"
+				if(result[i].id == 68){
+					bigJson['uber atziri']['The Vertex'].chaosValue = result[i].mean;
+				}
+				// id: 737, name: "Atziri's Splendour"
+				if(result[i].id == 737){
+					bigJson['uber atziri']['Atziris Splendour'].chaosValue = result[i].mean;
+				}
 			}
 		});
 };
@@ -478,7 +495,16 @@ function getUniqueAccessories(){
 				if(result[i].id == 35759){
 					bigJson['maven']['Olesyas Delight'].chaosValue = result[i].mean;
 				}
-
+				// id: 42126, name: "Triumvirate Authority
+				if(result[i].id == 42126){
+					bigJson['atziri']['Triumvirate Authority'].chaosValue = result[i].mean;
+					bigJson['uber atziri']['Triumvirate Authority'].chaosValue = result[i].mean;
+				}
+				// id: 672, name: "Doryani's Invitation
+				if(result[i].id == 672){
+					bigJson['atziri']['Doryanis Invitation'].chaosValue = result[i].mean;
+					bigJson['uber atziri']['Doryanis Invitation'].chaosValue = result[i].mean;
+				}
 			}
 		});
 };
@@ -519,6 +545,24 @@ function getUniqueWeapons(){
 				if(result[i].id == 47960){
 					bigJson['exarch']['The Annihilating Light'].chaosValue = result[i].mean;
 				}
+				//  id: 2082, name: "Doryani's Catalyst
+				if(result[i].id == 2082){
+					bigJson['atziri']['Doryanis Catalyst'].chaosValue = result[i].mean;
+					bigJson['uber atziri']['Doryanis Catalyst'].chaosValue = result[i].mean;
+				}
+				//  id: 788, name: "Atziri's Disfavour",
+				if(result[i].id == 788){
+					bigJson['atziri']['Atziris Disfavour'].chaosValue = result[i].mean;
+					bigJson['uber atziri']['Atziris Disfavour'].chaosValue = result[i].mean;
+				}
+				// id: 47958, name: "Atziri's Rule",
+				if(result[i].id == 47958){
+					bigJson['uber atziri']['Atziris Rule'].chaosValue = result[i].mean;
+				}
+				//id: 2911, name: "Pledge of Hands
+				if(result[i].id == 2911){
+					bigJson['uber atziri']['Pledge of Hands'].chaosValue = result[i].mean;
+				}
 			}
 		});
 };
@@ -534,6 +578,7 @@ function getUniqueFlaskValues(){
 			//id: 1229, name: "Atziri's Promise"
 			if(result[i].id == 1229){
 					bigJson['atziri']['Atziris Promise'].chaosValue = result[i].mean;
+					bigJson['uber atziri']['Atziris Promise'].chaosValue = result[i].mean;
 			}
 		}
 	});
