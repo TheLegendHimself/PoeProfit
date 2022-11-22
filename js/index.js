@@ -1,7 +1,3 @@
-// 1 = True ; 0 = False
-var atlasState = 1;
-var atlasStateInv = 1;
-var uberState = 1;
 // divine chaos value
 var divineChaosValue = 150;
 var bigJson;
@@ -14,30 +10,7 @@ const removeChilds = (parent) => {
         parent.removeChild(parent.lastChild);
     }
 };
-// switching States:
-function changeBtnState(whatButton){
-	if(whatButton=="Atlas"){
-		if(atlasState == 0){
-			atlasState = 1;
-		}else{
-			atlasState = 0;
-		}	
-	}
-	if(whatButton=="Uber"){
-		if(uberState == 0){
-			uberState = 1;
-		}else{
-			uberState = 0;
-		}
-	}
-	if(whatButton=="AtlasInv"){
-		if(atlasStateInv == 0){
-			atlasStateInv = 1;
-		}else{
-			atlasStateInv = 0;
-		}
-	}
-};
+
 // ---------------------------
 function recalculateDrops(){
 	var newDropValue = 0;
@@ -49,6 +22,14 @@ function recalculateDrops(){
 	recalculateDivPerH();
 };
 
+function getCheckboxState(name){
+	if(document.getElementById(name).checked){
+		return 1;
+	}else{
+		return 0;
+	}
+};
+
 function recalculateDivPerH(){
 	document.getElementById("DivPerH").innerHTML = ((document.getElementById("EndDrop").innerHTML-document.getElementById("Cost").value)*(60/document.getElementById("Time").value)/divineChaosValue).toFixed(2);
 };
@@ -57,27 +38,27 @@ function drawTable(whatFight){
 	tableOrigin = document.getElementById('DropTable');
 	document.getElementById('Cost').value = bigJson[whatFight].setCost.toFixed(0);
 	removeChilds(tableOrigin);
-	if(['shaper', 'elder', 'sirus', 'maven', 'uber elder', 'eater', 'exarch', 'atziri', 'uber atziri', 'maven'].includes(whatFight))
-	{
+	//if(['shaper', 'elder', 'sirus', 'maven', 'uber elder', 'eater', 'exarch', 'atziri', 'uber atziri', 'maven'].includes(whatFight))
+	//{
 		
 		for(var i=0; i<Object.keys(bigJson[whatFight]).length;i++){
 			currItem = Object.keys(bigJson[whatFight])[i];
 			if(currItem != "setCost"){
 				currDropChance = bigJson[whatFight][currItem].dropChance;
 				currChaosValue = bigJson[whatFight][currItem].chaosValue;
-				if(atlasState == 1 && bigJson[whatFight][currItem].talentedDrop != 0){
+				if(getCheckboxState('AtlasCheckbox') == 1 && bigJson[whatFight][currItem].talentedDrop != 0){
 					currDropChance += bigJson[whatFight][currItem].talentedDrop;
 				}
-				if(uberState == 1 && bigJson[whatFight][currItem].uberDrop != 0){
+				if(getCheckboxState('UberCheckbox') == 1 && bigJson[whatFight][currItem].uberDrop != 0){
 					currDropChance += bigJson[whatFight][currItem].uberDrop;
 				}
 				var newRow = '<tr><td class="col-6"> ' + currItem + '</td><td class="col-2" id="DropChance'+i+'">' + currDropChance + '</td><td class="col-2"><input type="number" id="Chaos'+i+'" onchange="recalculateDrops()" value="'+ currChaosValue  + '"></td><td class="col-2" id="PerRunValue'+i+'">' + (currChaosValue*currDropChance/100).toFixed(2) + '</td></tr>' ;
 				tableOrigin.insertRow().innerHTML = newRow;
 			}
 		}
-	}
+	//}
 	//else invitation
-
+		/*
 	if(['The Formed', 'The Twisted', 'The Feared', 'The Hidden', 'The Forgotten', 'The Elderslayer'].includes(whatFight)){
 		for(var i=0; i<Object.keys(bigJson[whatFight]).length;i++){
 			currItem = Object.keys(bigJson[whatFight])[i];
@@ -92,7 +73,7 @@ function drawTable(whatFight){
 			}
 		}
 	}
-
+	*/
 	// setting current Boss
 	document.getElementById('CurrBoss').innerHTML = whatFight;
 
