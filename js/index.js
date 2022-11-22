@@ -175,6 +175,24 @@ function getBigJson(){
 	bigJson = newBigJson;
 };
 
+function calculateAverageAwakenedGem(){
+	var url = "https://api.poe.watch/get?league="+currentLeague+"&category=gem";
+	fetch(url).then(response => response.json()).then(result => {	
+		var awaTotal = 0;
+		var counter = 0;
+		for(var i = 0; i<result.length;i++){
+			if(result[i].name.includes('Awakened')){
+				counter+=1;
+				awaTotal = result[i].mean;
+			}
+		}
+		bigJson['maven']['Awakened Support Gems'].chaosValue = (awaTotal/counter).toFixed(2);
+
+	})
+};
+
+
+
 function getFragmentValues(){
 	var url = "https://api.poe.watch/get?league="+currentLeague+"&category=fragment";
 	fetch(url).then(response => response.json()).then(result => {	
@@ -330,6 +348,22 @@ function getJewelValues(){
 				if(result[i].id == 47391){
 					bigJson['uber elder']['Watchers Eye'].chaosValue = result[i].mean;
 				}
+				//id: 74, name: "Thread of Hope"
+				if(result[i].id == 74){
+					bigJson['sirus']['Thread of Hope'].chaosValue = result[i].mean;
+				}
+				//id: 45864, name: "Melding of the Flesh"
+				if(result[i].id == 45864){
+					bigJson['eater']['Melding of the Flesh'].chaosValue = result[i].mean;
+				}
+				// id: 45856, name: "Dissolution of the Flesh"
+				if(result[i].id == 45856){
+					bigJson['exarch']['Dissolution of the Flesh'].chaosValue = result[i].mean;
+				}
+				//id: 46478, name: "Impossible Escape
+				if(result[i].id == 46478){
+					bigJson['maven']['Impossible Escape'].chaosValue = result[i].mean;
+				}
 			}
 		});
 
@@ -355,6 +389,38 @@ function getUniqueArmorValues(){
 				//  id: 34773, name: "The Eternity Shroud",
 				if(result[i].id == 34773){
 					bigJson['uber elder']['The Eternity Shroud'].chaosValue = result[i].mean;
+				}
+				// id: 390, name: "Shaper's Touch
+				if(result[i].id == 390){
+					bigJson['shaper']['Shapers Touch'].chaosValue = result[i].mean;
+				}
+				//id: 79, name: "Crown of the Inward Eye"
+				if(result[i].id == 79){
+					bigJson['sirus']['Crown of the Inward Eye'].chaosValue = result[i].mean;
+				}
+				// id: 997, name: "Hands of the High Templar
+				if(result[i].id == 997){
+					bigJson['sirus']['Hands of the High Templar'].chaosValue = result[i].mean;
+				}
+				// id: 47933, name: "Inextricable Fate"
+				if(result[i].id == 47933){
+					bigJson['eater']['Inextricable Fate'].chaosValue = result[i].mean;
+				}
+				// id: 47926, name: "Dawnbreaker"
+				if(result[i].id == 47926){
+					bigJson['exarch']['Dawnbreaker'].chaosValue = result[i].mean;
+				}
+				// id: 35738, name: "Legacy of Fury"
+				if(result[i].id == 35738){
+					bigJson['maven']['Legacy of Fury'].chaosValue = result[i].mean;
+				}
+				//id: 35839, name: "Viridi's Veil"
+				if(result[i].id == 35839){
+					bigJson['maven']['Viridis Veil'].chaosValue = result[i].mean;
+				}
+				// id: 35977, name: "Doppelgänger Guise"
+				if(result[i].id == 35977){
+					bigJson['maven']['Doppelgänger Guise'].chaosValue = result[i].mean;
 				}
 			}
 		});
@@ -384,6 +450,35 @@ function getUniqueAccessories(){
 				if(result[i].id == 46489 ){
 					bigJson['uber elder']['Call of the Void'].chaosValue = result[i].mean;
 				}
+				//id: 1817, name: "Solstice Vigil
+				if(result[i].id == 1817){
+					bigJson['shaper']['Solstice Vigil'].chaosValue = result[i].mean;
+				}
+				//d: 46481, name: "The Burden of Truth"
+				if(result[i].id == 46481){
+					bigJson['sirus']['The Burden of Truth'].chaosValue = result[i].mean;
+				}
+				//id: 45853, name: "Ashes of the Stars
+				if(result[i].id == 46481){
+					bigJson['eater']['Ashes of the Stars'].chaosValue = result[i].mean;
+				}
+				//id: 45868, name: "Crystallised Omniscience
+				if(result[i].id == 45868){
+					bigJson['exarch']['Crystallised Omniscience'].chaosValue = result[i].mean;
+				}
+				//  id: 35689, name: "Arn's Anguish"
+				if(result[i].id == 35689){
+					bigJson['maven']['Arns Anguish'].chaosValue = result[i].mean;
+				}
+				// id: 35780, name: "Graven's Secret"
+				if(result[i].id == 35780){
+					bigJson['maven']['Gravens Secret'].chaosValue = result[i].mean;
+				}
+				//  id: 35759, name: "Olesya's Delight
+				if(result[i].id == 35759){
+					bigJson['maven']['Olesyas Delight'].chaosValue = result[i].mean;
+				}
+
 			}
 		});
 };
@@ -412,9 +507,39 @@ function getUniqueWeapons(){
 				if(result[i].id == 34783 ){
 					bigJson['uber elder']['Voidforge'].chaosValue = result[i].mean;
 				}
+				//id: 231, name: "Starforge
+				if(result[i].id == 231){
+					bigJson['shaper']['Starforge'].chaosValue = result[i].mean;
+				}
+				// id: 48005, name: "The Gluttonous Tide
+				if(result[i].id == 48005){
+					bigJson['eater']['The Gluttonous Tide'].chaosValue = result[i].mean;
+				}
+				// id: 47960, name: "The Annihilating Light"
+				if(result[i].id == 47960){
+					bigJson['exarch']['The Annihilating Light'].chaosValue = result[i].mean;
+				}
 			}
 		});
 };
+
+function getUniqueFlaskValues(){
+	var url = "https://api.poe.watch/get?league="+currentLeague+"&category=flask";
+	fetch(url).then(response => response.json()).then(result => {
+		for(var i = 0; i<result.length;i++){
+			// id: 258, name: "Dying Sun
+			if(result[i].id == 258){
+					bigJson['shaper']['Dying Sun'].chaosValue = result[i].mean;
+			}
+			//id: 1229, name: "Atziri's Promise"
+			if(result[i].id == 1229){
+					bigJson['atziri']['Atziris Promise'].chaosValue = result[i].mean;
+			}
+		}
+	});
+};
+
+
 
 getBigJson();
 getFragmentValues();
@@ -424,3 +549,5 @@ getJewelValues();
 getUniqueArmorValues();
 getUniqueAccessories();
 getUniqueWeapons();
+getUniqueFlaskValues();
+calculateAverageAwakenedGem()
