@@ -225,7 +225,7 @@ function getFragmentValues(){
 				bigJson['elder']['Fragment of Terror'].chaosValue = result[i].mean;
 				bigJson['uber elder'].setCost += result[i].mean;
 			}
-			//ToDo Atziri
+
 			// 420 Sacrifice of Dusk
 			//698 Sac of Dawn
 			// 841 Sac of Midnight
@@ -253,7 +253,7 @@ function getFragmentValues(){
 				bigJson['atziri']['Mortal Grief'].chaosValue = result[i].mean;
 				bigJson['uber atziri'].setCost += result[i].mean;
 			}
-			//ToDo UberAtziri
+
 
 		}
 
