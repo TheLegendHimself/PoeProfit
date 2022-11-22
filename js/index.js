@@ -289,6 +289,14 @@ function getCurrencyValues(){
 				if(result[i].id == 35647){
 					bigJson['maven']["Elevated Sextant"].chaosValue = result[i].mean;
 				}
+				// 45863 Exceptional Eldritch Ichor
+				if(result[i].id == 45863){
+					bigJson['eater']["Exceptional Eldritch Ichor"].chaosValue = result[i].mean;
+				}
+				// 45851 Exceptional Eldritch Ember
+				if(result[i].id == 45851){
+					bigJson['exarch']["Exceptional Eldritch Ember"].chaosValue = result[i].mean;
+				}
 			}
 		}
 	);
@@ -328,10 +336,91 @@ function getJewelValues(){
 
 };
 
+function getUniqueArmorValues(){
+	var url = "https://api.poe.watch/get?league="+currentLeague+"&category=armour";
+	fetch(url).then(response => response.json()).then(result => {
+			for(var i = 0; i<result.length;i++){
+				// id: 957 Blasphemer's Grasp
+				if(result[i].id == 957){
+					bigJson['elder']['Blasphemers Grasp'].chaosValue = result[i].mean;
+				}
+				//  id: 2640, name: "Indigon"
+				if(result[i].id == 2640){
+					bigJson['uber elder']['Indigon'].chaosValue = result[i].mean;
+				}
+				//  id: 1167, name: "Voidfletcher"
+				if(result[i].id == 1167){
+					bigJson['uber elder']['Voidfletcher'].chaosValue = result[i].mean;
+				}
+				//  id: 34773, name: "The Eternity Shroud",
+				if(result[i].id == 34773){
+					bigJson['uber elder']['The Eternity Shroud'].chaosValue = result[i].mean;
+				}
+			}
+		});
+};
 
+function getUniqueAccessories(){
+	var url = "https://api.poe.watch/get?league="+currentLeague+"&category=accessory";
+	fetch(url).then(response => response.json()).then(result => {
+			for(var i = 0; i<result.length;i++){
+				//id: 1797 Cyclopean Coil
+				if(result[i].id == 1797 ){
+					bigJson['elder']['Cyclopeon Coil'].chaosValue = result[i].mean;
+				}
+				// id: 1570, name: "Impresence"
+				if(result[i].id == 1570 ){
+					bigJson['elder']['Any Impresence'].chaosValue = result[i].mean;
+				}
+				//  id: 653, name: "Mark of the Shaper
+				if(result[i].id == 653 ){
+					bigJson['uber elder']['Mark of the Shaper'].chaosValue = result[i].mean;
+				}
+				// id: 1706, name: "Mark of the Elder"
+				if(result[i].id == 1706 ){
+					bigJson['uber elder']['Mark of the Elder'].chaosValue = result[i].mean;
+				}
+				//  id: 46489, name: "Call of the Void"
+				if(result[i].id == 46489 ){
+					bigJson['uber elder']['Call of the Void'].chaosValue = result[i].mean;
+				}
+			}
+		});
+};
+
+function getUniqueWeapons(){
+	var url = "https://api.poe.watch/get?league="+currentLeague+"&category=weapon";
+	fetch(url).then(response => response.json()).then(result => {
+			for(var i = 0; i<result.length;i++){
+				//id: 1618, name: "Nebuloch"
+				if(result[i].id == 1618 ){
+					bigJson['elder']['Nebuloch'].chaosValue = result[i].mean;
+				}
+				// id: 2338, name: "Hopeshredder"
+				if(result[i].id == 2338 ){
+					bigJson['elder']['Hopeshredder'].chaosValue = result[i].mean;
+				}
+				// id: 2486, name: Shimmeron
+				if(result[i].id == 2486 ){
+					bigJson['elder']['Shimmeron'].chaosValue = result[i].mean;
+				}
+				// id: 2515, name: "Disintegrator
+				if(result[i].id == 2515 ){
+					bigJson['uber elder']['Disintegrator'].chaosValue = result[i].mean;
+				}
+				//id: 34783, name: "Voidforge"
+				if(result[i].id == 34783 ){
+					bigJson['uber elder']['Voidforge'].chaosValue = result[i].mean;
+				}
+			}
+		});
+};
 
 getBigJson();
 getFragmentValues();
 getCurrencyValues();
 getMapValues();
 getJewelValues();
+getUniqueArmorValues();
+getUniqueAccessories();
+getUniqueWeapons();
