@@ -75,7 +75,7 @@ function drawTable(whatFight){
 	}
 	*/
 	// setting current Boss
-	document.getElementById('CurrBoss').innerHTML = whatFight;
+	document.getElementById('CurrBoss').innerHTML = whatFight[0].toUpperCase() + whatFight.substring(1);
 
 	recalculateDrops();
 	recalculateDivPerH();
