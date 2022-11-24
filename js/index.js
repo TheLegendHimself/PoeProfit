@@ -160,18 +160,26 @@ function getBigJson(){
 };
 
 function calculateAverageAwakenedGem(){
-	var url = "https://api.poe.watch/get?league="+currentLeague+"&category=gem";
+	var url = "https://api.poe.watch/get?league="+currentLeague+"&category=gem&gemLevel=1";
 	fetch(url).then(response => response.json()).then(result => {	
 		var awaTotal = 0;
+		var awaSupTotal = 0;
 		var counter = 0;
+		var counter2 = 0;
 		for(var i = 0; i<result.length;i++){
 			if(result[i].name.includes('Awakened')){
-				counter+=1;
-				awaTotal = result[i].mean;
+				if(result[i].name != "Awakened Enhance Support" && result[i].name != "Awakened Empower Support" && result[i].name != "Awakened Enlighten Support"){
+					counter+=1;
+					awaTotal+= result[i].mean;
+				}else{
+					awaSupTotal+=result[i].mean;
+					counter2+=1;
+				}
 			}
 		}
 		bigJson['maven']['Awakened Support Gems'].chaosValue = (awaTotal/counter).toFixed(2);
 		bigJson['sirus']['Awakened Support Gems'].chaosValue = (awaTotal/counter).toFixed(2);
+		bigJson['maven']['Awakened Exceptional Gem'].chaosValue = (awaSupTotal/counter2).toFixed(2);
 	})
 };
 
@@ -316,6 +324,26 @@ function getMapValues(){
 				if(result[i].id == 45954){
 					bigJson['eater'].setCost = result[i].mean;
 				}
+				// id: 47709, name: "Decaying Reliquary Key
+				if(result[i].id == 47709){
+					bigJson['uber elder']['Decaying Reliquary Key'].chaosValue = result[i].mean;
+				}
+				// id: 47700, name: "Visceral Reliquary Key
+				if(result[i].id == 47700){
+					bigJson['eater']['Visceral Reliquary Key'].chaosValue  = result[i].mean;
+				}
+				// id: 47679, name: "Oubliette Reliquary Key
+				if(result[i].id == 47679){
+					bigJson['sirus']['Oubliette Reliquary Key'].chaosValue  = result[i].mean;
+				}
+				//  id: 47666, name: "Archive Reliquary Key"
+				if(result[i].id == 47679){
+					bigJson['exarch']['Archive Reliquary Key'].chaosValue  = result[i].mean;
+				}
+				// id: 47548, name: "Shiny Reliquary Key"
+				if(result[i].id == 47548){
+					bigJson['maven']['Shiny Reliquary Key'].chaosValue  = result[i].mean;
+				}
 			}
 		});
 };
@@ -347,6 +375,11 @@ function getJewelValues(){
 				//id: 46478, name: "Impossible Escape
 				if(result[i].id == 46478){
 					bigJson['maven']['Impossible Escape'].chaosValue = result[i].mean;
+				}
+				// id: 46487, name: "Sublime Vision",
+				if(result[i].id == 46487){
+					bigJson['shaper']['Sublime Vision'].chaosValue = result[i].mean;
+					bigJson['uber elder']['Sublime Vision'].chaosValue = result[i].mean;
 				}
 			}
 		});
