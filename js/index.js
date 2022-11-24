@@ -96,7 +96,7 @@ function getBigJson(){
 	var eaterList = [["The Gluttonous Tide", 46, 0, 0, 0], ["Inextricable Fate", 46, 0, 0, 0],["Melding of the Flesh", 6, 0, 0, 0], ["Ashes of the Stars", 2, 0, 0, 0], ["Exceptional Eldritch Ichor", 0, 0, 0, 0], ["Forbidden Flesh", 2, 0, 6, 1], ["Visceral Reliquary Key", 0, 0, 0, 1]];
 	var exarchList = [["The Annihilating Light", 46, 0, 0, 0], ["Dawnbreaker", 46, 0, 0, 0],["Dissolution of the Flesh", 6, 0, 0, 0], ["Crystallised Omniscience", 2, 0, 0, 0], ["Exceptional Eldritch Ember", 0, 0, 0, 0], ["Forbidden Flame", 2, 0, 6, 1], ["Archive Reliquary Key", 0, 0, 0, 1]];
 	var atziriList = [["Atziris Promise", 0, 0, 0, 0], ["Atziris Step", 0, 0, 0, 0], ["Doryanis Catalyst", 0, 0, 0, 0], ["Atziris Disfavour", 0, 0, 0, 0], ["Triumvirate Authority", 0, 0, 0, 0], ["Doryanis Invitation", 0, 0, 0, 0], ["Mortal Grief", 0, 0, 0, 0], ["Mortal Hope", 0, 0, 0, 0], ["Mortal Rage", 0, 0, 0, 0], ["Mortal Ignorance", 0, 0, 0, 0], ["Sacrificial Grab", 0, 0, 0, 0]];
-	var uberAtziriList = [["Atziris Promise", 0, 0, 0, 0], ["Atziris Step", 0, 0, 0, 0], ["Doryanis Catalyst", 0, 0, 0, 0], ["Atziris Disfavour", 0, 0, 0, 0], ["Triumvirate Authority", 0, 0, 0, 0], ["Doryanis Invitation", 0, 0, 0, 0], ["Sacrificial Grab", 0, 0, 0, 0], ["Atziris Acruity", 0, 0, 0, 0], ["Atziris Reflection", 0, 0, 0, 0], ["Atziris Rule", 0, 0, 0, 0], ["The Vertex", 0, 0, 0, 0], ["Triumvirate Authority", 0, 0, 0, 0], ["Atziris Splendour", 0, 0, 0, 0], ["Pledge of Hands", 0, 0, 0, 0]];
+	var uberAtziriList = [["Atziris Promise", 0, 0, 0, 0], ["Atziris Step", 0, 0, 0, 0], ["Doryanis Catalyst", 0, 0, 0, 0], ["Atziris Disfavour", 0, 0, 0, 0], ["Triumvirate Authority", 0, 0, 0, 0], ["Doryanis Invitation", 0, 0, 0, 0], ["Sacrificial Grab", 0, 0, 0, 0], ["Atziris Acuity", 0, 0, 0, 0], ["Atziris Reflection", 0, 0, 0, 0], ["Atziris Rule", 0, 0, 0, 0], ["The Vertex", 0, 0, 0, 0], ["Triumvirate Authority", 0, 0, 0, 0], ["Atziris Splendour", 0, 0, 0, 0], ["Pledge of Hands", 0, 0, 0, 0]];
 	var newBigJson = {"shaper":{"setCost" : 0}, "elder":{"setCost" : 0}, "sirus":{"setCost" : 0}, "maven":{"setCost" : 0}, "uber elder":{"setCost" : 0}, "atziri":{"setCost" : 0}, "uber atziri":{"setCost" : 0}, "exarch":{"setCost" : 0}, "eater":{"setCost" : 0}, "The Formed":{"setCost":0}, "The Feared":{"setCost":0}, "The Forgotten":{"setCost":0}, "The Hidden":{"setCost":0}, "The Elderslayer":{"setCost":0}, "The Twisted":{"setCost":0}};
 	for(var i = 0; i<shaperList.length;i++){
 		newBigJson['shaper'][shaperList[i][0]] = {"dropChance" : shaperList[i][1], "chaosValue": shaperList[i][2], "talentedDrop": shaperList[i][3], "uberDrop": shaperList[i][4]};
@@ -463,6 +463,14 @@ function getUniqueArmorValues(){
 				// id: 737, name: "Atziri's Splendour"
 				if(result[i].id == 737){
 					bigJson['uber atziri']['Atziris Splendour'].chaosValue = result[i].mean;
+				}
+				// id: 158, name: "Atziri's Acuity"
+				if(result[i].id == 158){
+					bigJson['uber atziri']['Atziris Acuity'].chaosValue = result[i].mean;
+				}
+				// 47946, name: "Soul Ascension"
+				if(result[i].id == 47946){
+					bigJson['uber elder']['Soul Ascension'].chaosValue = result[i].mean;
 				}
 			}
 		});
