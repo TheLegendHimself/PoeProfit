@@ -28,3 +28,28 @@ pre{
 #DivPerH{
 	font-weight: bold;
 }
+#BossText{
+	font-size: xx-large;
+	display: flex; 
+	align-items: center;
+	justify-content: center;
+	background-color: #132212;
+}
+#DivToChaos{
+	margin-left: 5px; 
+	padding: 5px; 
+	text-align: center;
+	background-color: #132212;
+}
+#CurrBoss{
+	margin-right: 5px; 
+	padding: 5px; 
+	text-align: center;
+	background-color: #132212;
+}
+table tr{
+	background-color: #132212;
+}
+th{
+
+}
