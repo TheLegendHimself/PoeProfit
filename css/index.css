@@ -9,19 +9,17 @@ input{
 	background-color: #131212;
 	color:white;
 }
-
 .border{
 	color: white;
 }
-
 h1{
 	color: white;
 }
-/*
 .btn{
-	background-color: lightblue;
+	background-color: #242212;
+	border: #242212;
 }
-*/
+
 pre{
 	color: white;
 }
@@ -33,23 +31,23 @@ pre{
 	display: flex; 
 	align-items: center;
 	justify-content: center;
-	background-color: #132212;
+	background-color: #242212;
 }
 #DivToChaos{
 	margin-left: 5px; 
 	padding: 5px; 
 	text-align: center;
-	background-color: #132212;
+	background-color: #242212;
 }
 #CurrBoss{
 	margin-right: 5px; 
 	padding: 5px; 
 	text-align: center;
-	background-color: #132212;
+	background-color: #242212;
 }
 table tr{
-	background-color: #132212;
+	background-color: #242212;
 }
-th{
-
+table th{
+	background-color: #242212;
 }
