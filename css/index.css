@@ -1,0 +1,30 @@
+body{
+	background-color: #131212;
+}
+input{
+	background-color: #131212;
+	color:white;
+}
+.input-group-text{
+	background-color: #131212;
+	color:white;
+}
+
+.border{
+	color: white;
+}
+
+h1{
+	color: white;
+}
+/*
+.btn{
+	background-color: lightblue;
+}
+*/
+pre{
+	color: white;
+}
+#DivPerH{
+	font-weight: bold;
+}
