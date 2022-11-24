@@ -35,6 +35,8 @@ function recalculateDivPerH(){
 };
 
 function drawTable(whatFight){
+	var whatFightUpper = whatFight;
+	whatFight = whatFight.toLowerCase();
 	tableOrigin = document.getElementById('DropTable');
 	document.getElementById('Cost').value = bigJson[whatFight].setCost.toFixed(0);
 	removeChilds(tableOrigin);
@@ -75,7 +77,7 @@ function drawTable(whatFight){
 	}
 	*/
 	// setting current Boss
-	document.getElementById('CurrBoss').innerHTML = whatFight[0].toUpperCase() + whatFight.substring(1);
+	document.getElementById('CurrBoss').innerHTML = whatFightUpper;
 
 	recalculateDrops();
 	recalculateDivPerH();
