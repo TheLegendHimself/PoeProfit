@@ -35,14 +35,16 @@
         			<div class="col-xl-2 col-lg-2 col-sm-12 border border-secondary">
     					<div class="border border-primary text-center" style="font-size: large;display: flex; align-items: center; justify-content: center;">Bosses </div>
                         <br>
-                        <div class="input-group-prepend">
-                            <div class="input-group-text">
-                                <input type="checkbox" aria-label="Checkbox for following text input" id="AtlasCheckbox" checked>
-                                &nbsp;&nbsp;Atlas Passives &nbsp;&nbsp;&nbsp;
-                                <input type="checkbox" aria-label="Checkbox for following text input" id="UberCheckbox" >
-                                &nbsp;&nbsp;85 Area
-                            </div>                                                          
-        				</div>
+                        <div class="container-fluid">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <input type="checkbox" aria-label="Checkbox for following text input" id="AtlasCheckbox" checked>
+                                    &nbsp;&nbsp;Atlas Passives &nbsp;&nbsp;&nbsp;
+                                    <input type="checkbox" aria-label="Checkbox for following text input" id="UberCheckbox" >
+                                    &nbsp;&nbsp;85 Area
+                                </div>                                                          
+            				</div>
+                        </div>
         				<br>
         				<div class="container-fluid">
     	    				<div class="border" style="text-align: center;">
@@ -102,56 +104,43 @@
                     <!-- begin Tables -->
         			<div class="col-xl-10 col-lg-10 col-sm-12 border">
         				<div class="container-fluid">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th class="">Cost per run (Chaos)</th>
+                                        <th class="">Drop per run (Chaos)</th>
+                                        <th class="">Time per run (minutes)</th>
+                                        <th class="">Divines per hour</th>
+                                    </tr>
+                                </thead>   
+                                <tbody>
+                                    <tr>
+                                        <td><input type="number" id="Cost" onchange="recalculateDivPerH()" value="50"></td>
+                                        <td id="EndDrop">0</td>
+                                        <td><input type="number" id="Time" onchange="recalculateDivPerH()" value="6"></td>
+                                        <td id="DivPerH">420</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                                    <!--
+                                    <div class="row">
+                                        <div class="offset-4" style="background: black url('img/Aqua.gif');width: 270px; height: 480px;">
+                                    </div>    
+                                    -->
 
-        					<div class="row">
-                                <div class="col-xl-12 col-lg-12 col-sm-12">
-                                        <table class="table table-striped">
-                                            <thead>
-                                                <tr>
-                                                    <th class="">Cost per run (Chaos)</th>
-                                                    <th class="">Drop per run (Chaos)</th>
-                                                    <th class="">Time per run (minutes)</th>
-                                                    <th class="">Divines per hour</th>
-                                                </tr>
-                                            </thead>   
-                                            <tbody>
-                                                <tr>
-                                                    <td><input type="number" id="Cost" onchange="recalculateDivPerH()" value="50"></td>
-                                                    <td id="EndDrop">0</td>
-                                                    <td><input type="number" id="Time" onchange="recalculateDivPerH()" value="6"></td>
-                                                    <td id="DivPerH">420</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                        <!--
-                                        <div class="row">
-                                            <div class="offset-4" style="background: black url('img/Aqua.gif');width: 270px; height: 480px;">
-                                        </div>    
-                                        -->
-                                    </div>
-                                      
-                                </div>
-                                <br> <br>
-    	    					<div class="col-xl-12 col-lg-12 col-sm-12">
-    	    						<div class="container-fluid">
-    		                    		<table class="table table-striped">
-                                            <thead>
-        		                       			<tr>
-        				                           	<th class="col-6">Itemname</th>
-        				                            <th class="col-2">Dropchance</th>
-        				                            <th class="col-2">Chaosvalue</th>
-        				                            <th class="col-2">Per run Value</th>
-        		                        		</tr>
-                                            </thead>
-    		                       		 	<tbody id="DropTable"></tbody>
-    		                   			</table>
-    	                   			</div>
-    	    					</div>
+                            <br> <br>
 
-    	    					
-    	    				   
-                            </div>  
-
+                    		<table class="table table-striped">
+                                <thead>
+	                       			<tr>
+			                           	<th class="col-6">Itemname</th>
+			                            <th class="col-2">Dropchance</th>
+			                            <th class="col-2">Chaosvalue</th>
+			                            <th class="col-2">Per run Value</th>
+	                        		</tr>
+                                </thead>
+                       		 	<tbody id="DropTable"></tbody>
+                   			</table>
         				</div>
         			</div>
                     <!-- Endtables-->
