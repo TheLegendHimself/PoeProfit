@@ -86,13 +86,13 @@ function drawTable(whatFight){
 function getBigJson(){
 	// -------------------------------- Bosses 
 	// List[0] = name, [1] = DropChance, [2] = ChaosValue, [3] = talentedDrop (= +base drop), [4] = uberDrop (= +base drop)
-	var shaperList = [["Fragment of Knowledge",50, 0, 0, 0], ["Fragment of Shape",50, 0, 0, 0], ["Shapers Touch", 50, 0, 0, 0], ["Dying Sun", 13, 0, 0, 0], ["Solstice Vigil", 5, 0, 0, 0],["Echoes of Cremation", 5, 0, 0, 0], ["Starforge", 2, 0, 0, 0], ["Orb of Dominance", 2, 0, 0, 0]];
-	var elderList = [["Fragment of Emptiness",50, 0, 0, 0], ["Fragment of Terror",50, 0, 0, 0], ["Blasphemers Grasp", 25, 0, 0, 0], ["Cyclopeon Coil",25, 0, 0, 0], ["Nebuloch",10, 0, 0, 0], ["Hopeshredder",10, 0, 0, 0], ["Shimmeron",10, 0, 0, 0], ["Any Impresence",20, 0, 0, 0], ["Orb of Dominance",5, 0, 0, 0], ["Watchers Eye",25, 0, 10, 0]];
-	var sirusList = [["Crown of the Inward Eye",38, 0, 0, 0], ["Hands of the High Templar",25, 0, 0, 0], ["Thread of Hope",20, 0, 0, 0], ["The Burden of Truth",15, 0, 0, 0], ["Orb of Dominance",3, 0, 0, 0], ["Awakeners Orb",20, 0, 0, 0], ["A Fate Worse Then Death",4, 0, 0, 0]];
-	var mavenList = [["Legacy of Fury", 32, 0, 0, 0], ["Viridis Veil", 20, 0, 0, 0], ["Arns Anguish", 12, 0, 0, 0], ["Gravens Secret", 12, 0, 0, 0], ["Olesyas Delight", 12, 0, 0, 0], ["Impossible Escape", 10, 0, 0, 0], ["Doppelgänger Guise", 2, 0, 0, 0], ["Orb of Conflict", 25, 0, 0, 0], ["Elevated Sextant", 30, 0, 0, 0],["Awakened Support Gems", 55, 0, 0, 0]];
-	var uberElderList = [["Mark of the Shaper", 30, 0, 0, 0], ["Mark of the Elder", 30, 0, 0, 0], ["Indigon", 12, 0, 0, 0], ["Call of the Void", 12, 0, 0, 0], ["Voidfletcher",6, 0, 0, 0], ["Disintegrator", 6, 0, 0, 0],["Voidforge",2, 0, 0, 0],["The Eternity Shroud",2, 0, 0, 0], ["Watchers Eye", 25, 0, 10, 0], ["Orb of Dominance", 5, 0, 0, 5]];
-	var eaterList = [["The Gluttonous Tide", 46, 0, 0, 0], ["Inextricable Fate", 46, 0, 0, 0],["Melding of the Flesh", 6, 0, 0, 0], ["Ashes of the Stars", 2, 0, 0, 0], ["Exceptional Eldritch Ichor", 0, 0, 0, 0]];
-	var exarchList = [["The Annihilating Light", 46, 0, 0, 0], ["Dawnbreaker", 46, 0, 0, 0],["Dissolution of the Flesh", 6, 0, 0, 0], ["Crystallised Omniscience", 2, 0, 0, 0], ["Exceptional Eldritch Ember", 0, 0, 0, 0] ];
+	var shaperList = [["Fragment of Knowledge",50, 0, 0, 0], ["Fragment of Shape",50, 0, 0, 0], ["Shapers Touch", 50, 0, 0, 0], ["Dying Sun", 13, 0, 0, 0], ["Solstice Vigil", 5, 0, 0, 0],["Echoes of Cremation", 5, 0, 0, 0], ["Starforge", 2, 0, 0, 0], ["Orb of Dominance", 2, 0, 0, 2], ["Sublime Vision", 0, 0, 0, 4], ["Cosmic Reliquary Key", 0, 0, 0, 0]];
+	var elderList = [["Fragment of Emptiness",50, 0, 0, 0], ["Fragment of Terror",50, 0, 0, 0], ["Blasphemers Grasp", 25, 0, 0, 0], ["Cyclopeon Coil",25, 0, 0, 0], ["Nebuloch",10, 0, 0, 0], ["Hopeshredder",10, 0, 0, 0], ["Shimmeron",10, 0, 0, 0], ["Any Impresence",20, 0, 0, 0], ["Orb of Dominance",5, 0, 0, 5], ["Watchers Eye",25, 0, 10, 0]];
+	var sirusList = [["Crown of the Inward Eye",38, 0, 0, 0], ["Hands of the High Templar",25, 0, 0, 0], ["Thread of Hope",20, 0, 0, 0], ["The Burden of Truth",15, 0, 0, 0], ["Orb of Dominance",3, 0, 0, 0], ["Awakeners Orb",20, 0, 0, 0], ["A Fate Worse Then Death",4, 0, 0, 0], ["Thread of Hope (Massive Ring)", 0, 0, 0, 2], ["Oubliette Reliquary Key", 0, 0, 0, 0], ["Awakened Support Gems", 0, 0, 0, 0]];
+	var mavenList = [["Legacy of Fury", 32, 0, 0, 0], ["Viridis Veil", 20, 0, 0, 0], ["Arns Anguish", 12, 0, 0, 0], ["Gravens Secret", 12, 0, 0, 0], ["Olesyas Delight", 12, 0, 0, 0], ["Impossible Escape", 10, 0, 0, 0], ["Doppelgänger Guise", 2, 0, 0, 0], ["Orb of Conflict", 30, 0, 7.5, 0], ["Elevated Sextant", 30, 0, 0, 70],["Awakened Support Gems", 55, 0, 13, 0], ["Awakened Exceptional Gem", 0, 0, 0, 0], ["Shiny Reliquary Key", 0, 0, 0, 0]];
+	var uberElderList = [["Mark of the Shaper", 30, 0, 0, 0], ["Mark of the Elder", 30, 0, 0, 0], ["Indigon", 12, 0, 0, 0], ["Call of the Void", 12, 0, 0, 0], ["Voidfletcher",6, 0, 0, 0], ["Disintegrator", 6, 0, 0, 0],["Voidforge",2, 0, 0, 0],["The Eternity Shroud",2, 0, 0, 0], ["Watchers Eye", 25, 0, 10, 0], ["Orb of Dominance", 5, 0, 0, 5], ["Sublime Vision", 0, 0, 0, 4], ["Soul Ascension", 0, 0, 0, 0], ["Decaying Reliquary Key", 0, 0, 0, 0]];
+	var eaterList = [["The Gluttonous Tide", 46, 0, 0, 0], ["Inextricable Fate", 46, 0, 0, 0],["Melding of the Flesh", 6, 0, 0, 0], ["Ashes of the Stars", 2, 0, 0, 0], ["Exceptional Eldritch Ichor", 0, 0, 0, 0], ["Forbidden Flesh", 2, 0, 6, 1], ["Visceral Reliquary Key", 0, 0, 0, 1]];
+	var exarchList = [["The Annihilating Light", 46, 0, 0, 0], ["Dawnbreaker", 46, 0, 0, 0],["Dissolution of the Flesh", 6, 0, 0, 0], ["Crystallised Omniscience", 2, 0, 0, 0], ["Exceptional Eldritch Ember", 0, 0, 0, 0], ["Forbidden Flame", 2, 0, 6, 1], ["Archive Reliquary Key", 0, 0, 0, 1]];
 	var atziriList = [["Atziris Promise", 0, 0, 0, 0], ["Atziris Step", 0, 0, 0, 0], ["Doryanis Catalyst", 0, 0, 0, 0], ["Atziris Disfavour", 0, 0, 0, 0], ["Triumvirate Authority", 0, 0, 0, 0], ["Doryanis Invitation", 0, 0, 0, 0], ["Mortal Grief", 0, 0, 0, 0], ["Mortal Hope", 0, 0, 0, 0], ["Mortal Rage", 0, 0, 0, 0], ["Mortal Ignorance", 0, 0, 0, 0], ["Sacrificial Grab", 0, 0, 0, 0]];
 	var uberAtziriList = [["Atziris Promise", 0, 0, 0, 0], ["Atziris Step", 0, 0, 0, 0], ["Doryanis Catalyst", 0, 0, 0, 0], ["Atziris Disfavour", 0, 0, 0, 0], ["Triumvirate Authority", 0, 0, 0, 0], ["Doryanis Invitation", 0, 0, 0, 0], ["Sacrificial Grab", 0, 0, 0, 0], ["Atziris Acruity", 0, 0, 0, 0], ["Atziris Reflection", 0, 0, 0, 0], ["Atziris Rule", 0, 0, 0, 0], ["The Vertex", 0, 0, 0, 0], ["Triumvirate Authority", 0, 0, 0, 0], ["Atziris Splendour", 0, 0, 0, 0], ["Pledge of Hands", 0, 0, 0, 0]];
 	var newBigJson = {"shaper":{"setCost" : 0}, "elder":{"setCost" : 0}, "sirus":{"setCost" : 0}, "maven":{"setCost" : 0}, "uber elder":{"setCost" : 0}, "atziri":{"setCost" : 0}, "uber atziri":{"setCost" : 0}, "exarch":{"setCost" : 0}, "eater":{"setCost" : 0}, "The Formed":{"setCost":0}, "The Feared":{"setCost":0}, "The Forgotten":{"setCost":0}, "The Hidden":{"setCost":0}, "The Elderslayer":{"setCost":0}, "The Twisted":{"setCost":0}};
@@ -123,6 +123,7 @@ function getBigJson(){
 	for(var i = 0; i<uberAtziriList.length;i++){
 		newBigJson['uber atziri'][uberAtziriList[i][0]] = {"dropChance" : uberAtziriList[i][1], "chaosValue": uberAtziriList[i][2], "talentedDrop": uberAtziriList[i][3], "uberDrop": uberAtziriList[i][4]};
 	}
+	/*
 	// --------------------------------- Invitations
 	var theFormedList = [["The Maven's Writ", 70, 0, 0, 0],["Orb of Conflict", 1, 0, 0, 0], ["Fragment of the Hydra", 1, 0, 0, 0], ["Fragment of the Minotaur", 1, 0, 0, 0], ["Fragment of the Phoenix", 1, 0, 0, 0], ["Fragment of the Chimera", 1, 0, 0, 0]];
 	var theHiddenList = [["The Maven's Writ", 70, 0, 0, 0],["Orb of Conflict", 1, 0, 0, 0], ["Tul's Flawless Breachstone", 1, 0, 0, 0], ["Uul-Netol's Flawless Breachstone", 1, 0, 0, 0], ["Xoph's Flawless Breachstone", 1, 0, 0, 0], ["Esh's Flawless Breachstone", 1, 0, 0, 0]];
@@ -150,7 +151,7 @@ function getBigJson(){
 		newBigJson['The Elderslayer'][theElderslayerList[i][0]] = {"dropChance" : theElderslayerList[i][1], "chaosValue": theElderslayerList[i][2], "talentedDrop": theElderslayerList[i][3], "notassigned": theElderslayerList[i][4]};
 	}
 
-
+	*/
 
 
 	bigJson = newBigJson;
@@ -168,7 +169,7 @@ function calculateAverageAwakenedGem(){
 			}
 		}
 		bigJson['maven']['Awakened Support Gems'].chaosValue = (awaTotal/counter).toFixed(2);
-
+		bigJson['sirus']['Awakened Support Gems'].chaosValue = (awaTotal/counter).toFixed(2);
 	})
 };
 
