@@ -40,42 +40,23 @@ function drawTable(whatFight){
 	tableOrigin = document.getElementById('DropTable');
 	document.getElementById('Cost').value = bigJson[whatFight].setCost.toFixed(0);
 	removeChilds(tableOrigin);
-	//if(['shaper', 'elder', 'sirus', 'maven', 'uber elder', 'eater', 'exarch', 'atziri', 'uber atziri', 'maven'].includes(whatFight))
-	//{
+
 		
-		for(var i=0; i<Object.keys(bigJson[whatFight]).length;i++){
-			currItem = Object.keys(bigJson[whatFight])[i];
-			if(currItem != "setCost"){
-				currDropChance = bigJson[whatFight][currItem].dropChance;
-				currChaosValue = bigJson[whatFight][currItem].chaosValue;
-				if(getCheckboxState('AtlasCheckbox') == 1 && bigJson[whatFight][currItem].talentedDrop != 0){
-					currDropChance += bigJson[whatFight][currItem].talentedDrop;
-				}
-				if(getCheckboxState('UberCheckbox') == 1 && bigJson[whatFight][currItem].uberDrop != 0){
-					currDropChance += bigJson[whatFight][currItem].uberDrop;
-				}
-				var newRow = '<tr><td class="col-6"> ' + currItem + '</td><td class="col-2" id="DropChance'+i+'">' + currDropChance + '</td><td class="col-2"><input type="number" id="Chaos'+i+'" onchange="recalculateDrops()" value="'+ currChaosValue  + '"></td><td class="col-2" id="PerRunValue'+i+'">' + (currChaosValue*currDropChance/100).toFixed(2) + '</td></tr>' ;
-				tableOrigin.insertRow().innerHTML = newRow;
+	for(var i=0; i<Object.keys(bigJson[whatFight]).length;i++){
+		currItem = Object.keys(bigJson[whatFight])[i];
+		if(currItem != "setCost"){
+			currDropChance = bigJson[whatFight][currItem].dropChance;
+			currChaosValue = bigJson[whatFight][currItem].chaosValue;
+			if(getCheckboxState('AtlasCheckbox') == 1 && bigJson[whatFight][currItem].talentedDrop != 0){
+				currDropChance += bigJson[whatFight][currItem].talentedDrop;
 			}
-		}
-	//}
-	//else invitation
-		/*
-	if(['The Formed', 'The Twisted', 'The Feared', 'The Hidden', 'The Forgotten', 'The Elderslayer'].includes(whatFight)){
-		for(var i=0; i<Object.keys(bigJson[whatFight]).length;i++){
-			currItem = Object.keys(bigJson[whatFight])[i];
-			if(currItem != "setCost"){
-				currDropChance = bigJson[whatFight][currItem].dropChance;
-				currChaosValue = bigJson[whatFight][currItem].chaosValue;
-				if(atlasStateInv == 1 && bigJson[whatFight][currItem].talentedDrop != 0){
-					currDropChance += bigJson[whatFight][currItem].talentedDrop;
-				}
-				var newRow = '<tr><td class="col-6"> ' + currItem + '</td><td class="col-2" id="DropChance'+i+'">' + currDropChance + '</td><td class="col-2"><input type="number" id="Chaos'+i+'" onchange="recalculateDrops()" value="'+ currChaosValue  + '"></td><td class="col-2" id="PerRunValue'+i+'">' + (currChaosValue*currDropChance/100).toFixed(2) + '</td></tr>' ;
-				tableOrigin.insertRow().innerHTML = newRow;
+			if(getCheckboxState('UberCheckbox') == 1 && bigJson[whatFight][currItem].uberDrop != 0){
+				currDropChance += bigJson[whatFight][currItem].uberDrop;
 			}
+			var newRow = '<tr><td class="col-6"> ' + currItem + '</td><td class="col-2" id="DropChance'+i+'">' + currDropChance + '</td><td class="col-2"><input type="number" id="Chaos'+i+'" onchange="recalculateDrops()" value="'+ currChaosValue  + '"></td><td class="col-2" id="PerRunValue'+i+'">' + (currChaosValue*currDropChance/100).toFixed(2) + '</td></tr>' ;
+			tableOrigin.insertRow().innerHTML = newRow;
 		}
 	}
-	*/
 	// setting current Boss
 	document.getElementById('CurrBoss').innerHTML = whatFightUpper;
 
