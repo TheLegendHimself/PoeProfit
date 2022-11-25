@@ -459,7 +459,6 @@ function getUniqueAccessories(){
 				// id: 672, name: "Doryani's Invitation
 				if(result[i].id == 672){
 					bigJson['atziri']['Doryanis Invitation'].chaosValue = result[i].mean;
-					//bigJson['uber atziri']['Doryanis Invitation'].chaosValue = result[i].mean;
 				}
 			}
 		});
