@@ -33,16 +33,12 @@
         	<div class="container-fluid">
         		<div class="row">
                     <!-- Begin Bosslist -->
-        			<div class="col-2">
+        			<div class="col-lg-2 col-sm-4 col-12">
                         <div class="">
         					<div class="border border-secondary text-center" id="BossText">Bosses </div>
                             <br>
                             <div class="container-fluid input-group-prepend">
                                 <div>
-                                    <div class="input-group-text">
-                                        <input type="checkbox" id="AtlasCheckbox" onchange="redrawTable()" checked>&nbsp;&nbsp;Atlas 
-                                    </div>
-
                                     <div class="input-group-text">
                                         <input type="checkbox" id="UberCheckbox" onchange="redrawTable()">&nbsp;&nbsp;85 Area
                                     </div>                                  
@@ -80,41 +76,44 @@
         	    			</div>
                         </div>
                     </div>
-        			<div class="col-10">
-        				<div class="container-fluid">
-                            <table class="table table-striped">
-                                <thead>
-                                    <tr>
-                                        <th class="">Cost per run (Chaos)</th>
-                                        <th class="">Drop per run (Chaos)</th>
-                                        <th class="">Time per run (minutes)</th>
-                                        <th class="">Divines per hour</th>
-                                    </tr>
-                                </thead>   
-                                <tbody>
-                                    <tr>
-                                        <td><input type="number" id="Cost" onchange="recalculateDivPerH()" value="50"></td>
-                                        <td id="EndDrop">0</td>
-                                        <td><input type="number" id="Time" onchange="recalculateDivPerH()" value="6"></td>
-                                        <td id="DivPerH">420</td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                    <!-- Begin Tables -->
+        			<div class="col-lg-10 col-sm-8 col-12">
+                        <div>
+            				<div class="container-fluid">
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th class="col-6">Cost per run (Chaos)</th>
+                                            <th class="col-2">Drop per run (Chaos)</th>
+                                            <th class="col-2">Time per run (minutes)</th>
+                                            <th class="col-2">Divines per hour</th>
+                                        </tr>
+                                    </thead>   
+                                    <tbody>
+                                        <tr>
+                                            <td class="col-6"><input type="number" id="Cost" onchange="recalculateDivPerH()" value="50"></td>
+                                            <td class="col-2" id="EndDrop">0</td>
+                                            <td class="col-2"><input type="number" id="Time" onchange="recalculateDivPerH()" value="6"></td>
+                                            <td class="col-2" id="DivPerH">420</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
 
-                            <br> <br>
+                                <br> <br>
 
-                    		<table class="table table-striped">
-                                <thead>
-	                       			<tr>
-			                           	<th class="col-6">Itemname</th>
-			                            <th class="col-2">Dropchance</th>
-			                            <th class="col-2">Chaosvalue</th>
-			                            <th class="col-2">Per run Value</th>
-	                        		</tr>
-                                </thead>
-                       		 	<tbody id="DropTable"></tbody>
-                   			</table>
-        				</div>
+                        		<table class="table table-striped">
+                                    <thead>
+    	                       			<tr>
+    			                           	<th class="col-6">Itemname</th>
+    			                            <th class="col-2">Dropchance (%)</th>
+    			                            <th class="col-2">Chaosvalue</th>
+    			                            <th class="col-2">Per run Value</th>
+    	                        		</tr>
+                                    </thead>
+                           		 	<tbody id="DropTable"></tbody>
+                       			</table>
+            				</div>
+                        </div>
         			</div>
                     <!-- Endtables-->
         		</div>
