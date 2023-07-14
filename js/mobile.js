@@ -545,7 +545,7 @@ fillBigJson();
 
 
 
-setTimeout(fillValues, 250);
+setTimeout(fillValues, 500);
 	
 /*
 Promise.all([
