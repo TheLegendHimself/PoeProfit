@@ -1,4 +1,4 @@
-if(screen.width > 991){
+if(window.width > 991){
 	window.location = 'index.html'
 }
 
@@ -543,6 +543,11 @@ function fillValues(){
 
 fillBigJson();
 
+
+
+setTimeout(fillValues, 250);
+	
+/*
 Promise.all([
     this.SetCostForNotAvailableItems(),
 	this.getFragmentValues(),
@@ -558,3 +563,4 @@ Promise.all([
 .then(function(values) {
     this.fillValues();
 }.bind(this));
+*/
