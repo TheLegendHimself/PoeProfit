@@ -1,0 +1,54 @@
+body{
+	background-color: #191919;
+}
+input{
+	background-color: #191919;
+	color:lightblue;
+}
+.input-group-text{
+	background-color: #191919;
+	color:lightblue;
+}
+.border{
+	color: lightblue;
+}
+h1{
+	color: lightcoral;
+}
+.btn{
+	background-color: #15191d;
+	color: lightblue;
+	border: #15191d;
+}
+
+pre{
+	color: lightblue;
+}
+#DivPerH{
+	font-weight: bold;
+}
+#BossText{
+	font-size: xx-large;
+	display: flex; 
+	align-items: center;
+	justify-content: center;
+	background-color: #15191d;
+}
+#DivToChaos{
+	margin-left: 5px; 
+	padding: 5px; 
+	text-align: center;
+	background-color: #15191d;
+}
+#CurrBoss{
+	margin-right: 5px; 
+	padding: 5px; 
+	text-align: center;
+	background-color: #15191d;
+}
+table tr{
+	background-color: #15191d;
+}
+table th{
+	background-color: #15191d;
+}

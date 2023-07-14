@@ -1,90 +1,16 @@
-// divine chaos value
-
-if(screen.width < 991){
-	window.location = 'mobile.html'
+if(screen.width > 991){
+	window.location = 'index.html'
 }
-var divineChaosValue = 150;
-bigJson = {'shaper': {'Fragment of Knowledge': {'dropChance': 50.0, 'uberDrop': 0.0}, 'Fragment of Shape': {'dropChance': 50.0,   'uberDrop': 0.0}, 'Shapers Touch': {'dropChance': 51.5,   'uberDrop': 0.0}, 'Voidwalker': {'dropChance': 24.0,   'uberDrop': 0.0}, 'Dying Sun': {'dropChance': 16.0,   'uberDrop': 0.0}, 'Starforge': {'dropChance': 3.5,   'uberDrop': 0.0}, 'Solstice Vigil': {'dropChance': 5.0,   'uberDrop': 0.0}, 'Echoes of Creation': {'dropChance': 0.0,   'uberDrop': 10.47}, 'Sublime Vision': {'dropChance': 0.0,   'uberDrop': 4.0}, 'Cosmic Reliquary Key': {'dropChance': 0.0,   'uberDrop': 0.0}, 'Orb of Dominance': {'dropChance': 3.0,   'uberDrop': 3.0}, 'setCost': 0}, 'elder': {'Fragment of Terror': {'dropChance': 50.0,   'uberDrop': 0.0}, 'Fragment of Emptiness': {'dropChance': 50.0,   'uberDrop': 0.0}, 'Blasphemers Grasp': {'dropChance': 25.0,   'uberDrop': 0.0}, 'Cyclopean Coil': {'dropChance': 25.0,   'uberDrop': 0.0}, 'Nebuloch': {'dropChance': 10.0,   'uberDrop': 0.0}, 'Hopeshredder': {'dropChance': 10.0,   'uberDrop': 0.0}, 'Shimmeron': {'dropChance': 10.0,   'uberDrop': 0.0}, 'Any Impresence': {'dropChance': 20.0,   'uberDrop': 0.0}, 'Orb of Dominance': {'dropChance': 5.0,   'uberDrop': 5.0}, 'Watchers Eye': {'dropChance': 25.0, 'talentedDrop': 10.0, 'uberDrop': 0.0}, 'setCost': 0}, 'eater': {'The Gluttonous Tide': {'dropChance': 45.0,   'uberDrop': 0.0}, 'Inextricable Fate': {'dropChance': 33.0,   'uberDrop': 0.0}, 'Melding of the Flesh': {'dropChance': 5.0,   'uberDrop': 0.0}, 'Ashes of the Stars': {'dropChance': 2.0,   'uberDrop': 0.0}, 'Forbidden Flesh': {'dropChance': 8.0, 'talentedDrop': 2.0, 'uberDrop': 2.0}, 'Visceral Reliquary Key': {'dropChance': 0.0,   'uberDrop': 0.0}, 'Exceptional Eldritch Ichor': {'dropChance': 40.0,   'uberDrop': 35.0}, 'setCost': 0}, 'exarch': {'The Annihilating Light': {'dropChance': 33.0,   'uberDrop': 0.0}, 'Dawnbreaker': {'dropChance': 33.0,   'uberDrop': 0.0}, 'Dissolution of the Flesh': {'dropChance': 10.0,   'uberDrop': 0.0}, 'Crystallised Omniscience': {'dropChance': 2.0,   'uberDrop': 0.0}, 'Forbidden Flame': {'dropChance': 8.0, 'talentedDrop': 2.0, 'uberDrop': 2.0}, 'Archive Reliquary Key': {'dropChance': 0.0,   'uberDrop': 0.0}, 'Exceptional Eldritch Ember': {'dropChance': 40.0,   'uberDrop': 35.0}, 'setCost': 0}, 'atziri': {'Atziris Promise': {'dropChance': 67.97,   'uberDrop': 0.0}, 'Atziris Step': {'dropChance': 12.2,   'uberDrop': 0.0}, 'Doryanis Catalyst': {'dropChance': 4.58,   'uberDrop': 0.0}, 'Atziris Disfavour': {'dropChance': 0.0,   'uberDrop': 0.0}, 'Triumvirate Authority': {'dropChance': 0.0,   'uberDrop': 0.0}, 'Doryanis Invitation': {'dropChance': 15.25,   'uberDrop': 0.0}, 'Mortal Grief': {'dropChance': 15.47,   'uberDrop': 0.0}, 'Mortal Ignorance': {'dropChance': 10.68,   'uberDrop': 0.0}, 'Mortal Hope': {'dropChance': 5.23,   'uberDrop': 0.0}, 'Mortal Rage': {'dropChance': 10.02,   'uberDrop': 0.0}, 'Sacrificial Garb': {'dropChance': 0.0,   'uberDrop': 0.0}, 'setCost': 0}, 'uber elder': {'Mark of the Shaper': {'dropChance': 30.0,   'uberDrop': 0.0}, 'Mark of the Elder': {'dropChance': 30.0,   'uberDrop': 0.0}, 'Indigon': {'dropChance': 16.88,   'uberDrop': 0.0}, 'Call of the Void': {'dropChance': 0.0,   'uberDrop': 14.0}, 'Voidfletcher': {'dropChance': 14.0,   'uberDrop': 0.0}, 'Disintegrator': {'dropChance': 7.5,   'uberDrop': 0.0}, 'Voidforge': {'dropChance': 3.0,   'uberDrop': 2.0}, 'The Eternity Shroud': {'dropChance': 2.0,   'uberDrop': 0.0}, 'Any Double Impresence': {'dropChance': 0.0,   'uberDrop': 2.0}, 'Soul Ascension': {'dropChance': 0.0,   'uberDrop': 0.0}, 'Decaying Reliquary Key': {'dropChance': 0.0,   'uberDrop': 0.0}, 'Watchers Eye': {'dropChance': 25.0, 'talentedDrop': 10.0, 'uberDrop': 0.0}, 'Sublime Vision': {'dropChance': 0.0,   'uberDrop': 4.0}, 'Orb of Dominance': {'dropChance': 5.0, 'talentedDrop': 5.0, 'uberDrop': 0.0}, 'setCost': 0}, 'uber atziri': {'Atziris Acuity': {'dropChance': 3.48,   'uberDrop': 0.0}, 'Atziris Reflection': {'dropChance': 0.0,   'uberDrop': 0.0}, 'Atziris Rule': {'dropChance': 0.0,   'uberDrop': 0.0}, 'The Vertex': {'dropChance': 46.52,   'uberDrop': 0.0}, 'Triumvirate Authority': {'dropChance': 0.0,   'uberDrop': 0.0}, 'Atziris Splendour': {'dropChance': 37.81,   'uberDrop': 0.0}, 'Pledge of Hands': {'dropChance': 2.0,   'uberDrop': 0.0}, 'Sacrificial Garb': {'dropChance': 0.0,   'uberDrop': 0.0}, 'Victorious Fate': {'dropChance': 0.0,   'uberDrop': 0.0}, 'setCost': 0}, 'maven': {'Legacy of Fury': {'dropChance': 26.15,   'uberDrop': 0.0}, 'Viridis Veil': {'dropChance': 16.92,   'uberDrop': 0.0}, 'Arns Anguish': {'dropChance': 24.62,   'uberDrop': 0.0}, 'Gravens Secret': {'dropChance': 16.92,   'uberDrop': 0.0}, 'Olesyas Delight': {'dropChance': 12.31,   'uberDrop': 0.0}, 'Impossible Escape': {'dropChance': 10.0,   'uberDrop': 0.0}, 'Doppelgänger Guise': {'dropChance': 2.44,   'uberDrop': 0.0}, 'Awakened Exceptional Support Gems': {'dropChance': 0.0,   'uberDrop': 4.0}, 'Shiny Reliquary Key': {'dropChance': 2.36,   'uberDrop': 0.0}, 'Elevated Sextant': {'dropChance': 49.23,   'uberDrop': 50.77}, 'Orb of Conflict': {'dropChance': 30.0, 'talentedDrop': 37.5, 'uberDrop': 0.0}, 'Awakened Support Gems': {'dropChance': 55.0, 'talentedDrop': 13.0, 'uberDrop': 0.0}, 'setCost': 0}, 'sirus': {'Crown of the Inward Eye': {'dropChance': 38.0,   'uberDrop': 0.0}, 'Hands of the High Templar': {'dropChance': 34.72,   'uberDrop': 0.0}, 'Thread of Hope (small - very large)': {'dropChance': 20.0,   'uberDrop': 0.0}, 'The Burden of Truth': {'dropChance': 15.0,   'uberDrop': 0.0}, 'The Saviour': {'dropChance': 2.0,   'uberDrop': 0.0}, 'Thread of Hope (massive)': {'dropChance': 0.0,   'uberDrop': 2.0}, 'Oubliette Reliquary Key': {'dropChance': 0.0,   'uberDrop': 0.0}, 'Awakened Support Gems': {'dropChance': 0.0,   'uberDrop': 0.0}, 'Orb of Dominance': {'dropChance': 3.0,   'uberDrop': 0.0}, 'Awakeners Orb': {'dropChance': 20.0,   'uberDrop': 0.0}, 'setCost': 0}};
+
+bigJson = {'shaper': {'Fragment of Knowledge': {'dropChance': 50.0, 'uberDrop': 0.0, 'chaosValue' : 0}, 'Fragment of Shape': {'dropChance': 50.0,   'uberDrop': 0.0, 'chaosValue' : 0}, 'Shapers Touch': {'dropChance': 51.5,   'uberDrop': 0.0, 'chaosValue' : 0}, 'Voidwalker': {'dropChance': 24.0,   'uberDrop': 0.0, 'chaosValue' : 0}, 'Dying Sun': {'dropChance': 16.0,   'uberDrop': 0.0, 'chaosValue' : 0}, 'Starforge': {'dropChance': 3.5,   'uberDrop': 0.0, 'chaosValue' : 0}, 'Solstice Vigil': {'dropChance': 5.0,   'uberDrop': 0.0, 'chaosValue' : 0}, 'Echoes of Creation': {'dropChance': 0.0,   'uberDrop': 10.47, 'chaosValue' : 0}, 'Sublime Vision': {'dropChance': 0.0,   'uberDrop': 4.0, 'chaosValue' : 0}, 'Cosmic Reliquary Key': {'dropChance': 0.0,   'uberDrop': 0.0, 'chaosValue' : 0}, 'Orb of Dominance': {'dropChance': 3.0,   'uberDrop': 3.0, 'chaosValue' : 0}, 'setCost': 0}, 'elder': {'Fragment of Terror': {'dropChance': 50.0,   'uberDrop': 0.0}, 'Fragment of Emptiness': {'dropChance': 50.0,   'uberDrop': 0.0}, 'Blasphemers Grasp': {'dropChance': 25.0,   'uberDrop': 0.0}, 'Cyclopean Coil': {'dropChance': 25.0,   'uberDrop': 0.0}, 'Nebuloch': {'dropChance': 10.0,   'uberDrop': 0.0}, 'Hopeshredder': {'dropChance': 10.0,   'uberDrop': 0.0}, 'Shimmeron': {'dropChance': 10.0,   'uberDrop': 0.0}, 'Any Impresence': {'dropChance': 20.0,   'uberDrop': 0.0}, 'Orb of Dominance': {'dropChance': 5.0,   'uberDrop': 5.0}, 'Watchers Eye': {'dropChance': 25.0, 'talentedDrop': 10.0, 'uberDrop': 0.0}, 'setCost': 0}, 'eater': {'The Gluttonous Tide': {'dropChance': 45.0,   'uberDrop': 0.0}, 'Inextricable Fate': {'dropChance': 33.0,   'uberDrop': 0.0}, 'Melding of the Flesh': {'dropChance': 5.0,   'uberDrop': 0.0}, 'Ashes of the Stars': {'dropChance': 2.0,   'uberDrop': 0.0}, 'Forbidden Flesh': {'dropChance': 8.0, 'talentedDrop': 2.0, 'uberDrop': 2.0}, 'Visceral Reliquary Key': {'dropChance': 0.0,   'uberDrop': 0.0}, 'Exceptional Eldritch Ichor': {'dropChance': 40.0,   'uberDrop': 35.0}, 'setCost': 0}, 'exarch': {'The Annihilating Light': {'dropChance': 33.0,   'uberDrop': 0.0}, 'Dawnbreaker': {'dropChance': 33.0,   'uberDrop': 0.0}, 'Dissolution of the Flesh': {'dropChance': 10.0,   'uberDrop': 0.0}, 'Crystallised Omniscience': {'dropChance': 2.0,   'uberDrop': 0.0}, 'Forbidden Flame': {'dropChance': 8.0, 'talentedDrop': 2.0, 'uberDrop': 2.0}, 'Archive Reliquary Key': {'dropChance': 0.0,   'uberDrop': 0.0}, 'Exceptional Eldritch Ember': {'dropChance': 40.0,   'uberDrop': 35.0}, 'setCost': 0}, 'atziri': {'Atziris Promise': {'dropChance': 67.97,   'uberDrop': 0.0}, 'Atziris Step': {'dropChance': 12.2,   'uberDrop': 0.0}, 'Doryanis Catalyst': {'dropChance': 4.58,   'uberDrop': 0.0}, 'Atziris Disfavour': {'dropChance': 0.0,   'uberDrop': 0.0}, 'Triumvirate Authority': {'dropChance': 0.0,   'uberDrop': 0.0}, 'Doryanis Invitation': {'dropChance': 15.25,   'uberDrop': 0.0}, 'Mortal Grief': {'dropChance': 15.47,   'uberDrop': 0.0}, 'Mortal Ignorance': {'dropChance': 10.68,   'uberDrop': 0.0}, 'Mortal Hope': {'dropChance': 5.23,   'uberDrop': 0.0}, 'Mortal Rage': {'dropChance': 10.02,   'uberDrop': 0.0}, 'Sacrificial Garb': {'dropChance': 0.0,   'uberDrop': 0.0}, 'setCost': 0}, 'uber elder': {'Mark of the Shaper': {'dropChance': 30.0,   'uberDrop': 0.0}, 'Mark of the Elder': {'dropChance': 30.0,   'uberDrop': 0.0}, 'Indigon': {'dropChance': 16.88,   'uberDrop': 0.0}, 'Call of the Void': {'dropChance': 0.0,   'uberDrop': 14.0}, 'Voidfletcher': {'dropChance': 14.0,   'uberDrop': 0.0}, 'Disintegrator': {'dropChance': 7.5,   'uberDrop': 0.0}, 'Voidforge': {'dropChance': 3.0,   'uberDrop': 2.0}, 'The Eternity Shroud': {'dropChance': 2.0,   'uberDrop': 0.0}, 'Any Double Impresence': {'dropChance': 0.0,   'uberDrop': 2.0}, 'Soul Ascension': {'dropChance': 0.0,   'uberDrop': 0.0}, 'Decaying Reliquary Key': {'dropChance': 0.0,   'uberDrop': 0.0}, 'Watchers Eye': {'dropChance': 25.0, 'talentedDrop': 10.0, 'uberDrop': 0.0}, 'Sublime Vision': {'dropChance': 0.0,   'uberDrop': 4.0}, 'Orb of Dominance': {'dropChance': 5.0, 'talentedDrop': 5.0, 'uberDrop': 0.0}, 'setCost': 0}, 'uber atziri': {'Atziris Acuity': {'dropChance': 3.48,   'uberDrop': 0.0}, 'Atziris Reflection': {'dropChance': 0.0,   'uberDrop': 0.0}, 'Atziris Rule': {'dropChance': 0.0,   'uberDrop': 0.0}, 'The Vertex': {'dropChance': 46.52,   'uberDrop': 0.0}, 'Triumvirate Authority': {'dropChance': 0.0,   'uberDrop': 0.0}, 'Atziris Splendour': {'dropChance': 37.81,   'uberDrop': 0.0}, 'Pledge of Hands': {'dropChance': 2.0,   'uberDrop': 0.0}, 'Sacrificial Garb': {'dropChance': 0.0,   'uberDrop': 0.0}, 'Victorious Fate': {'dropChance': 0.0,   'uberDrop': 0.0}, 'setCost': 0}, 'maven': {'Legacy of Fury': {'dropChance': 26.15,   'uberDrop': 0.0}, 'Viridis Veil': {'dropChance': 16.92,   'uberDrop': 0.0}, 'Arns Anguish': {'dropChance': 24.62,   'uberDrop': 0.0}, 'Gravens Secret': {'dropChance': 16.92,   'uberDrop': 0.0}, 'Olesyas Delight': {'dropChance': 12.31,   'uberDrop': 0.0}, 'Impossible Escape': {'dropChance': 10.0,   'uberDrop': 0.0}, 'Doppelgänger Guise': {'dropChance': 2.44,   'uberDrop': 0.0}, 'Awakened Exceptional Support Gems': {'dropChance': 0.0,   'uberDrop': 4.0}, 'Shiny Reliquary Key': {'dropChance': 2.36,   'uberDrop': 0.0}, 'Elevated Sextant': {'dropChance': 49.23,   'uberDrop': 50.77}, 'Orb of Conflict': {'dropChance': 30.0, 'talentedDrop': 37.5, 'uberDrop': 0.0}, 'Awakened Support Gems': {'dropChance': 55.0, 'talentedDrop': 13.0, 'uberDrop': 0.0}, 'setCost': 0}, 'sirus': {'Crown of the Inward Eye': {'dropChance': 38.0,   'uberDrop': 0.0}, 'Hands of the High Templar': {'dropChance': 34.72,   'uberDrop': 0.0}, 'Thread of Hope (small - very large)': {'dropChance': 20.0,   'uberDrop': 0.0}, 'The Burden of Truth': {'dropChance': 15.0,   'uberDrop': 0.0}, 'The Saviour': {'dropChance': 2.0,   'uberDrop': 0.0}, 'Thread of Hope (massive)': {'dropChance': 0.0,   'uberDrop': 2.0}, 'Oubliette Reliquary Key': {'dropChance': 0.0,   'uberDrop': 0.0}, 'Awakened Support Gems': {'dropChance': 0.0,   'uberDrop': 0.0}, 'Orb of Dominance': {'dropChance': 3.0,   'uberDrop': 0.0}, 'Awakeners Orb': {'dropChance': 20.0,   'uberDrop': 0.0}, 'setCost': 0}};
 var currentLeague = "Crucible";
-var currentBoss = "None";
+var divineChaosValue = 150;
 
 
-const removeChilds = (parent) => {
-    while (parent.lastChild) {
-        parent.removeChild(parent.lastChild);
-    }
-};
-
-// ---------------------------
-function recalculateDrops(){
-	var newDropValue = 0;
-	for(var i=0;i<document.getElementById("DropTable").children.length;i++){
-		newDropValue += document.getElementById('Chaos'+i).value*document.getElementById('DropChance'+i).innerHTML/100;
-		document.getElementById('PerRunValue'+i).innerHTML = (document.getElementById('Chaos'+i).value*document.getElementById('DropChance'+i).innerHTML/100).toFixed(2);
-	}
-	document.getElementById('EndDrop').innerHTML = newDropValue.toFixed(2);
-	recalculateDivPerH();
-};
-
-function getCheckboxState(name){
-	if(document.getElementById(name).checked){
-		return 1;
-	}else{
-		return 0;
-	}
-};
-
-function redrawTable(){
-	if(currentBoss != "None"){
-		drawTable(currentBoss);
-	}
-};
-
-function removeLowValueItems(){
-	console.log(document.getElementById("DropTable").children[0]);
-};
 
 
-function recalculateDivPerH(){
-	document.getElementById("DivPerH").innerHTML = ((document.getElementById("EndDrop").innerHTML-document.getElementById("Cost").value)*(60/document.getElementById("Time").value)/divineChaosValue).toFixed(2);
-};
 
-function drawTable(whatFight){
-	var whatFightUpper = whatFight;
-	whatFight = whatFight.toLowerCase();
-	currentBoss = whatFight;
-	tableOrigin = document.getElementById('DropTable');
-	document.getElementById('Cost').value = bigJson[whatFight].setCost.toFixed(0);
-	removeChilds(tableOrigin);
-
-		
-	for(var i=0; i<Object.keys(bigJson[whatFight]).length;i++){
-		currItem = Object.keys(bigJson[whatFight])[i];
-		if(currItem != "setCost"){
-			currDropChance = bigJson[whatFight][currItem].dropChance;
-			currChaosValue = Math.floor(bigJson[whatFight][currItem].chaosValue);
-			if(getCheckboxState('UberCheckbox') == 1 && bigJson[whatFight][currItem].uberDrop != 0){
-				currDropChance += bigJson[whatFight][currItem].uberDrop;
-			}
-			if(currDropChance == 0){
-				var newRow = '<tr><td class="col-6" style="text-decoration: line-through;"> ' + currItem + '</td><td class="col-2" id="DropChance'+i+'">' + currDropChance + '</td><td class="col-2"><input type="number" id="Chaos'+i+'" onchange="recalculateDrops()" value="'+ currChaosValue  + '"></td><td class="col-2" id="PerRunValue'+i+'">' + (currChaosValue*currDropChance/100).toFixed(2) + '</td></tr>' ;
-			}else{
-				var newRow = '<tr><td class="col-6"> ' + currItem + '</td><td class="col-2" id="DropChance'+i+'">' + currDropChance + '</td><td class="col-2"><input type="number" id="Chaos'+i+'" onchange="recalculateDrops()" value="'+ currChaosValue  + '"></td><td class="col-2" id="PerRunValue'+i+'">' + (currChaosValue*currDropChance/100).toFixed(2) + '</td></tr>' ;				
-			}
-			
-			tableOrigin.insertRow().innerHTML = newRow;
-		}
-	}
-	// setting current Boss
-	document.getElementById('CurrBoss').innerHTML = whatFightUpper;
-
-	recalculateDrops();
-	recalculateDivPerH();
-
-
-};
-
-function calculateAverageAwakenedGem(){
+async function calculateAverageAwakenedGem(){
 	var url = "https://api.poe.watch/get?league="+currentLeague+"&category=gem&gemLevel=1";
 	fetch(url).then(response => response.json()).then(result => {	
 		var awaTotal = 0;
@@ -110,7 +36,7 @@ function calculateAverageAwakenedGem(){
 
 
 
-function getFragmentValues(){
+async function getFragmentValues(){
 	var url = "https://api.poe.watch/get?league="+currentLeague+"&category=fragment";
 	fetch(url).then(response => response.json()).then(result => {	
 		for(var i = 0; i<result.length;i++){
@@ -195,7 +121,7 @@ function getFragmentValues(){
 
 	})
 };
-function getCurrencyValues(){
+async function getCurrencyValues(){
 	var url = "https://api.poe.watch/get?league="+currentLeague+"&category=currency";
 	fetch(url).then(response => response.json()).then(result => {
 			for(var i = 0; i<result.length;i++){
@@ -241,7 +167,7 @@ function getCurrencyValues(){
 	);
 };
 
-function getMapValues(){
+async function getMapValues(){
 	var url = "https://api.poe.watch/get?league="+currentLeague+"&category=map";
 	fetch(url).then(response => response.json()).then(result => {
 			for(var i = 0; i<result.length;i++){
@@ -281,7 +207,7 @@ function getMapValues(){
 		});
 };
 
-function getJewelValues(){
+async function getJewelValues(){
 	var url = "https://api.poe.watch/get?league="+currentLeague+"&category=jewel";
 	fetch(url).then(response => response.json()).then(result => {
 			for(var i = 0; i<result.length;i++){
@@ -328,7 +254,7 @@ function getJewelValues(){
 
 };
 
-function getUniqueArmorValues(){
+async function getUniqueArmorValues(){
 	var url = "https://api.poe.watch/get?league="+currentLeague+"&category=armour";
 	fetch(url).then(response => response.json()).then(result => {
 			for(var i = 0; i<result.length;i++){
@@ -417,7 +343,7 @@ function getUniqueArmorValues(){
 		});
 };
 
-function getUniqueAccessories(){
+async function getUniqueAccessories(){
 	var url = "https://api.poe.watch/get?league="+currentLeague+"&category=accessory";
 	fetch(url).then(response => response.json()).then(result => {
 			for(var i = 0; i<result.length;i++){
@@ -482,7 +408,7 @@ function getUniqueAccessories(){
 		});
 };
 
-function getUniqueWeapons(){
+async function getUniqueWeapons(){
 	var url = "https://api.poe.watch/get?league="+currentLeague+"&category=weapon";
 	fetch(url).then(response => response.json()).then(result => {
 			for(var i = 0; i<result.length;i++){
@@ -544,7 +470,7 @@ function getUniqueWeapons(){
 		});
 };
 
-function getUniqueFlaskValues(){
+async function getUniqueFlaskValues(){
 	var url = "https://api.poe.watch/get?league="+currentLeague+"&category=flask";
 	fetch(url).then(response => response.json()).then(result => {
 		for(var i = 0; i<result.length;i++){
@@ -562,7 +488,7 @@ function getUniqueFlaskValues(){
 };
 
 
-function SetCostForNotAvailableItems(){
+async function SetCostForNotAvailableItems(){
 	//atziri & uber Atziri: Sacrificial Garb
 	bigJson['atziri']['Sacrificial Garb'].chaosValue = 0;
 	bigJson['uber atziri']['Sacrificial Garb'].chaosValue = 0;
@@ -572,23 +498,63 @@ function SetCostForNotAvailableItems(){
 	bigJson['uber elder']['Any Double Impresence'].chaosValue = 0;
 }
 
-
-SetCostForNotAvailableItems();
-getFragmentValues();
-getCurrencyValues();
-getMapValues();
-getJewelValues();
-getUniqueArmorValues();
-getUniqueAccessories();
-getUniqueWeapons();
-getUniqueFlaskValues();
-calculateAverageAwakenedGem();
-
-
-
+function fillBigJson(){
+	SetCostForNotAvailableItems();
+	getFragmentValues();
+	getCurrencyValues();
+	getMapValues();
+	getJewelValues();
+	getUniqueArmorValues();
+	getUniqueAccessories();
+	getUniqueWeapons();
+	getUniqueFlaskValues();
+	calculateAverageAwakenedGem();
+}
 
 
 
+function calculateValue(boss){
+	console.log(bigJson[boss])
+	let cost = bigJson[boss]['setCost'];
+	let drops = 0;	
+	for(let i = 0; i < Object.keys(bigJson[boss]).length; i++){
+		if(Object.keys(bigJson[boss])[i] == 'setCost'){
+		}else{
+			drops +=  (bigJson[boss][Object.keys(bigJson[boss])[i]].dropChance * bigJson[boss][Object.keys(bigJson[boss])[i]].chaosValue / 100);
+		}
+	}	
+	return Math.floor(drops-cost);
+};
+
+
+function fillValues(){
+	document.getElementById('elder').innerHTML = calculateValue('elder');
+	document.getElementById('uberElder').innerHTML = calculateValue('uber elder');
+	document.getElementById('shaper').innerHTML = calculateValue('shaper');
+	document.getElementById('sirus').innerHTML = calculateValue('sirus');
+	document.getElementById('eater').innerHTML = calculateValue('eater');
+	document.getElementById('exarch').innerHTML = calculateValue('exarch');
+	document.getElementById('atziri').innerHTML = calculateValue('atziri');
+	document.getElementById('uberAtziri').innerHTML = calculateValue('uber atziri');
+	document.getElementById('maven').innerHTML = calculateValue('maven');
+};
 
 
 
+fillBigJson();
+
+Promise.all([
+    this.SetCostForNotAvailableItems(),
+	this.getFragmentValues(),
+	this.getCurrencyValues(),
+	this.getMapValues(),
+	this.getJewelValues(),
+	this.getUniqueArmorValues(),
+	this.getUniqueAccessories(),
+	this.getUniqueWeapons(),
+	this.getUniqueFlaskValues(),
+	this.calculateAverageAwakenedGem()
+	])
+.then(function(values) {
+    this.fillValues();
+}.bind(this));
