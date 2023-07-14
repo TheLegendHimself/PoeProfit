@@ -1,27 +1,28 @@
 body{
-	background-color: #212529;
+	background-color: #191919;
 }
 input{
-	background-color: #212529;
-	color:white;
+	background-color: #191919;
+	color:lightblue;
 }
 .input-group-text{
-	background-color: #212529;
-	color:white;
+	background-color: #191919;
+	color:lightblue;
 }
 .border{
-	color: white;
+	color: lightblue;
 }
 h1{
-	color: white;
+	color: lightcoral;
 }
 .btn{
 	background-color: #15191d;
+	color: lightblue;
 	border: #15191d;
 }
 
 pre{
-	color: white;
+	color: lightblue;
 }
 #DivPerH{
 	font-weight: bold;
